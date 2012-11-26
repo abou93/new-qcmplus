@@ -25,6 +25,12 @@ public class Utilisateur {
 	private String motDePasse;
 	
 	/**
+	 * 
+	 */
+	public Utilisateur() {
+		super();
+	}
+	/**
 	 * @return the id
 	 */
 	public long getId() {
