@@ -3,7 +3,7 @@
     <wb-module deploy-name="Struts">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Struts"/>
         <property name="java-output-path" value="/Struts/build/classes"/>
+        <property name="context-root" value="newqcmplus"/>
     </wb-module>
 </project-modules>
