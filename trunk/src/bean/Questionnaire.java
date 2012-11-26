@@ -12,8 +12,6 @@ public class Questionnaire {
 	/**
 	 * 
 	 */
-	private long id;
-	
-	private String nom;
+
 	
 }
