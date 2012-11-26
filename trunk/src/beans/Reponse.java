@@ -3,15 +3,50 @@
  */
 package beans;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
-public class Reponse {
+@Entity
+@Table(name = "reponse")
+public class Reponse implements Serializable{
 	
+	/**
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	/**
+	 * 
+	 */
+	@Column(name = "LIBELLE", nullable=false)
 	private String libelle;
+	/**
+	 * 
+	 */
+	@Column(name = "EST_CORRECTE", nullable=false)
 	private boolean estCorrecte;
+	
+	
+	/**
+	 * 
+	 */
+	@ManyToOne
+	@JoinColumn(name ="ID_QUESTION")
+	private Question question;
+	
 	/**
 	 * 
 	 */
@@ -54,6 +89,20 @@ public class Reponse {
 	public void setEstCorrecte(boolean estCorrecte) {
 		this.estCorrecte = estCorrecte;
 	}
+	/**
+	 * @return the question
+	 */
+	public Question getQuestion() {
+		return question;
+	}
+	/**
+	 * @param question the question to set
+	 */
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	
+	
 	
 	
 }

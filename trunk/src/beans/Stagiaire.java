@@ -3,20 +3,32 @@
  */
 package beans;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
-public class Stagiaire extends Utilisateur {
+@Entity
+@Table(name="stagiaire")
+@PrimaryKeyJoinColumn(name ="ID_STAGIAIRE")
+public class Stagiaire extends Utilisateur implements Serializable{
 	
 	/**
 	 * 
 	 */
+	@Column(name = "PRENOM", nullable=false, length=50)
 	private String prenom;
 	
 	/**
 	 * 
 	 */
+	@Column(name = "SOCIETE", nullable=false)
 	private String societe;
 	
 		

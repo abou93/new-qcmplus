@@ -3,35 +3,50 @@
  */
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
- *
+ * 
  */
-public class Questionnaire {
-	
+@Entity
+@Table(name = "questionnaire")
+public class Questionnaire implements Serializable{
+
 	/**
 	 * 
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	/**
 	 * 
 	 */
+	@Column(name = "NOM", nullable = false, length = 50)
 	private String nom;
-	
+
 	/**
 	 * 
 	 */
+	@Column(name = "DESCRIPTION", nullable = false, length = 500)
 	private String description;
-	
+
 	/**
 	 * 
 	 */
+	@OneToMany(mappedBy="questionnaire")
 	private ArrayList<Question> listeQuestions;
-	
-	
 
 	/**
 	 * 
@@ -48,7 +63,8 @@ public class Questionnaire {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -62,7 +78,8 @@ public class Questionnaire {
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param nom
+	 *            the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -76,7 +93,8 @@ public class Questionnaire {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -90,10 +108,11 @@ public class Questionnaire {
 	}
 
 	/**
-	 * @param listeQuestions the listeQuestions to set
+	 * @param listeQuestions
+	 *            the listeQuestions to set
 	 */
 	public void setListeQuestions(ArrayList<Question> listeQuestions) {
 		this.listeQuestions = listeQuestions;
 	}
-	
+
 }
