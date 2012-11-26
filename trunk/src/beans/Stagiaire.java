@@ -4,9 +4,11 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -30,6 +32,12 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	 */
 	@Column(name = "SOCIETE", nullable=false)
 	private String societe;
+	
+	/**
+	 * 
+	 */
+	@OneToMany(mappedBy="stagiaire")
+	private ArrayList<Question> listeParcours;
 	
 		
 	/**
@@ -63,6 +71,20 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	 */
 	public void setSociete(String societe) {
 		this.societe = societe;
+	}
+
+	/**
+	 * @return the listeParcours
+	 */
+	public ArrayList<Question> getListeParcours() {
+		return listeParcours;
+	}
+
+	/**
+	 * @param listeParcours the listeParcours to set
+	 */
+	public void setListeParcours(ArrayList<Question> listeParcours) {
+		this.listeParcours = listeParcours;
 	}
 	
 	

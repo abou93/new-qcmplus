@@ -37,7 +37,8 @@ public class HibernateUtil {
 	}
 	
 	private static SessionFactory configureSessionFactory() throws HibernateException {
-	    Configuration configuration = new Configuration();
+	    //remplace new AnnotationConfiguration().configure().buildSessionFactory() depuis hibernate 3.6
+		Configuration configuration = new Configuration();
 	    configuration.configure();
 	    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
 	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
