@@ -19,6 +19,15 @@ public class Stagiaire extends Utilisateur {
 	 */
 	private String societe;
 	
+		
+	/**
+	 * 
+	 */
+	public Stagiaire() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * @return the prenom
 	 */
