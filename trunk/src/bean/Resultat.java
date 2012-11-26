@@ -10,6 +10,7 @@ package bean;
 public class Resultat {
 
 		private long id;
+		
 
 		/**
 		 * 
