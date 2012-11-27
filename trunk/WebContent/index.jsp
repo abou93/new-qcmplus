@@ -15,10 +15,10 @@
 		</h1>
 
 
-		<s:form action="userverifLogin">
+		<s:form action="login">
 			<table align="center" class="borderAll">
-				<s:textfield name="login" size="30" cssClass="tdLabel" label="Login" />
-				<s:password name="password" size="30" cssClass="tdLabel"
+				<s:textfield name="nom" size="30" cssClass="tdLabel" label="Nom" />
+				<s:password name="mdp" size="30" cssClass="tdLabel"
 					label="Mot de passe" />
 			</table>
 			<br />

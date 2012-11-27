@@ -14,15 +14,19 @@
           "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="default" extends="struts-default" namespace="/">
-		<action name="accueil" class="action.Login">
+	<package name="utilisateur" extends="struts-default" namespace="/">
+		<action name="accueil" class="actions.Login" method="accueil">
 			<result name="SUCCESS">index.jsp</result>
 		</action>
+		<action name="login" class="actions.Login" method="login">
+			<result name="SUCCESS">succes.jsp</result>
+			<result name="ERROR">index.jsp</result>
+		</action>
 	</package>
-	<package name="administrateur" extends="utilisateur" namespace="/admin">
+	<package name="administrateur" extends="struts-default" namespace="/admin">
 
 	</package>
-	<package name="stagiaire" extends="utilisateur" namespace="/stagiaire">
+	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">
 
 	</package>
 </struts>

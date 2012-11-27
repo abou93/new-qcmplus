@@ -3,8 +3,12 @@
  */
 package dao.hibernate;
 
-import dao.UtilisateurDAO;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import utils.HibernateUtil;
 import beans.Utilisateur;
+import dao.UtilisateurDAO;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
@@ -16,58 +20,76 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @param u
 	 * @return id de l'utilisateur créé
 	 */
-	public long creer(Utilisateur u){
+	public long creer(Utilisateur u) {
 		return 0;
-		
+
 	}
 
 	/**
 	 * @param id
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverUtilisateur(long id){
-		return null;}
+	public Utilisateur trouverUtilisateur(long id) {
+		return null;
+	}
+
 	/**
 	 * @param nom
 	 * @param mdp
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverUtilisateur(String nom, String mdp){
-		return null;}
+	public Utilisateur trouverUtilisateur(String nom, String mdp) {
+		// récupération de la session hibernate
+		Session session = HibernateUtil.getSession();
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+
+			Query q = session
+					.createQuery("from utilisateur as u where u.nom =:lenom and u.mdp =:lemdp");
+			q.setString("lenom", nom);
+			q.setString("lemdp", mdp);
+
+			return (Utilisateur) q.uniqueResult();
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
 
 	/**
 	 * @param u
 	 * @return
 	 */
-	public boolean modifier(Utilisateur u){
-		return false;}
-	
+	public boolean modifier(Utilisateur u) {
+		return false;
+	}
+
 	/**
 	 * @param id
 	 * @return
 	 */
-	public boolean modifier(long id){
-		return false;}
-	
+	public boolean modifier(long id) {
+		return false;
+	}
+
 	/**
 	 * @param u
 	 * @return
 	 */
-	public boolean supprimer(Utilisateur u){
-		return false;}
-	
+	public boolean supprimer(Utilisateur u) {
+		return false;
+	}
+
 	/**
 	 * @param id
 	 * @return
 	 */
-	public boolean supprimer(long id){
-		return false;}
-	
-	
-	
-	
-	
-	
-	
+	public boolean supprimer(long id) {
+		return false;
+	}
 
 }
