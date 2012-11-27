@@ -6,7 +6,6 @@ package dao;
 import java.util.ArrayList;
 
 import beans.Questionnaire;
-import beans.Utilisateur;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry

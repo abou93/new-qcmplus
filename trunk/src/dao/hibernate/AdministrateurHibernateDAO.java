@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dao;
+package dao.hibernate;
 
 import java.util.ArrayList;
 
@@ -11,10 +11,11 @@ import beans.Administrateur;
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
-public interface AdministrateurDAO extends UtilisateurDAO {
+public class AdministrateurHibernateDAO extends UtilisateurHibernateDAO {
 
 	/**
 	 * @return la liste des stagiaires
 	 */
-	public ArrayList<Administrateur> listeAdministrateurs();
+	public ArrayList<Administrateur> listeAdministrateurs(){
+		return null;}
 }
