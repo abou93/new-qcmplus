@@ -11,4 +11,5 @@ import beans.Utilisateur;
  */
 public interface UtilisateurService {
 	public Utilisateur trouverUtilisateur(String nom, String mdp);
+	public long creer(Utilisateur u);
 }

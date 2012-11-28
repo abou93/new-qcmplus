@@ -4,14 +4,13 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,7 +45,7 @@ public class Questionnaire implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy="questionnaire")
-	private ArrayList<Question> listeQuestions;
+	private List<Question> listeQuestions;
 
 	/**
 	 * 
@@ -103,7 +102,7 @@ public class Questionnaire implements Serializable{
 	/**
 	 * @return the listeQuestions
 	 */
-	public ArrayList<Question> getListeQuestions() {
+	public List<Question> getListeQuestions() {
 		return listeQuestions;
 	}
 
@@ -111,7 +110,7 @@ public class Questionnaire implements Serializable{
 	 * @param listeQuestions
 	 *            the listeQuestions to set
 	 */
-	public void setListeQuestions(ArrayList<Question> listeQuestions) {
+	public void setListeQuestions(List<Question> listeQuestions) {
 		this.listeQuestions = listeQuestions;
 	}
 

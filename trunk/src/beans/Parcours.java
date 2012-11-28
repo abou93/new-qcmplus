@@ -4,8 +4,8 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,7 +61,7 @@ public class Parcours implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy = "parcours")
-	private ArrayList<Resultat> listeResultats;
+	private List<Resultat> listeResultats;
 	
 	
 
@@ -148,14 +148,14 @@ public class Parcours implements Serializable{
 	/**
 	 * @return the listeResultats
 	 */
-	public ArrayList<Resultat> getListeResultats() {
+	public List<Resultat> getListeResultats() {
 		return listeResultats;
 	}
 
 	/**
 	 * @param listeResultats the listeResultats to set
 	 */
-	public void setListeResultats(ArrayList<Resultat> listeResultats) {
+	public void setListeResultats(List<Resultat> listeResultats) {
 		this.listeResultats = listeResultats;
 	}
 

@@ -4,7 +4,7 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +37,7 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy="stagiaire")
-	private ArrayList<Question> listeParcours;
+	private List<Parcours> listeParcours;
 	
 		
 	/**
@@ -45,6 +45,15 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	 */
 	public Stagiaire() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Stagiaire(String nom, String mdp) {
+		this();
+		setNom(nom);
+		setMotDePasse(mdp);
+		setSociete("societe");
+		setPrenom("prenom");
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -76,14 +85,14 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	/**
 	 * @return the listeParcours
 	 */
-	public ArrayList<Question> getListeParcours() {
+	public List<Parcours> getListeParcours() {
 		return listeParcours;
 	}
 
 	/**
 	 * @param listeParcours the listeParcours to set
 	 */
-	public void setListeParcours(ArrayList<Question> listeParcours) {
+	public void setListeParcours(List<Parcours> listeParcours) {
 		this.listeParcours = listeParcours;
 	}
 	

@@ -5,6 +5,7 @@ package actions;
 
 import services.UtilisateurImplementService;
 import services.UtilisateurService;
+import beans.Stagiaire;
 import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -29,12 +30,16 @@ public class Login extends ActionSupport{
 	
 	public String login() {
 		System.out.println("actions.login");
+		
+		//pour provoqier la création de la base
+		//System.out.println(userv.creer(new Stagiaire("fred","mdp")));
+		
 		u = userv.trouverUtilisateur(this.getNom(), this.getMdp());
 
 		if (u != null) {
 			System.out.println(u);
-			if (u.getMotDePasse().equals(u.getMotDePasse()) &&
-					u.getNom().equals(u.getNom())) {
+			if (u.getMotDePasse().equals(this.getMdp()) &&
+					u.getNom().equals(this.getNom())) {
 				//session.put("login", u.getLogin());
 				return SUCCESS;
 			}

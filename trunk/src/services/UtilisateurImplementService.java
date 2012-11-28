@@ -27,4 +27,11 @@ public class UtilisateurImplementService implements UtilisateurService {
 		return this.maDAO.trouverUtilisateur(nom, mdp);
 	}
 
+	@Override
+	public long creer(Utilisateur u) {
+		return this.maDAO.creer(u);
+	}
+
+	
+
 }

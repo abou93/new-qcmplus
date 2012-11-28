@@ -4,7 +4,7 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +47,7 @@ public class Question implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy = "question")
-	private ArrayList<Reponse> listeReponses;
+	private List<Reponse> listeReponses;
 	
 
 	/**
@@ -104,14 +104,14 @@ public class Question implements Serializable{
 	/**
 	 * @return the listeReponses
 	 */
-	public ArrayList<Reponse> getListeReponses() {
+	public List<Reponse> getListeReponses() {
 		return listeReponses;
 	}
 
 	/**
 	 * @param listeReponses the listeReponses to set
 	 */
-	public void setListeReponses(ArrayList<Reponse> listeReponses) {
+	public void setListeReponses(List<Reponse> listeReponses) {
 		this.listeReponses = listeReponses;
 	}
 	

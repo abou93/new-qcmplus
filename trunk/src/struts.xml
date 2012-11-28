@@ -16,11 +16,11 @@
 <struts>
 	<package name="utilisateur" extends="struts-default" namespace="/">
 		<action name="accueil" class="actions.Login" method="accueil">
-			<result name="SUCCESS">index.jsp</result>
+			<result name="success">index.jsp</result>
 		</action>
 		<action name="login" class="actions.Login" method="login">
-			<result name="SUCCESS">succes.jsp</result>
-			<result name="ERROR">index.jsp</result>
+			<result name="success">succes.jsp</result>
+			<result name="error">index.jsp</result>
 		</action>
 	</package>
 	<package name="administrateur" extends="struts-default" namespace="/admin">

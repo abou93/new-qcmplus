@@ -15,6 +15,8 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
+        <!-- création/MAJ de la bdd -->
+        <property name="hbm2ddl.auto">update</property> 
     
     	<!-- Mapping des entités / beans -->
     	<mapping class="beans.Utilisateur"/>

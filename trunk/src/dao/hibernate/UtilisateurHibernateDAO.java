@@ -5,6 +5,7 @@ package dao.hibernate;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
 import beans.Utilisateur;
@@ -21,7 +22,21 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @return id de l'utilisateur créé
 	 */
 	public long creer(Utilisateur u) {
-		return 0;
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		try {
+			//System.out.println("heeee"+u.getLogin());
+			tx = session.beginTransaction();
+			session.save(u);
+			tx.commit();
+			return 1;
+		} catch (RuntimeException e) {
+			//if(tx != null) tx.rollback();
+			e.printStackTrace();
+			return 0;
+		} finally {
+			session.close();
+		}
 
 	}
 
