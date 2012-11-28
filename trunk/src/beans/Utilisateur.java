@@ -84,6 +84,17 @@ public abstract class Utilisateur implements Serializable {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Utilisateur [nom=");
+		builder.append(nom);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 	
 

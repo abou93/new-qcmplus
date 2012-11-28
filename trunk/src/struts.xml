@@ -15,11 +15,8 @@
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="utilisateur" extends="struts-default" namespace="/">
-		<action name="accueil" class="actions.Login" method="accueil">
-			<result name="success">index.jsp</result>
-		</action>
 		<action name="login" class="actions.Login" method="login">
-			<result name="success">succes.jsp</result>
+			<result name="success">success.jsp</result>
 			<result name="error">index.jsp</result>
 		</action>
 	</package>

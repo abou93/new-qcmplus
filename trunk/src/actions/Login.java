@@ -21,12 +21,13 @@ public class Login extends ActionSupport{
 	
 	UtilisateurService userv = new UtilisateurImplementService();
 	
-	public String accueil() {
-		setNom("nom");
-		setMdp("mdp");
-		System.out.println("actions.accueil");
-		return SUCCESS;
-	}
+	
+//	public String accueil() {
+//		setNom("nom");
+//		setMdp("mdp");
+//		System.out.println("actions.accueil");
+//		return SUCCESS;
+//	}
 	
 	public String login() {
 		System.out.println("actions.login");
@@ -36,6 +37,8 @@ public class Login extends ActionSupport{
 		
 		u = userv.trouverUtilisateur(this.getNom(), this.getMdp());
 
+		System.out.println(u);
+		
 		if (u != null) {
 			System.out.println(u);
 			if (u.getMotDePasse().equals(this.getMdp()) &&
@@ -71,5 +74,7 @@ public class Login extends ActionSupport{
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+	
+	
 
 }

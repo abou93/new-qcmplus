@@ -56,18 +56,20 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	public Utilisateur trouverUtilisateur(String nom, String mdp) {
 		// récupération de la session hibernate
 		Session session = HibernateUtil.getSession();
+		System.out.println("utilisateurHibernateDAO");
 		try {
 			// session.beginTransaction();
 			// Query q =
 			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
 
 			Query q = session
-					.createQuery("from utilisateur as u where u.nom =:lenom and u.mdp =:lemdp");
+					.createQuery("from Utilisateur as u where u.nom =:lenom and u.motDePasse =:lemdp");
 			q.setString("lenom", nom);
 			q.setString("lemdp", mdp);
 
 			return (Utilisateur) q.uniqueResult();
 		} catch (RuntimeException e) {
+			System.out.println(e);
 			// if(tx != null) tx.rollback();
 			return null;
 		} finally {
