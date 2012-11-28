@@ -75,7 +75,9 @@ public class Login extends ActionSupport implements SessionAware {
 				}
 			}
 		}
-		// sinon
+		// sinon ajout message d'erreur et renvoi vers le formulaire
+		final String MESSAGE = "Login.erreur";
+		this.addActionError(getText(MESSAGE));
 		return ERROR;
 
 	}

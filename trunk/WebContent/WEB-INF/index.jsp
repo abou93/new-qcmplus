@@ -10,10 +10,8 @@
 		<div class="titleDiv">
 			<s:text name="Login.identification" />
 		</div>
-		<h1>
-			<s:actionmessage />
-		</h1>
-
+		
+			<s:actionerror />
 
 		<s:form action="login">
 			<table align="center" class="borderAll">
