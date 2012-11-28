@@ -58,6 +58,12 @@ border:2px solid #8F99EF;
     color: red;
     font-weight: bold;
 }
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    list-style: none;
+}
+
 .errorSection {
     padding-left:18px;
     padding-top:2px;

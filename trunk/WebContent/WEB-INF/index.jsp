@@ -6,28 +6,26 @@
 	type="text/css" />
 </head>
 <body>
-	<center>
-		<div class="titleDiv">
-			<s:text name="Login.identification" />
-		</div>
+
+	<div class="titleDiv">
+		<s:text name="Login.identification" />
+	</div>
+
+	<s:actionerror />
+
+	<s:form action="login">
 		
-			<s:actionerror />
+			<s:textfield name="nom" size="30" cssClass="tdLabel" key="Label.nom" />
+			<s:password name="mdp" size="30" cssClass="tdLabel" key="Label.mdp" />
+		
+		<br />
+		
+			
+				<s:submit key="Bouton.valider" cssClass="butStnd" />
 
-		<s:form action="login">
-			<table align="center" class="borderAll">
-				<s:textfield name="nom" size="30" cssClass="tdLabel" key="Label.nom"/> 
-				<s:password name="mdp" size="30" cssClass="tdLabel"
-					key="Label.mdp" /> 
-			</table>
-			<br />
-			<table>
-				<tr>
-					<td><s:submit key="Bouton.valider" cssClass="butStnd" /></td>
+			
+	</s:form>
 
-				</tr>
-			</table>
-		</s:form>
-	</center>
 
 </body>
 </html>

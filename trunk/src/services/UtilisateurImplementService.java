@@ -23,7 +23,6 @@ public class UtilisateurImplementService implements UtilisateurService {
 
 	@Override
 	public Utilisateur trouverUtilisateur(String nom, String mdp) {
-
 		return this.maDAO.trouverUtilisateur(nom, mdp);
 	}
 
@@ -32,6 +31,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 		return this.maDAO.creer(u);
 	}
 
+	
 	
 
 }
