@@ -16,7 +16,8 @@
 <struts>
 	<package name="utilisateur" extends="struts-default" namespace="/">
 		<action name="login" class="actions.Login" method="login">
-			<result name="success">success.jsp</result>
+			<result name="admin">/WEB-INF/admin/accueilAdmin.jsp</result>
+			<result name="stagiaire">/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
 			<result name="error">index.jsp</result>
 		</action>
 	</package>
