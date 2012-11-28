@@ -14,14 +14,27 @@
           "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="utilisateur" extends="struts-default" namespace="/">
-		<action name="login" class="actions.Login" method="login">
-			<result name="admin">/WEB-INF/admin/accueilAdmin.jsp</result>
-			<result name="stagiaire">/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
-			<result name="error">index.jsp</result>
+	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.custom.i18n.resources" value="package" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<default-action-ref name="accueil" />
+
+		<action name="accueil" class="actions.Accueil">
+			<result name="success">/WEB-INF/index.jsp</result>
 		</action>
 	</package>
-	<package name="administrateur" extends="struts-default" namespace="/admin">
+	
+	<package name="utilisateur" extends="struts-default" namespace="/">
+		<action name="login" class="actions.Login">
+			<result name="admin">/WEB-INF/admin/accueilAdmin.jsp</result>
+			<result name="stagiaire">/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
+			<result name="error">/WEB-INF/index.jsp</result>
+		</action>
+
+	</package>
+	<package name="administrateur" extends="struts-default"
+		namespace="/admin">
 
 	</package>
 	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">

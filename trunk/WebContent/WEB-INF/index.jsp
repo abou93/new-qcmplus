@@ -8,7 +8,7 @@
 <body>
 	<center>
 		<div class="titleDiv">
-			<s:text name="Identification" />
+			<s:text name="Login.identification" />
 		</div>
 		<h1>
 			<s:actionmessage />
@@ -17,24 +17,18 @@
 
 		<s:form action="login">
 			<table align="center" class="borderAll">
-				<s:textfield name="nom" size="30" cssClass="tdLabel" label="Nom" />
+				<s:textfield name="nom" size="30" cssClass="tdLabel" key="Label.nom"/> 
 				<s:password name="mdp" size="30" cssClass="tdLabel"
-					label="Mot de passe" />
+					key="Label.mdp" /> 
 			</table>
 			<br />
 			<table>
 				<tr>
-					<td><s:submit value="S'identifier" cssClass="butStnd" /></td>
+					<td><s:submit key="Bouton.valider" cssClass="butStnd" /></td>
 
 				</tr>
 			</table>
 		</s:form>
-
-		<table width='600' align='center'>
-			<tr>
-				<td><s:a href="afficheForminscription">cliquer pour l'inscription</s:a></td>
-			</tr>
-		</table>
 	</center>
 
 </body>
