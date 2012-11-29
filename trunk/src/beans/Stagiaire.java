@@ -45,18 +45,20 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	 */
 	public Stagiaire() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Stagiaire(String nom, String mdp) {
-		this();
-		setNom(nom);
-		setMotDePasse(mdp);
-		setSociete("societe");
-		setPrenom("prenom");
-		// TODO Auto-generated constructor stub
+	/**
+	 * @param nom
+	 * @param mdp
+	 * @param prenom
+	 * @param societe
+	 */
+	public Stagiaire(String nom, String mdp, String prenom, String societe) {
+		super(nom, mdp);
+		setSociete(societe);
+		setPrenom(prenom);	
 	}
-	
+
 	/**
 	 * @return the prenom
 	 */
