@@ -36,12 +36,6 @@ public interface UtilisateurDAO {
 	public boolean modifier(Utilisateur u);
 	
 	/**
-	 * @param id
-	 * @return
-	 */
-	public boolean modifier(long id);
-	
-	/**
 	 * @param u
 	 * @return
 	 */
