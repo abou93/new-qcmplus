@@ -151,23 +151,4 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 		}
 		return false;
 	}
-
-	@Override
-	public Utilisateur trouverUtilisateur(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Utilisateur trouverParNomEtMdp(String nom, String mdp) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean modifier(long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
