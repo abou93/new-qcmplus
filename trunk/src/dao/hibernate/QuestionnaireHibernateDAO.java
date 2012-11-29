@@ -77,8 +77,25 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 * @return
 	 */
 	public boolean modifier(Questionnaire q) {
-		return false;
+		Session session;
+		session = HibernateUtil.getSession();
+		Transaction tx = null;
 
+		try {
+			tx = session.beginTransaction();
+			session.update(q);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// rollback si erreur
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
 	}
 	
 	/**
@@ -102,6 +119,11 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 * @return
 	 */
 	public boolean supprimer(long id) {
+		if (id > 0) {
+			Questionnaire q = trouverQuestionnaire(id);
+			q.setEstSupprime(true);
+			return modifier(q);
+		}
 		return false;
 	}
 	
