@@ -16,7 +16,7 @@ import dao.UtilisateurDAO;
  * 
  */
 public class UtilisateurHibernateDAO implements UtilisateurDAO {
-
+	private final static long ECHEC_CREATION = 0;
 	/**
 	 * @param u
 	 * @return id de l'utilisateur créé
@@ -25,16 +25,20 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		try {
-			//System.out.println("heeee"+u.getLogin());
+			//début de transaction
 			tx = session.beginTransaction();
+			//persistance de l'objet
 			session.save(u);
+			//commit de la transaction
 			tx.commit();
-			return 1;
+			return u.getId();
 		} catch (RuntimeException e) {
 			//if(tx != null) tx.rollback();
+			//message d'erruer pour la console
 			e.printStackTrace();
-			return 0;
+			return ECHEC_CREATION;
 		} finally {
+			//fermeture de session systématique
 			session.close();
 		}
 
