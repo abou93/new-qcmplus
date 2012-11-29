@@ -54,6 +54,17 @@ public abstract class Utilisateur implements Serializable {
 	public Utilisateur() {
 		super();
 	}
+	
+	/**
+	 * @param nom
+	 * @param motDePasse
+	 */
+	public Utilisateur(String nom, String motDePasse) {
+		super();
+		this.nom = nom;
+		this.motDePasse = motDePasse;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -103,6 +114,7 @@ public abstract class Utilisateur implements Serializable {
 	public void setEstSupprime(boolean estSupprime) {
 		this.estSupprime = estSupprime;
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
