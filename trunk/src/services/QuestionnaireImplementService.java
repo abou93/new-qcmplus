@@ -32,33 +32,16 @@ public class QuestionnaireImplementService implements QuestionnaireService {
 		this.maDAO = new QuestionnaireHibernateDAO();
 	}
 
-	@Override
 	public long creer(Questionnaire q) {
-		// TODO Auto-generated method stub
 			return this.maDAO.creer(q);
 	}
 
 	public Questionnaire trouverQuestionnaire(long id){
-		// récupération de la session hibernate
-		Session session = HibernateUtil.getSession();
-		System.out.println("QuestionnaireHibernateDAO");
-		try {
-			// session.beginTransaction();
-			// Query q =
-			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
-
-			Query q = session
-					.createQuery("from Questionnaire as questionnaire where questionnaire.id =:id");
-			q.setLong("id",id);
-
-			return (Questionnaire) q.uniqueResult();
-		} catch (RuntimeException e) {
-			System.out.println(e);
-			// if(tx != null) tx.rollback();
-			return null;
-		} finally {
-			session.close();
-		}
+		return this.maDAO.trouverQuestionnaire(id);
 	}
 
+	public boolean modifier(Questionnaire q){
+		return false;
+		
+	}
 }

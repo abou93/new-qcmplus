@@ -5,6 +5,7 @@ package dao.hibernate;
 
 import java.util.ArrayList;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -53,7 +54,21 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 * @return Le questionnaire
 	 */
 	public Questionnaire trouverQuestionnaire(long id) {
-		return null;
+		Session session = HibernateUtil.getSession();
+		System.out.println("QuestionnaireHibernateDAO");
+		try {
+
+			Query q = session
+					.createQuery("from Questionnaire as questionnaire where questionnaire.id =:id");
+			q.setLong("id",id);
+
+			return (Questionnaire) q.uniqueResult();
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 	
 
@@ -63,6 +78,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 */
 	public boolean modifier(Questionnaire q) {
 		return false;
+
 	}
 	
 	/**

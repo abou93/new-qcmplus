@@ -12,5 +12,5 @@ import beans.Questionnaire;;
 public interface QuestionnaireService {
 	public long creer(Questionnaire q);
 	public Questionnaire trouverQuestionnaire(long id);
-	//public boolean modifier(Questionnaire q);
+	public boolean modifier(Questionnaire q);
 }
