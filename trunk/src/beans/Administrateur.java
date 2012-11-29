@@ -25,5 +25,11 @@ public class Administrateur extends Utilisateur implements Serializable {
 		super();
 	}
 
+	public Administrateur(String nom, String mdp) {
+		// TODO Auto-generated constructor stub
+		this.setNom(nom);
+		this.setMotDePasse(mdp);
+	}
+
 	
 }
