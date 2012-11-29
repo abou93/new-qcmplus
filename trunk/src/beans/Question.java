@@ -120,6 +120,20 @@ public class Question implements Serializable{
 	public void setListeReponses(Set<Reponse> listeReponses) {
 		this.listeReponses = listeReponses;
 	}
+
+	/**
+	 * @return the estSupprime
+	 */
+	public boolean isEstSupprime() {
+		return estSupprime;
+	}
+
+	/**
+	 * @param estSupprime the estSupprime to set
+	 */
+	public void setEstSupprime(boolean estSupprime) {
+		this.estSupprime = estSupprime;
+	}
 	
 	
 

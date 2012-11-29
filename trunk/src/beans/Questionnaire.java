@@ -130,4 +130,20 @@ public class Questionnaire implements Serializable{
 		this.listeQuestions = listeQuestions;
 	}
 
+	/**
+	 * @return the estSupprime
+	 */
+	public boolean isEstSupprime() {
+		return estSupprime;
+	}
+
+	/**
+	 * @param estSupprime the estSupprime to set
+	 */
+	public void setEstSupprime(boolean estSupprime) {
+		this.estSupprime = estSupprime;
+	}
+	
+	
+
 }

@@ -90,6 +90,19 @@ public abstract class Utilisateur implements Serializable {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
+	
+	/**
+	 * @return the estSupprime
+	 */
+	public boolean isEstSupprime() {
+		return estSupprime;
+	}
+	/**
+	 * @param estSupprime the estSupprime to set
+	 */
+	public void setEstSupprime(boolean estSupprime) {
+		this.estSupprime = estSupprime;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

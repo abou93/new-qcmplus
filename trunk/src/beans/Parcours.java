@@ -164,5 +164,19 @@ public class Parcours implements Serializable{
 		this.listeResultats = listeResultats;
 	}
 
+	/**
+	 * @return the estSupprime
+	 */
+	public boolean isEstSupprime() {
+		return estSupprime;
+	}
+
+	/**
+	 * @param estSupprime the estSupprime to set
+	 */
+	public void setEstSupprime(boolean estSupprime) {
+		this.estSupprime = estSupprime;
+	}
+
 	
 }
