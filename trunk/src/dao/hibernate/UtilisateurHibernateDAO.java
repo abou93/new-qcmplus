@@ -17,39 +17,58 @@ import dao.UtilisateurDAO;
  */
 public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	private final static long ECHEC_CREATION = 0;
+
 	/**
 	 * @param u
 	 * @return id de l'utilisateur créé
 	 */
 	public long creer(Utilisateur u) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx=null;
+		Transaction tx = null;
 		try {
-			//début de transaction
+			// début de transaction
 			tx = session.beginTransaction();
-			//persistance de l'objet
+			// persistance de l'objet
 			session.save(u);
-			//commit de la transaction
+			// commit de la transaction
 			tx.commit();
 			return u.getId();
 		} catch (RuntimeException e) {
-			//if(tx != null) tx.rollback();
-			//message d'erruer pour la console
+			// if(tx != null) tx.rollback();
+			// message d'erruer pour la console
 			e.printStackTrace();
 			return ECHEC_CREATION;
 		} finally {
-			//fermeture de session systématique
+			// fermeture de session systématique
 			session.close();
 		}
-
 	}
 
 	/**
 	 * @param id
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverUtilisateur(long id) {
-		return null;
+	public Utilisateur trouver(long id) {
+		// récupération de la session hibernate
+		Session session = HibernateUtil.getSession();
+		// System.out.println("utilisateurHibernateDAO");
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+
+			Query q = session
+					.createQuery("from Utilisateur as u where u.id =:id");
+			q.setLong("id", id);
+
+			return (Utilisateur) q.uniqueResult();
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 
 	/**
@@ -57,10 +76,10 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @param mdp
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverParNomEtMdp(String nom, String mdp) {
+	public Utilisateur trouver(String nom, String mdp) {
 		// récupération de la session hibernate
 		Session session = HibernateUtil.getSession();
-		System.out.println("utilisateurHibernateDAO");
+		// System.out.println("utilisateurHibernateDAO");
 		try {
 			// session.beginTransaction();
 			// Query q =
@@ -83,18 +102,28 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 
 	/**
 	 * @param u
-	 * @return
+	 * @return true si modification ok
 	 */
 	public boolean modifier(Utilisateur u) {
-		return false;
-	}
+		Session session;
+		session = HibernateUtil.getSession();
+		Transaction tx = null;
 
-	/**
-	 * @param id
-	 * @return
-	 */
-	public boolean modifier(long id) {
-		return false;
+		try {
+			tx = session.beginTransaction();
+			session.update(u);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// rollback si erreur
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
 	}
 
 	/**
@@ -102,7 +131,7 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @return
 	 */
 	public boolean supprimer(Utilisateur u) {
-		return false;
+		return supprimer(u.getId());
 	}
 
 	/**
@@ -110,6 +139,16 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @return
 	 */
 	public boolean supprimer(long id) {
+		/*
+		 * suppression logique - recherche de l'utilisateur en base - mise à
+		 * true de son attribut estSupprime - MAJ de l'utilisateur en base
+		 */
+		// verification id valide (>0)
+		if (id > 0) {
+			Utilisateur u = trouver(id);
+			u.setEstSupprime(true);
+			return modifier(u);
+		}
 		return false;
 	}
 
