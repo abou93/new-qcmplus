@@ -53,7 +53,7 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 	 * @param mdp
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverUtilisateur(String nom, String mdp) {
+	public Utilisateur trouverParNomEtMdp(String nom, String mdp) {
 		// récupération de la session hibernate
 		Session session = HibernateUtil.getSession();
 		System.out.println("utilisateurHibernateDAO");

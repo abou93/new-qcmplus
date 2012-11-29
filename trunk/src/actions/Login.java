@@ -31,13 +31,6 @@ public class Login extends ActionSupport implements SessionAware {
 	// service pour gérer les utilisateurs
 	UtilisateurService userv = new UtilisateurImplementService();
 
-	 public String accueil() {
-//	 setNom("nom");
-//	 setMdp("mdp");
-	 System.out.println("actions.accueil");
-	 return SUCCESS;
-	 }
-
 	// action de login
 	@Override
 	public String execute() {
@@ -52,7 +45,7 @@ public class Login extends ActionSupport implements SessionAware {
 		 */
 		this.setNom(this.getNom().toLowerCase().trim());
 		this.setMdp(this.getMdp().toLowerCase().trim());
-		u = userv.trouverUtilisateur(this.getNom(), this.getMdp());
+		u = userv.trouverParNomEtMdp(this.getNom(), this.getMdp());
 
 		// utilisateur trouvé
 		if (u != null) {
