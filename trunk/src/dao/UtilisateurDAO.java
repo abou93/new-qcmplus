@@ -21,13 +21,13 @@ public interface UtilisateurDAO {
 	 * @param id
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverUtilisateur(long id);
+	public Utilisateur trouver(long id);
 	/**
 	 * @param nom
 	 * @param mdp
 	 * @return L'utilisateur
 	 */
-	public Utilisateur trouverParNomEtMdp(String nom, String mdp);
+	public Utilisateur trouver(String nom, String mdp);
 
 	/**
 	 * @param u
