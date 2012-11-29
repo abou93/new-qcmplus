@@ -45,6 +45,12 @@ public abstract class Utilisateur implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "EST_SUPPRIME", nullable=false, columnDefinition = "Boolean default false")
+	private boolean estSupprime = false;
+	
+	/**
+	 * 
+	 */
 	public Utilisateur() {
 		super();
 	}

@@ -4,7 +4,7 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +47,13 @@ public class Question implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy = "question")
-	private List<Reponse> listeReponses;
+	private Set<Reponse> listeReponses;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "EST_SUPPRIME", nullable=false, columnDefinition = "Boolean default false")
+	private boolean estSupprime = false;
 	
 
 	/**
@@ -104,14 +110,14 @@ public class Question implements Serializable{
 	/**
 	 * @return the listeReponses
 	 */
-	public List<Reponse> getListeReponses() {
+	public Set<Reponse> getListeReponses() {
 		return listeReponses;
 	}
 
 	/**
 	 * @param listeReponses the listeReponses to set
 	 */
-	public void setListeReponses(List<Reponse> listeReponses) {
+	public void setListeReponses(Set<Reponse> listeReponses) {
 		this.listeReponses = listeReponses;
 	}
 	

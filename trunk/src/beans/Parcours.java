@@ -6,6 +6,7 @@ package beans;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,9 +62,13 @@ public class Parcours implements Serializable{
 	 * 
 	 */
 	@OneToMany(mappedBy = "parcours")
-	private List<Resultat> listeResultats;
+	private Set<Resultat> listeResultats;
 	
-	
+	/**
+	 * 
+	 */
+	@Column(name = "EST_SUPPRIME", nullable=false, columnDefinition = "Boolean default false")
+	private boolean estSupprime = false;
 
 	/**
 		 * 
@@ -148,14 +153,14 @@ public class Parcours implements Serializable{
 	/**
 	 * @return the listeResultats
 	 */
-	public List<Resultat> getListeResultats() {
+	public Set<Resultat> getListeResultats() {
 		return listeResultats;
 	}
 
 	/**
 	 * @param listeResultats the listeResultats to set
 	 */
-	public void setListeResultats(List<Resultat> listeResultats) {
+	public void setListeResultats(Set<Resultat> listeResultats) {
 		this.listeResultats = listeResultats;
 	}
 

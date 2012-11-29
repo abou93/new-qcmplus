@@ -36,9 +36,12 @@ public class Login extends ActionSupport implements SessionAware {
 	public String execute() {
 		System.out.println("actions.login via execute");
 
-		// pour provoquer la création de la base
-//		System.out.println(userv.creer(new Stagiaire("stef", "stef")));
-//		System.out.println(userv.creer(new Administrateur("stef", "stef")));
+		// jeu de test
+//		System.out.println(userv.creer(new Stagiaire("alpha2", "beta2")));
+//		System.out.println(userv.creer(new Administrateur("admin2", "pop")));
+//		System.out.println(userv.creer(new Stagiaire("alpha2", "beta2")));
+//		System.out.println(userv.creer(new Administrateur("admin2", "pop")));
+		
 		/*
 		 * récupération de l'utilisateur avec suppression des espaces et mise en
 		 * minuslules préalables *

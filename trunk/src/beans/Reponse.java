@@ -50,6 +50,12 @@ public class Reponse implements Serializable{
 	/**
 	 * 
 	 */
+	@Column(name = "EST_SUPPRIME", nullable=false, columnDefinition = "Boolean default false")
+	private boolean estSupprime = false;
+	
+	/**
+	 * 
+	 */
 	public Reponse() {
 		super();
 	}
