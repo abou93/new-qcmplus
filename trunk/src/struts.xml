@@ -35,11 +35,17 @@
 	</package>
 	<package name="administrateur" extends="struts-default"
 		namespace="/admin">
+
+		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
+			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
+		</action>
 		<action name="test" class="actions.admin.test">
 			<result name="success">/WEB-INF/test.jsp</result>
 		</action>
 	</package>
-	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">
+	
+	<package name="stagiaire" extends="struts-default"
+	 namespace="/stagiaire">
 
 	</package>
 </struts>

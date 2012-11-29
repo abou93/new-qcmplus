@@ -8,6 +8,9 @@
 </head>
 <body>
 	<p>Bonjour Admin <s:property value="%{#session.utilisateur.nom}"/> !</p>
-	<a href="admin/test">TEST QUESTIONNAIRE</a>
+	<a href="admin/test">CREER QUESTIONNAIRE</a> <br>
+	<a href="admin/trouverQuestionnaire">MODIFIER QUESTIONNAIRE</a><br>
+	<a href="admin/test">TROUVER QUESTIONNAIRE</a><br>
+	<a href="admin/test">SUPPRIMER QUESTIONNAIRE</a><br>
 </body>
 </html>

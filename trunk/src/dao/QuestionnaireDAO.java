@@ -32,11 +32,7 @@ public interface QuestionnaireDAO {
 	 */
 	public boolean modifier(Questionnaire q);
 	
-	/**
-	 * @param id
-	 * @return
-	 */
-	public boolean modifier(long id);
+
 	
 	/**
 	 * @param q
