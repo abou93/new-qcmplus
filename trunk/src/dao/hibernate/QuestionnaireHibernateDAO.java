@@ -5,22 +5,49 @@ package dao.hibernate;
 
 import java.util.ArrayList;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import utils.HibernateUtil;
+
+import dao.QuestionnaireDAO;
+
 import beans.Questionnaire;
+import beans.Utilisateur;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
-public class QuestionnaireHibernateDAO {
+public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 
+	private final static long ECHEC_CREATION = 0;
 	/**
-	 * @param q
+	 * @param u
 	 * @return id du questionnaire créé
 	 */
 	public long creer(Questionnaire q) {
-		return 0;
-	}
+		Session session = HibernateUtil.getSession();
+		Transaction tx=null;
+		try {
+			//début de transaction
+			tx = session.beginTransaction();
+			//persistance de l'objet
+			session.save(q);
+			//commit de la transaction
+			tx.commit();
+			return q.getId();
+		} catch (RuntimeException e) {
+			//if(tx != null) tx.rollback();
+			//message d'erreur pour la console
+			e.printStackTrace();
+			return ECHEC_CREATION;
+		} finally {
+			//fermeture de session systématique
+			session.close();
+		}
 
+	}
 	/**
 	 * @param id
 	 * @return Le questionnaire

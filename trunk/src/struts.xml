@@ -35,7 +35,9 @@
 	</package>
 	<package name="administrateur" extends="struts-default"
 		namespace="/admin">
-
+		<action name="test" class="actions.admin.test">
+			<result name="success">/WEB-INF/test.jsp</result>
+		</action>
 	</package>
 	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">
 

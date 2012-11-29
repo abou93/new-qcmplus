@@ -53,6 +53,15 @@ public class Questionnaire implements Serializable{
 	public Questionnaire() {
 		super();
 	}
+	
+	/**
+	 * 
+	 */
+	public Questionnaire(String nom, String desc) {
+		super();
+		this.nom = nom;
+		this.description = desc;
+	}
 
 	/**
 	 * @return the id
