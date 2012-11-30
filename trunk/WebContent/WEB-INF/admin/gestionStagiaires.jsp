@@ -11,5 +11,6 @@
 	<a href="admin/nouveauStagiaire">Nouveau stagiaire</a> <br>
 	<a href="admin/modifierStagiaire">Modifier stagiaire</a><br>
 	<a href="admin/supprimerStagiaire">Supprimer stagiaire</a><br>
+	<p><s:actionmessage /><p>
 </body>
 </html>

@@ -32,7 +32,7 @@ public class NouveauStagiaire extends ActionSupport implements SessionAware{
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.admin.stagiaire");
+		System.out.println("actions.admin.stagiaire.nouveau");
 		//stagiaire vide pour champs jsp
 		s = new Stagiaire();
 		//titre de la fenêtre

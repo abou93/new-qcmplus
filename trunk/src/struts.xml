@@ -59,7 +59,12 @@
 			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
 		</action>
 		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
-			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+		</action>
+		<action name="modifierStagiaire" class="actions.admin.stagiaire.modifierStagiaire">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
 		</action>
 		<!-- FIN Gestion stagiaires -->
 		

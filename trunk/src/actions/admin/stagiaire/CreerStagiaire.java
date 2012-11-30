@@ -3,8 +3,6 @@
  */
 package actions.admin.stagiaire;
 
-import java.util.Map;
-
 import services.StagiaireImplementService;
 import services.UtilisateurService;
 import beans.Stagiaire;
@@ -20,22 +18,22 @@ public class CreerStagiaire extends ActionSupport {
 	private Stagiaire s;
 	private String titre;
 
-	// session pour stocker les attributs
-	private Map<String, Object> session;
-
 	// service pour gérer les utilisateurs
 	UtilisateurService userv = new StagiaireImplementService();
 
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.admin.stagiaire");
-		// stagiaire vide pour champs jsp
-		userv.creer(s);
+		System.out.println("actions.admin.stagiaire.creer");
 		// titre de la fenêtre
 		titre = getText("Titre.stagiaire.nouveau");
-		// mise de l'utilisateur en session pour utilisation future
-		// session.put("stagiaire", s);
+		// tentative de création du stagiaire
+		if (userv.creer(s) <= 0) {
+			addActionError(getText("Erreur.creation.stagiaire"));
+			return ERROR;
+		}
+		//message de confirmation et retour à l'interface de gestion
+		addActionMessage(getText("Confirmation.creation.stagiaire"));
 		return SUCCESS;
 	}
 
@@ -68,13 +66,4 @@ public class CreerStagiaire extends ActionSupport {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-
-	/**
-	 * @param session
-	 *            the session to set
-	 */
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
 }
