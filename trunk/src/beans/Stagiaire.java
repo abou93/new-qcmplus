@@ -97,6 +97,21 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	public void setListeParcours(List<Parcours> listeParcours) {
 		this.listeParcours = listeParcours;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(super.toString());
+		builder.append("Stagiaire [prenom=");
+		builder.append(prenom);
+		builder.append(", societe=");
+		builder.append(societe);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 	
 }

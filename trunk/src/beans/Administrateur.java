@@ -27,5 +27,18 @@ public class Administrateur extends Utilisateur implements Serializable {
 
 	public Administrateur(String nom, String mdp) {
 		super(nom, mdp);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(super.toString());
+		builder.append("Administrateur []");
+		return builder.toString();
 	}	
+	
+	
 }
