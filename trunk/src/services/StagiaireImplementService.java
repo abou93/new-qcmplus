@@ -3,6 +3,8 @@
  */
 package services;
 
+import java.util.Set;
+
 import beans.Stagiaire;
 
 /**
@@ -34,6 +36,12 @@ public class StagiaireImplementService extends UtilisateurImplementService
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// si tout ok on renvoie vers le parent pour finaliser
 		return super.modifier(s);
+	}
+
+	@Override
+	public Set<Stagiaire> liste() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
