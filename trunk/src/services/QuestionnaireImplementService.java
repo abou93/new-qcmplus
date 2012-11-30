@@ -35,10 +35,15 @@ public class QuestionnaireImplementService implements QuestionnaireService {
 	}
 
 	public long creer(Questionnaire q) {
-		if ((q.getNom()==null && q.getNom()=="")||(q.getDescription()==null && q.getDescription()=="")){
-			return ERREUR_CHAMPS_INCOMPLETS;
+		if (q != null){
+			if ("".equals(q.getNom())||"".equals(q.getDescription())){
+				return ERREUR_CHAMPS_INCOMPLETS;
+			}else{
+				System.out.println("testActionMan");
+				return this.maDAO.creer(q);
+			}
 		}else{
-			return this.maDAO.creer(q);
+			return 0;
 		}
 	}
 

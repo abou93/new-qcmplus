@@ -4,6 +4,7 @@
 package dao.hibernate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -130,7 +131,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	/**
 	 * @return la liste des questionnaires
 	 */
-	public ArrayList<Questionnaire> listeQuestionnaires() {
+	public List<Questionnaire> listeQuestionnaires() {
 		return null;
 	}
 }

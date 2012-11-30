@@ -4,6 +4,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import beans.Questionnaire;
 
@@ -49,5 +50,5 @@ public interface QuestionnaireDAO {
 	/**
 	 * @return la liste des questionnaires
 	 */
-	public ArrayList<Questionnaire> listeQuestionnaires();
+	public List<Questionnaire> listeQuestionnaires();
 }
