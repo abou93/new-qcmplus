@@ -1,0 +1,80 @@
+<!-- /* * $Id: struts.xml 1311902 2012-04-10 18:20:25Z lukaszlenart $ * * 
+	Licensed to the Apache Software Foundation (ASF) under one * or more contributor 
+	license agreements. See the NOTICE file * distributed with this work for 
+	additional information * regarding copyright ownership. The ASF licenses 
+	this file * to you under the Apache License, Version 2.0 (the * "License"); 
+	you may not use this file except in compliance * with the License. You may 
+	obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 
+	* * Unless required by applicable law or agreed to in writing, * software 
+	distributed under the License is distributed on an * "AS IS" BASIS, WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY * KIND, either express or implied. See the 
+	License for the * specific language governing permissions and limitations 
+	* under the License. */ -->
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.custom.i18n.resources" value="package" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<default-action-ref name="accueil" />
+
+		<action name="accueil" class="actions.Accueil">
+			<result name="success">/WEB-INF/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="utilisateur" extends="struts-default" namespace="/">
+		<action name="login" class="actions.Login">
+			<result name="admin">/WEB-INF/admin/accueilAdmin.jsp</result>
+			<result name="stagiaire">/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
+			<result name="error">/WEB-INF/index.jsp</result>
+		</action>
+
+	</package>
+	<package name="administrateur" extends="struts-default"
+		namespace="/admin">
+		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
+			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
+		</action>
+		
+		<!-- DEBUT Gestion questionnaires -->
+		<action name="gestionQuestionnaires" class="actions.admin.questionnaire.GestionQuestionnaires">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>		
+		<action name="nouveauQuestionnaire" class="actions.admin.questionnaire.NouveauQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/nouveauQuestionnaire.jsp</result>
+		</action>
+		<action name="creerQuestionnaire" class="actions.admin.questionnaire.CreerQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Gestion questionnaires -->
+		
+		<!-- DEBUT Gestion stagiaires -->
+		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+		</action>		
+		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+		</action>
+		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+		</action>
+		<action name="selectionStagiaireModification" class="actions.admin.stagiaire.SelectionStagiaireModification">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
+		<action name="modifierStagiaire" class="actions.admin.stagiaire.ModifierStagiaire">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
+		<!-- FIN Gestion stagiaires -->
+		
+	</package>
+	
+	<package name="stagiaire" extends="struts-default"
+	 namespace="/stagiaire">
+
+	</package>
+</struts>
