@@ -7,10 +7,8 @@
 	type="text/css" />
 </head>
 <body>
-	<p>Bonjour Admin <s:property value="%{#session.utilisateur.nom}"/> !</p>
-	<a href="admin/test">CREER QUESTIONNAIRE</a> <br>
-	<a href="admin/trouverQuestionnaire">MODIFIER QUESTIONNAIRE</a><br>
-	<a href="admin/test">TROUVER QUESTIONNAIRE</a><br>
-	<a href="admin/test">SUPPRIMER QUESTIONNAIRE</a><br>
+	<p>Administrateur <s:property value="%{#session.utilisateur.nom}"/> </p>
+	<a href="admin/gestionStagiaires">Gestion des stagiaires</a> <br>
+	<a href="admin/gestionQuestionnaires">Gestion des questionnaires</a><br>
 </body>
 </html>
