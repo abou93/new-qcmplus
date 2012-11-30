@@ -3,6 +3,8 @@
  */
 package dao.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -150,6 +152,28 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 			return modifier(u);
 		}
 		return false;
+	}
+
+	@Override
+	public List<Utilisateur> liste() {
+		Session session = HibernateUtil.getSession();
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+			//"FROM User AS u INNER JOIN FETCH u.listProduct"
+
+			Query q = session
+					.createQuery("SELECT FROM Utilisateur AS u");
+			List<Utilisateur> listUser = (List<Utilisateur>) q.list();
+			System.out.println("userlist"+listUser);
+			return listUser;
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 
 }

@@ -62,6 +62,9 @@
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
 		</action>
+		<action name="selectionStagiaireModification" class="actions.admin.stagiaire.NouveauStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
 		<action name="modifierStagiaire" class="actions.admin.stagiaire.ModifierStagiaire">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>

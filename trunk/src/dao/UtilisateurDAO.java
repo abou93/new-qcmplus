@@ -3,6 +3,8 @@
  */
 package dao;
 
+import java.util.List;
+
 import beans.Utilisateur;
 
 /**
@@ -47,7 +49,10 @@ public interface UtilisateurDAO {
 	 */
 	public boolean supprimer(long id);
 	
-	
+	/**
+	 * @return la liste des utilisateurs
+	 */
+	public List<Utilisateur> liste();
 	
 	
 	

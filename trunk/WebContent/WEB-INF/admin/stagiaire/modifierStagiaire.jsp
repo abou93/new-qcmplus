@@ -9,7 +9,7 @@
 <body>
 
 	<div class="titleDiv">
-		<s:text name="Titre.stagiaire.modifer" />
+		<s:text name="Titre.stagiaire.modifier" />
 	</div>
 
 	<s:actionerror />

@@ -3,9 +3,13 @@
  */
 package actions.admin.stagiaire;
 
+import java.util.List;
+import java.util.Set;
+
 import services.StagiaireImplementService;
-import services.UtilisateurService;
+import services.StagiaireService;
 import beans.Stagiaire;
+import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -13,27 +17,26 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class ModifierStagiaire extends ActionSupport {
+public class ListeStagiaires extends ActionSupport {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
+	private List<Utilisateur> listeStagiaires;
 
 	// service pour gérer les utilisateurs
-	UtilisateurService userv = new StagiaireImplementService();
+	StagiaireService userv = new StagiaireImplementService();
 
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.admin.stagiaire.modifier");
+		System.out.println("actions.admin.stagiaire.liste");
+		// stagiaire vide pour champs jsp
+		s = new Stagiaire();
+		// liste récupérée en base
+		setListeStagiaires(userv.liste());
 		// titre de la fenêtre
 		titre = getText("Titre.stagiaire.modifier");
-		// tentative de modification du stagiaire
-		if (userv.modifier(s) <= 0) {
-			addActionError(getText("Erreur.modificaion.stagiaire"));
-			return ERROR;
-		}
-		// message de confirmation et retour à l'interface de gestion
-		addActionMessage(getText("Confirmation.modificaion.stagiaire"));
+
 		return SUCCESS;
 	}
 
@@ -66,4 +69,19 @@ public class ModifierStagiaire extends ActionSupport {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
+
+	/**
+	 * @return the listeStagiaires
+	 */
+	public List<Utilisateur> getListeStagiaires() {
+		return listeStagiaires;
+	}
+
+	/**
+	 * @param listeStagiaires the listeStagiaires to set
+	 */
+	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
+		this.listeStagiaires = listeStagiaires;
+	}
+
 }

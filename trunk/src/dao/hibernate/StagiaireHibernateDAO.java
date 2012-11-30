@@ -3,13 +3,14 @@
  */
 package dao.hibernate;
 
-import java.util.Set;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import utils.HibernateUtil;
 import beans.Stagiaire;
+import beans.Utilisateur;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
@@ -20,7 +21,7 @@ public class StagiaireHibernateDAO extends UtilisateurHibernateDAO {
 	/**
 	 * @return la liste des stagiaires
 	 */
-	public Set<Stagiaire> listeStagiaires() {
+	public List<Utilisateur> liste() {
 		Session session = HibernateUtil.getSession();
 		try {
 			// session.beginTransaction();
@@ -37,7 +38,7 @@ public class StagiaireHibernateDAO extends UtilisateurHibernateDAO {
 			// sans les stagiaires supprimés
 			q.setBoolean("suppr", false);
 			// mise dans un Set du resultat
-			Set<Stagiaire> listeStagiaires = (Set<Stagiaire>) q.list();
+			List<Utilisateur> listeStagiaires = (List<Utilisateur>) q.list();
 
 			// //récupération de l'utilisateur référencé - évite de passer à
 			// lazy=false

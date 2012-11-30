@@ -3,9 +3,10 @@
  */
 package services;
 
-import java.util.Set;
+import java.util.List;
 
 import beans.Stagiaire;
+import beans.Utilisateur;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
@@ -39,9 +40,8 @@ public class StagiaireImplementService extends UtilisateurImplementService
 	}
 
 	@Override
-	public Set<Stagiaire> liste() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Utilisateur> liste() {
+		return this.maDAO.liste();
 	}
 
 }

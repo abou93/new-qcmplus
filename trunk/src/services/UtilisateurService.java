@@ -3,6 +3,8 @@
  */
 package services;
 
+import java.util.List;
+
 import beans.Utilisateur;
 
 /**
@@ -16,6 +18,7 @@ public interface UtilisateurService {
 	public long modifier(Utilisateur u);
 	public long supprimer(Utilisateur u);
 	public long supprimer(long id);
+	public List<Utilisateur> liste();
 	
 	
 }

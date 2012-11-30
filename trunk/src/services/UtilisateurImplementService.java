@@ -3,6 +3,8 @@
  */
 package services;
 
+import java.util.List;
+
 import beans.Utilisateur;
 import dao.UtilisateurDAO;
 import dao.hibernate.UtilisateurHibernateDAO;
@@ -19,6 +21,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 	protected static final long ERREUR_UTILISATEUR_INCOMPLET = -2;
 	protected static final long MODIFICATION_BDD_PB = -3;
 	protected static final long UTILISATEUR_SANS_ID = -4;
+	protected static final long ERREUR_UTILISATEUR_NULL = -5;
 
 	/**
 	 * @param maDAO
@@ -64,8 +67,10 @@ public class UtilisateurImplementService implements UtilisateurService {
 
 	@Override
 	public long modifier(Utilisateur u) {
+		//l'utilisateur ne peut être null
+		if (u == null ) return ERREUR_UTILISATEUR_NULL;	
 		// les attributs ne peuvent pas être vides
-		if (u.getId() <= 0 || u.getNom() == null || u.getMotDePasse() == null)
+		if ( u.getId() <= 0 || "".equals(u.getNom()) || "".equals(u.getMotDePasse()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// le couple nom/mdp ne peut déjà exister en base
 		if (this.maDAO.trouver(u.getId()) == null) {
@@ -94,6 +99,11 @@ public class UtilisateurImplementService implements UtilisateurService {
 			return MODIFICATION_OK;
 		// Il y a eu un problème lmors de l'opération en bdd
 		return MODIFICATION_BDD_PB;
+	}
+
+	@Override
+	public List<Utilisateur> liste() {
+		return maDAO.liste();
 	}
 
 }

@@ -18,16 +18,10 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class NouveauStagiaire extends ActionSupport implements SessionAware{
+public class NouveauStagiaire extends ActionSupport {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
-
-	// session pour stocker les attributs
-	private Map<String, Object> session;
-
-	// service pour gérer les utilisateurs
-	UtilisateurService userv = new StagiaireImplementService();
 
 	// action de login
 	@Override
@@ -37,8 +31,7 @@ public class NouveauStagiaire extends ActionSupport implements SessionAware{
 		s = new Stagiaire();
 		//titre de la fenêtre
 		titre = getText("Titre.stagiaire.nouveau");
-		// mise de l'utilisateur en session pour utilisation future
-		//session.put("stagiaire", s);		
+				
 		return SUCCESS;
 	}
 
@@ -69,13 +62,4 @@ public class NouveauStagiaire extends ActionSupport implements SessionAware{
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-
-	/**
-	 * @param session the session to set
-	 */
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
-	
 }
