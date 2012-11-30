@@ -39,6 +39,18 @@
 			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
 		</action>
 		
+		<!-- DEBUT Gestion questionnaires -->
+		<action name="gestionQuestionnaires" class="actions.admin.questionnaire.GestionQuestionnaires">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>		
+		<action name="nouveauQuestionnaire" class="actions.admin.questionnaire.NouveauQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/nouveauQuestionnaire.jsp</result>
+		</action>
+		<action name="creerQuestionnaire" class="actions.admin.questionnaire.CreerQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Gestion questionnaires -->
+		
 		<!-- DEBUT Gestion stagiaires -->
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
