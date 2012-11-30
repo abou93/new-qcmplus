@@ -51,7 +51,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 		if (u == null)
 			return ERREUR_UTILISATEUR_VIDE;
 		// les attributs ne peuvent pas être vides
-		if (u.getNom() == null || u.getMotDePasse() == null)
+		if ("".equals(u.getNom()) || "".equals(u.getMotDePasse()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// on ne crée un utilisateur que s'il n'existe pas déjà
 		if (this.maDAO.trouver(u.getNom().toLowerCase().trim(), u

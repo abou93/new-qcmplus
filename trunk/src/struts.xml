@@ -35,13 +35,22 @@
 	</package>
 	<package name="administrateur" extends="struts-default"
 		namespace="/admin">
-
 		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
 			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
 		</action>
-		<action name="test" class="actions.admin.test">
-			<result name="success">/WEB-INF/test.jsp</result>
+		
+		<!-- DEBUT Gestion stagiaires -->
+		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+		</action>		
+		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
 		</action>
+		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+		</action>
+		<!-- FIN Gestion stagiaires -->
+		
 	</package>
 	
 	<package name="stagiaire" extends="struts-default"

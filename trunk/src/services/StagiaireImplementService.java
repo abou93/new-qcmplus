@@ -18,7 +18,7 @@ public class StagiaireImplementService extends UtilisateurImplementService
 		if (s == null)
 			return ERREUR_UTILISATEUR_VIDE;
 		// les attributs ne peuvent pas être vides
-		if (s.getSociete() == null || s.getPrenom() == null)
+		if ("".equals(s.getSociete()) || "".equals(s.getPrenom()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// si tout ok on renvoie vers le parent pour finaliser
 		return super.creer(s);
@@ -30,7 +30,7 @@ public class StagiaireImplementService extends UtilisateurImplementService
 		if (s == null)
 			return ERREUR_UTILISATEUR_VIDE;
 		// les attributs ne peuvent pas être vides
-		if (s.getSociete() == null || s.getPrenom() == null)
+		if ("".equals(s.getSociete()) || "".equals(s.getPrenom()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// si tout ok on renvoie vers le parent pour finaliser
 		return super.modifier(s);

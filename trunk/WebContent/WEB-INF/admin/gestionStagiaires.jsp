@@ -8,8 +8,8 @@
 </head>
 <body>
 	<p><s:property value="%{#session.utilisateur.nom}"/> !</p>
-	<a href="admin/newQuestionnaire">Nouveau Questionnaire</a> <br>
-	<a href="admin/modifierQuestionnaire">Modifier Questionnaire</a><br>
-	<a href="admin/supprimerQuestionnaire">SupprimerQuestionnaire</a><br>
+	<a href="admin/nouveauStagiaire">Nouveau stagiaire</a> <br>
+	<a href="admin/modifierStagiaire">Modifier stagiaire</a><br>
+	<a href="admin/supprimerStagiaire">Supprimer stagiaire</a><br>
 </body>
 </html>
