@@ -30,7 +30,7 @@ public class CreerStagiaire extends ActionSupport {
 			// titre de la fenêtre
 			titre = getText("Titre.stagiaire.nouveau");
 			// tentative de création du stagiaire
-			if (userv.modifier(s) <= 0) {
+			if (userv.creer(s) <= 0) {
 				addActionError(getText("Erreur.creation.stagiaire"));
 				return ERROR;
 			}
