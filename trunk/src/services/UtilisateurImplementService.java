@@ -33,7 +33,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 		Utilisateur u = this.maDAO.trouver(nom.toLowerCase().trim(), mdp.toLowerCase()
 				.trim());
 		//sauf supprimés logiquement
-		if (!u.isEstSupprime()) {
+		if (u != null && !u.isEstSupprime()) {
 		return this.maDAO.trouver(nom.toLowerCase().trim(), mdp.toLowerCase()
 				.trim());} 
 		//sinon rien
@@ -68,8 +68,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 		if (u.getId() <= 0 || u.getNom() == null || u.getMotDePasse() == null)
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// le couple nom/mdp ne peut déjà exister en base
-		if (this.maDAO.trouver(u.getNom().toLowerCase().trim(), u
-				.getMotDePasse().toLowerCase().trim()) == null) {
+		if (this.maDAO.trouver(u.getId()) == null) {
 			return ERREUR_UTILISATEUR_EXISTANT;
 		}
 		// tout est ok, on peut faire la modification
