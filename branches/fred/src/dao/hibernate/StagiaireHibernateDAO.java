@@ -9,14 +9,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import utils.HibernateUtil;
-import beans.Stagiaire;
 import beans.Utilisateur;
+import dao.StagiaireDAO;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class StagiaireHibernateDAO extends UtilisateurHibernateDAO {
+public class StagiaireHibernateDAO extends UtilisateurHibernateDAO implements StagiaireDAO {
 
 	/**
 	 * @return la liste des stagiaires

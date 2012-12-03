@@ -11,6 +11,13 @@
 	<div class="titleDiv">
 		<s:text name="Titre.stagiaire.modifier" />
 	</div>
+	<p>
+	<s:form action="selectionStagiaireModification">
+		<s:select name="sid" theme="css_xhtml" list="listeStagiaires" listKey="id" listValue="nom + ' ' + prenom" size="5"/>
+		<s:submit key="Bouton.valider" cssClass="butStnd" name="selection" />
+	</s:form>
+	<p>
+
 
 	<s:actionerror />
 
@@ -27,7 +34,7 @@
 		<br />
 
 
-		<s:submit key="Bouton.valider" cssClass="butStnd" />
+		<s:submit key="Bouton.valider" cssClass="butStnd" name="modification" />
 
 
 	</s:form>
