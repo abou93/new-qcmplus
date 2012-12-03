@@ -12,7 +12,11 @@
 		<s:text name="Titre.stagiaire.supprimer" />
 	</div>
 
-	<s:include value="selectionStagiaire.jsp" />
+	<p>
+		<s:form action="selectionStagiaireSuppression">
+			<s:include value="selectionStagiaire.jsp" />
+		</s:form>
+	</p>
 
 	<s:actionerror />
 
@@ -29,7 +33,7 @@
 		<br />
 
 
-		<s:submit key="Bouton.valider" cssClass="butStnd" name="modification" />
+		<s:submit key="Bouton.valider" cssClass="butStnd" name="suppression" />
 
 
 	</s:form>
