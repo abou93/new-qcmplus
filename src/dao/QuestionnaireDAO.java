@@ -3,8 +3,8 @@
  */
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import beans.Questionnaire;
 
@@ -50,5 +50,5 @@ public interface QuestionnaireDAO {
 	/**
 	 * @return la liste des questionnaires
 	 */
-	public List<Questionnaire> listeQuestionnaires();
+	public List<Questionnaire> listerQuestionnaires();
 }

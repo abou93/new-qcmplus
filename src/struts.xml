@@ -49,9 +49,15 @@
 		<action name="creerQuestionnaire" class="actions.admin.questionnaire.CreerQuestionnaire">
 			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
 		</action>
+		<action name="modifierQuestionnaire" class="actions.admin.questionnaire.ModifierQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
+		</action>
+		<action name="selectModifierQuestionnaire" class="actions.admin.questionnaire.SelectModifierQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
+		</action>
 		<!-- FIN Gestion questionnaires -->
 		
-		<!-- DEBUT Gestion stagiaires -->
+		<!-- DEBUT Gestion stagiaires 
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 		</action>		
@@ -69,6 +75,7 @@
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
 		</action>
+		-->
 		<!-- FIN Gestion stagiaires -->
 		
 	</package>

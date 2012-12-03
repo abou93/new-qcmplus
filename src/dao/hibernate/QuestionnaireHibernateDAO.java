@@ -3,19 +3,16 @@
  */
 package dao.hibernate;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
-
-import dao.QuestionnaireDAO;
-
 import beans.Questionnaire;
-import beans.Utilisateur;
+import dao.QuestionnaireDAO;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
@@ -131,7 +128,19 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	/**
 	 * @return la liste des questionnaires
 	 */
-	public List<Questionnaire> listeQuestionnaires() {
-		return null;
+	public List<Questionnaire> listerQuestionnaires() {
+		Session session = HibernateUtil.getSession();
+		try {
+			Query q = session
+					.createQuery("FROM Questionnaire AS q");
+			List<Questionnaire> maListeQuestionnaire = (List<Questionnaire>) q.list();
+			System.out.println("Nombre d'éléments de ma liste:" +maListeQuestionnaire.size());
+			return maListeQuestionnaire;
+		} catch (RuntimeException e) {
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 }
+
