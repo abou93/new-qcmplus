@@ -32,7 +32,7 @@ public class SelectionStagiaire extends ActionSupport {
 		//liste des stagiaires
 		setListeStagiaires(userv.liste());
 		//s = (Stagiaire) userv.trouverParId(sid);
-		setTitre(getText("Titre.stagiaire.modification" + " : étape 2"));
+		setTitre(getText("Titre.stagiaire.modification" + " : étape 1"));
 		//System.out.println(s);
 		return SUCCESS;
 	}

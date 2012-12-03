@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class ModifierStagiaire extends ActionSupport implements SessionAware{
+public class ModifierStagiaire extends ActionSupport implements SessionAware {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
@@ -37,21 +37,20 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware{
 		// titre de la fenêtre
 		titre = getText("Titre.stagiaire.modifier");
 		setListeStagiaires(userv.liste());
-		
-		//récupération de l'id en session
-		Stagiaire sSession = (Stagiaire)session.get("stagiaire");
-		s.setId(sSession.getId());
-		
+
+		// récupération de l'id en session
+		s.setId((Long) session.get("sid"));
+
 		// tentative de modification du stagiaire
 		long code = userv.modifier(s);
-		System.out.println("code : "+code);
-		
-		if ( code <= 0) {
-			addActionError(getText("Erreur.modificaion.stagiaire"));
+		System.out.println("code : " + code);
+
+		if (code <= 0) {
+			addActionError(getText("Erreur.modification.stagiaire"));
 			return ERROR;
 		}
 		// message de confirmation et retour à l'interface de gestion
-		addActionMessage(getText("Confirmation.modificaion.stagiaire"));
+		addActionMessage(getText("Confirmation.modification.stagiaire"));
 		return SUCCESS;
 	}
 
@@ -104,6 +103,6 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware{
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-		
+
 	}
 }

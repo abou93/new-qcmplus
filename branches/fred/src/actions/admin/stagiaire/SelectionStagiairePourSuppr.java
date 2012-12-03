@@ -4,9 +4,6 @@
 package actions.admin.stagiaire;
 
 import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
 
 import services.StagiaireImplementService;
 import services.StagiaireService;
@@ -19,16 +16,11 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class SelectionStagiaireModification extends ActionSupport implements SessionAware{
+public class SelectionStagiairePourSuppr extends ActionSupport {
 	// Variables pour jsp
 	private String titre;
-	private Stagiaire s;
+	//private Stagiaire s;
 	private List<Utilisateur> listeStagiaires;
-	//select
-	private long sid;
-	// session pour stocker les attributs
-		private Map<String, Object> session;
-	
 
 	// service pour gérer les utilisateurs
 	StagiaireService userv = new StagiaireImplementService();
@@ -36,14 +28,12 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.admin.stagiaire.modification.selection");
+		System.out.println("actions.admin.stagiaire.selection.suppr");
 		//liste des stagiaires
 		setListeStagiaires(userv.liste());
-		//System.out.println(listeStagiaires);
-		setTitre(getText("Titre.stagiaire.modification"));
-		s = (Stagiaire) userv.trouverParId(sid);
-		//mise en session de l'id
-		session.put("sid", sid);
+		//s = (Stagiaire) userv.trouverParId(sid);
+		setTitre(getText("Titre.stagiaire.suppression" + " : étape 1"));
+		//System.out.println(s);
 		return SUCCESS;
 	}
 
@@ -55,14 +45,6 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 		this.titre = titre;
 	}
 
-	public Stagiaire getS() {
-		return s;
-	}
-
-	public void setS(Stagiaire s) {
-		this.s = s;
-	}
-
 	public List<Utilisateur> getListeStagiaires() {
 		return listeStagiaires;
 	}
@@ -70,19 +52,4 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
 		this.listeStagiaires = listeStagiaires;
 	}
-
-	public long getSid() {
-		return sid;
-	}
-
-	public void setSid(long sid) {
-		this.sid = sid;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-		
-	}
-
 }
