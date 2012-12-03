@@ -39,7 +39,7 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 		System.out.println("actions.admin.stagiaire.modification.selection");
 		//liste des stagiaires
 		setListeStagiaires(userv.liste());
-		//System.out.println(listeStagiaires);
+		//titre de la page
 		setTitre(getText("Titre.stagiaire.modification"));
 		s = (Stagiaire) userv.trouverParId(sid);
 		//mise en session de l'id
