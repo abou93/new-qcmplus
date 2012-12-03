@@ -74,6 +74,14 @@
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
 		</action>
+		<action name="selectionStagiaireSuppression" class="actions.admin.stagiaire.SelectionStagiaireSuppression">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+			<result name="input">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
+		<action name="supprimerStagiaire" class="actions.admin.stagiaire.SupprimerStagiaire">
+			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
 		<!-- FIN Gestion stagiaires -->
 		
 	</package>
