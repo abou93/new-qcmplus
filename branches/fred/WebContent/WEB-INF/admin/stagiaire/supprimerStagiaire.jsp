@@ -4,19 +4,19 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-<title><s:text name="Titre.stagiaire.modifier" /></title>
+<title><s:text name="Titre.stagiaire.supprimer" /></title>
 </head>
 <body>
 
 	<div class="titleDiv">
-		<s:text name="Titre.stagiaire.modifier" />
+		<s:text name="Titre.stagiaire.supprimer" />
 	</div>
 
 	<s:include value="selectionStagiaire.jsp" />
 
 	<s:actionerror />
 
-	<s:form action="modifierStagiaire">
+	<s:form action="supprimerStagiaire">
 
 		<s:textfield name="s.nom" size="30" cssClass="tdLabel" key="Label.nom" />
 		<s:textfield name="s.prenom" size="30" cssClass="tdLabel"
