@@ -18,8 +18,6 @@ public class StagiaireImplementService extends UtilisateurImplementService
 		implements StagiaireService {
 	
 	private StagiaireDAO maDAO; 
-	
-	
 
 	/**
 	 * @param maDAO
@@ -34,7 +32,7 @@ public class StagiaireImplementService extends UtilisateurImplementService
 		if (s == null)
 			return ERREUR_UTILISATEUR_VIDE;
 		// les attributs ne peuvent pas être vides
-		if ("".equals(((Stagiaire) s).getSociete()) || "".equals(((Stagiaire) s).getPrenom()))
+		if ("".equals(((Stagiaire)s).getSociete()) || "".equals(((Stagiaire)s).getPrenom()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// si tout ok on renvoie vers le parent pour finaliser
 		return super.creer(s);
@@ -47,6 +45,7 @@ public class StagiaireImplementService extends UtilisateurImplementService
 			return ERREUR_UTILISATEUR_VIDE;
 		// les attributs ne peuvent pas être vides
 		if ("".equals(((Stagiaire) s).getSociete()) || "".equals(((Stagiaire) s).getPrenom()))
+
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// si tout ok on renvoie vers le parent pour finaliser
 		return super.modifier(s);

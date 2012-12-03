@@ -47,6 +47,7 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 
 		if (code <= 0) {
 			addActionError(getText("Erreur.modification.stagiaire"));
+
 			return ERROR;
 		}
 		// message de confirmation et retour à l'interface de gestion

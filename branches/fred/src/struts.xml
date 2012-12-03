@@ -60,7 +60,7 @@
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 		</action>
-		<!-- DEBUT Création stagiaires -->
+		<!-- DEBUT CrÃ©ation stagiaires -->
 		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
 			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp
 			</result>
@@ -70,7 +70,7 @@
 			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp
 			</result>
 		</action>
-		<!-- FIN Création stagiaires -->
+		<!-- FIN CrÃ©ation stagiaires -->
 		<!-- DEBUT Modification stagiaires -->
 		<action name="selectionStagiaire" class="actions.admin.stagiaire.SelectionStagiaire">
 			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp

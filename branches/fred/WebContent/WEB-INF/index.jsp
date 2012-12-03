@@ -21,7 +21,7 @@
 		<br />
 		
 			
-				<s:submit key="Bouton.valider" cssClass="butStnd" />
+				<s:submit key="Bouton.valider" cssClass="butStnd" name="valider"/>
 
 			
 	</s:form>

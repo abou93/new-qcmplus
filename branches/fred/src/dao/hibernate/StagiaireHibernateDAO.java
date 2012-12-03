@@ -8,6 +8,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import dao.StagiaireDAO;
+
 import utils.HibernateUtil;
 import beans.Utilisateur;
 import dao.StagiaireDAO;
@@ -21,6 +23,7 @@ public class StagiaireHibernateDAO extends UtilisateurHibernateDAO implements St
 	/**
 	 * @return la liste des stagiaires
 	 */
+	@Override
 	public List<Utilisateur> liste() {
 		Session session = HibernateUtil.getSession();
 		try {
