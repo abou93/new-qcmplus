@@ -3,6 +3,9 @@
  */
 package services;
 
+import java.util.List;
+import java.util.Set;
+
 import beans.Questionnaire;;
 
 /**
@@ -13,4 +16,5 @@ public interface QuestionnaireService {
 	public long creer(Questionnaire q);
 	public Questionnaire trouverQuestionnaire(long id);
 	public boolean modifier(Questionnaire q);
+	public List<Questionnaire> listerQuestionnaires();
 }

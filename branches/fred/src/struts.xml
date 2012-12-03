@@ -35,30 +35,36 @@
 	</package>
 	<package name="administrateur" extends="struts-default"
 		namespace="/admin">
+		<default-action-ref name="accueilAdmin" />
+		<action name="accueilAdmin" >
+			<result name="success" >/WEB-INF/admin/accueilAdmin.jsp</result>
+		</action>		
 
 		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
 			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
 		</action>
 
 		<!-- DEBUT Gestion questionnaires -->
-		<action name="gestionQuestionnaires"
-			class="actions.admin.questionnaire.GestionQuestionnaires">
-			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp
-			</result>
-		</action>
+		<action name="gestionQuestionnaires" class="actions.admin.questionnaire.GestionQuestionnaires">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>		
 		<action name="nouveauQuestionnaire" class="actions.admin.questionnaire.NouveauQuestionnaire">
-			<result name="success">/WEB-INF/admin/questionnaire/nouveauQuestionnaire.jsp
-			</result>
+			<result name="success">/WEB-INF/admin/questionnaire/nouveauQuestionnaire.jsp</result>
 		</action>
 		<action name="creerQuestionnaire" class="actions.admin.questionnaire.CreerQuestionnaire">
-			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp
-			</result>
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<action name="modifierQuestionnaire" class="actions.admin.questionnaire.ModifierQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
+		</action>
+		<action name="selectModifierQuestionnaire" class="actions.admin.questionnaire.SelectModifierQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
 		</action>
 		<!-- FIN Gestion questionnaires -->
 
 		<!-- DEBUT Gestion stagiaires -->
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
 		</action>
 		<!-- DEBUT CrÃ©ation stagiaires -->
 		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
@@ -72,7 +78,7 @@
 		</action>
 		<!-- FIN CrÃ©ation stagiaires -->
 		<!-- DEBUT Modification stagiaires -->
-		<action name="selectionStagiaire" class="actions.admin.stagiaire.SelectionStagiaire">
+		<action name="selectionStagiairePourMod" class="actions.admin.stagiaire.SelectionStagiaire">
 			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
 			</result>
 		</action>
@@ -108,6 +114,10 @@
 	</package>
 
 	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">
+	<default-action-ref name="accueilStagiaire" />
+		<action name="accueilStagiaire" >
+			<result name="success" >/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
+		</action>	
 
 	</package>
 </struts>
