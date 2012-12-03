@@ -62,12 +62,12 @@
 		</action>
 		<!-- DEBUT CrÃ©ation stagiaires -->
 		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
-			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp
+			<result name="success">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
 			</result>
 		</action>
 		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
-			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp
+			<result name="error">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
 			</result>
 		</action>
 		<!-- FIN CrÃ©ation stagiaires -->
