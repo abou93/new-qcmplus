@@ -9,7 +9,7 @@
 <body>
 	<p><s:property value="%{#session.utilisateur.nom}"/> !</p>
 	<a href="admin/nouveauStagiaire">Nouveau stagiaire</a> <br>
-	<a href="admin/selectionStagiaire">Modifier stagiaire</a><br>
+	<a href="admin/selectionStagiairePourMod">Modifier stagiaire</a><br>
 	<a href="admin/selectionStagiairePourSuppr">Supprimer stagiaire</a><br>
 	<p><s:actionmessage /><p>
 </body>

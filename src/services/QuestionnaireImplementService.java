@@ -3,6 +3,9 @@
  */
 package services;
 
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -59,4 +62,9 @@ public class QuestionnaireImplementService implements QuestionnaireService {
 		}
 		
 	}
+	
+	public List<Questionnaire> listerQuestionnaires(){
+		return this.maDAO.listerQuestionnaires();
+	}
+	
 }

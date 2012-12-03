@@ -16,12 +16,12 @@
 			<s:include value="selectionStagiaire.jsp" />
 		</s:form>
 	</p>
-	<s:actionerror />
+	<s:if test="s != null">
+		<s:actionerror />
 
-	<s:form action="modifierStagiaire">
-		<s:include value="formulaireStagiaire.jsp" />
-	</s:form>
-
-
+		<s:form action="modifierStagiaire">
+			<s:include value="formulaireStagiaire.jsp" />
+		</s:form>
+	</s:if>
 </body>
 </html>

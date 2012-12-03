@@ -17,13 +17,13 @@
 			<s:include value="selectionStagiaire.jsp" />
 		</s:form>
 	</p>
+	<s:if test="s != null">
+		<s:actionerror />
 
-	<s:actionerror />
-
-	<s:form action="supprimerStagiaire" onsubmit="confirm('sur?');">
-		<s:include value="formulaireStagiaire.jsp" />
-	</s:form>
-
+		<s:form action="supprimerStagiaire" onsubmit="confirm('sur?');">
+			<s:include value="formulaireStagiaire.jsp" />
+		</s:form>
+	</s:if>
 
 </body>
 </html>
