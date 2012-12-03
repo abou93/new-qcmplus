@@ -33,16 +33,12 @@
 		</action>
 
 	</package>
-	<package name="administrateur" extends="struts-default"
+	<package name="administrateur" extends="utilisateur"
 		namespace="/admin">
 		<default-action-ref name="accueilAdmin" />
 		<action name="accueilAdmin" >
 			<result name="success" >/WEB-INF/admin/accueilAdmin.jsp</result>
 		</action>		
-
-		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
-			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
-		</action>
 
 		<!-- DEBUT Gestion questionnaires -->
 		<action name="gestionQuestionnaires" class="actions.admin.questionnaire.GestionQuestionnaires">
@@ -72,7 +68,7 @@
 			</result>
 		</action>
 		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
 			</result>
 		</action>
@@ -88,7 +84,7 @@
 			</result>
 		</action>
 		<action name="modifierStagiaire" class="actions.admin.stagiaire.ModifierStagiaire">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
 			</result>
 		</action>
@@ -104,7 +100,7 @@
 			</result>
 		</action>
 		<action name="supprimerStagiaire" class="actions.admin.stagiaire.SupprimerStagiaire">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/supprimerStagiaire.jsp
 			</result>
 		</action>
@@ -113,7 +109,7 @@
 
 	</package>
 
-	<package name="stagiaire" extends="struts-default" namespace="/stagiaire">
+	<package name="stagiaire" extends="utilisateur" namespace="/stagiaire">
 	<default-action-ref name="accueilStagiaire" />
 		<action name="accueilStagiaire" >
 			<result name="success" >/WEB-INF/stagiaire/accueilStagiaire.jsp</result>

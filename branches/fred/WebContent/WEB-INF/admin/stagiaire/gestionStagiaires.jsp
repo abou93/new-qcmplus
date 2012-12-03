@@ -5,12 +5,22 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="/js/menu.js"></script>
 </head>
 <body>
-	<p><s:property value="%{#session.utilisateur.nom}"/> !</p>
-	<a href="admin/nouveauStagiaire">Nouveau stagiaire</a> <br>
-	<a href="admin/selectionStagiairePourMod">Modifier stagiaire</a><br>
-	<a href="admin/selectionStagiairePourSuppr">Supprimer stagiaire</a><br>
-	<p><s:actionmessage /><p>
+
+	<div id="menu">
+		<s:include value="../menuAdmin.jsp" />
+	</div>
+
+	<p>
+		<s:property value="%{#session.utilisateur.nom}" />
+		!
+	</p>
+	<p>
+		<s:actionmessage />
+	<p>
 </body>
 </html>

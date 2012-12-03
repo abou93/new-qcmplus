@@ -40,7 +40,11 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 
 		// récupération de l'id en session
 		s.setId((Long) session.get("sid"));
-
+		//tous les champs en minuscule
+		s.setNom(s.getNom().trim().toLowerCase());
+		s.setPrenom(s.getPrenom().trim().toLowerCase());
+		s.setSociete(s.getSociete().trim().toLowerCase());
+		s.setMotDePasse(s.getMotDePasse().trim().toLowerCase());
 		// tentative de modification du stagiaire
 		long code = userv.modifier(s);
 		System.out.println("code : " + code);
