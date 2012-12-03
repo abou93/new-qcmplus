@@ -35,6 +35,7 @@
 	</package>
 	<package name="administrateur" extends="struts-default"
 		namespace="/admin">
+		
 		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
 			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
 		</action>
@@ -62,8 +63,12 @@
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
 			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
 		</action>
+		<action name="selectionStagiaire" class="actions.admin.stagiaire.SelectionStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		</action>
 		<action name="selectionStagiaireModification" class="actions.admin.stagiaire.SelectionStagiaireModification">
 			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+			<result name="input">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
 		</action>
 		<action name="modifierStagiaire" class="actions.admin.stagiaire.ModifierStagiaire">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>

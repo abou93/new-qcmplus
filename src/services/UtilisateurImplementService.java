@@ -14,7 +14,7 @@ import dao.hibernate.UtilisateurHibernateDAO;
  * 
  */
 public class UtilisateurImplementService implements UtilisateurService {
-	protected UtilisateurDAO maDAO;
+	private UtilisateurDAO maDAO;
 	protected static final long MODIFICATION_OK = 1;
 	protected final static long ERREUR_UTILISATEUR_EXISTANT = 0;
 	protected static final long ERREUR_UTILISATEUR_VIDE = -1;
