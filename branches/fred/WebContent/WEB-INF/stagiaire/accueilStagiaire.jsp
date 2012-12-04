@@ -5,8 +5,18 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="/js/menu.js"></script>
 </head>
 <body>
-	<p>Bonjour Stagiaire <s:property value="%{#session.utilisateur.nom}"/> !</p>
+<div id="menu">
+		<s:include value="menuStagiaire.jsp" />
+	</div>
+	<div id="content">
+		<p>
+			Bonjour Stagiaire <s:property value="%{#session.utilisateur.nom}" />
+		</p>
+	</div>
 </body>
 </html>

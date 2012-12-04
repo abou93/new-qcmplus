@@ -12,20 +12,14 @@
 	</div>
 
 	<s:actionerror />
-
-	<s:form action="login">
-		
+	<div class="form">
+		<s:form action="login">
 			<s:textfield name="nom" size="30" cssClass="tdLabel" key="Label.nom" />
 			<s:password name="mdp" size="30" cssClass="tdLabel" key="Label.mdp" />
-		
-		<br />
-		
-			
-				<s:submit key="Bouton.valider" cssClass="butStnd" name="valider"/>
-
-			
-	</s:form>
-
+			<br />
+			<s:submit key="Bouton.valider" cssClass="butStnd" name="valider" />
+		</s:form>
+	</div>
 
 </body>
 </html>
