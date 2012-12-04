@@ -5,10 +5,19 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="/js/menu.js"></script>
 </head>
 <body>
-	<p>Administrateur <s:property value="%{#session.utilisateur.nom}"/> </p>
-	<a href="admin/gestionStagiaires">Gestion des stagiaires</a> <br>
-	<a href="admin/gestionQuestionnaires">Gestion des questionnaires</a><br>
+	<div id="menu">
+		<s:include value="menuAdmin.jsp" />
+	</div>
+	<div id="content">
+		<p>
+			Administrateur
+			<s:property value="%{#session.utilisateur.nom}" />
+		</p>
+	</div>
 </body>
 </html>
