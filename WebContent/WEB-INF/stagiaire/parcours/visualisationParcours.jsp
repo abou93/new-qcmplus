@@ -18,18 +18,39 @@
 	<div class="titleDiv">
 		<s:text name="Titre.stagiaire.parcours" />
 	</div>
+
+	<s:actionerror />
+	<br>
 	<div class="formList">
 		<s:form action="visualisationParcours">
-			<s:select name="qrid" theme="css_xhtml" list="listeQuestionnaires" listKey="id" listValue="nom" size="5" />
-<s:submit key="Bouton.valider" cssClass="butStnd" name="selection" />
+			<%-- accès au questionnaires via le parcours - ! doublons ! 			
+			<s:select name="qrid" theme="css_xhtml" list="listeParcours" --%>
+			<%-- 				listKey="questionnaire.id" listValue="questionnaire.nom" size="5" /> --%>
+			<s:select name="qrid" theme="css_xhtml"
+				list="listeQuestionniairesStagiaire" listKey="id" listValue="nom"
+				size="5" />
+			<s:submit key="Bouton.parcours.effectues" cssClass="butStnd" name="selection" />
 
 		</s:form>
 	</div>
-	<s:if test="listeParcours != null">
-		<s:actionerror />
 
+	<s:if test="(listeParcoursQuestionnaire != null) && ()listeParcoursQuestionnaire not empty">
 		<div class="form">
-			Affiche le parcours
+		<b><s:text name="Label.questionnaire"/> : </b> <s:property value="qr.nom" />
+			<table class="borderAll">
+				<tr>
+					<td><b>Date de début</b></td>
+					<td><b>Date de fin</b></td>
+				</tr>
+
+				<s:iterator value="listeParcoursQuestionnaire" status="status">
+					<tr
+						class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
+						<td class="nowrap"><s:property value="dateDebut" /></td>
+						<td class="nowrap"><s:property value="dateFin" /></td>
+					</tr>
+				</s:iterator>
+			</table>
 		</div>
 	</s:if>
 </body>

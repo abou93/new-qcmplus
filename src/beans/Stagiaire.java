@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -36,7 +37,7 @@ public class Stagiaire extends Utilisateur implements Serializable{
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy="stagiaire")
+	@OneToMany(mappedBy="stagiaire", fetch = FetchType.EAGER)
 	private List<Parcours> listeParcours;
 	
 		
