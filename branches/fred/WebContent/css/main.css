@@ -21,8 +21,15 @@ html,body {
 }
 
 .form {
-	height: 400px;
+	height: 150px;
 	width: 300px;
+	margin: 10px;
+	padding: 0;
+}
+
+.formList {
+	height: 150px;
+	width: 150px;
 	margin: 10px;
 	padding: 0;
 }
@@ -98,10 +105,12 @@ A:hover {
 .butStnd {
 	font-family: arial, sans-serif;
 	font-size: 11px;
-	width: 105px;
+	width: auto;
 	background-color: #DCDFFA;
 	color: #4A825A;
 	font-weight: bold;
+	position: relative;
+	float: left;
 }
 
 .error {
@@ -120,4 +129,8 @@ A:hover {
 	padding-top: 2px;
 	padding-bottom: 10px;
 	padding-right: 5px;
+}
+
+#visualisationParcours_qrid {
+	width: 300px;
 }
