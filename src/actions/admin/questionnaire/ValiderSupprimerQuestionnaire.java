@@ -18,15 +18,15 @@ import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SelectModifierQuestionnaire extends ActionSupport implements SessionAware{
+public class ValiderSupprimerQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Questionnaire> listeQuestionnaires;
-	private long questionnaireSelected;
+//	private List<Questionnaire> listeQuestionnaires;
+//	private long questionnaireSelected;
 	
-	private Questionnaire monQuestionnaire;
+	private Questionnaire monQuestionnaire, monQuestionnaireSession;
 	
 	private Map<String, Object> session;
 	
@@ -34,9 +34,11 @@ public class SelectModifierQuestionnaire extends ActionSupport implements Sessio
 	
 		@Override
 		public String execute() {
-			listeQuestionnaires = qserv.listerQuestionnaires();
-			setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
-			session.put("ancienQuestionnaireEnSession", monQuestionnaire);
+			//listeQuestionnaires = qserv.listerQuestionnaires();
+			//setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
+			monQuestionnaireSession = (Questionnaire) session.get("ancienQuestionnaireEnSession");
+			monQuestionnaire.setId(monQuestionnaireSession.getId()) ;
+			qserv.supprimer(monQuestionnaire);
 			return SUCCESS;
 		}
 		
@@ -46,21 +48,21 @@ public class SelectModifierQuestionnaire extends ActionSupport implements Sessio
 			this.session = session;
 		}
 
-		public List<Questionnaire> getListeQuestionnaires() {
-			return listeQuestionnaires;
-		}
-
-		public void setListeQuestionnaires(List<Questionnaire> listeQuestionnaire) {
-			this.listeQuestionnaires = listeQuestionnaire;
-		}
-
-		public long getQuestionnaireSelected() {
-			return questionnaireSelected;
-		}
-
-		public void setQuestionnaireSelected(long questionnaireSelected) {
-			this.questionnaireSelected = questionnaireSelected;
-		}
+//		public List<Questionnaire> getListeQuestionnaires() {
+//			return listeQuestionnaires;
+//		}
+//
+//		public void setListeQuestionnaires(List<Questionnaire> listeQuestionnaire) {
+//			this.listeQuestionnaires = listeQuestionnaire;
+//		}
+//
+//		public long getQuestionnaireSelected() {
+//			return questionnaireSelected;
+//		}
+//
+//		public void setQuestionnaireSelected(long questionnaireSelected) {
+//			this.questionnaireSelected = questionnaireSelected;
+//		}
 
 		public Questionnaire getMonQuestionnaire() {
 			return monQuestionnaire;
