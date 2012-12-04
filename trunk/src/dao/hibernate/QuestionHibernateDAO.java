@@ -4,14 +4,23 @@
 package dao.hibernate;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import dao.QuestionDAO;
+
+import utils.HibernateUtil;
 
 import beans.Question;
+import beans.Questionnaire;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
-public class QuestionHibernateDAO {
+public class QuestionHibernateDAO implements QuestionDAO {
 	/**
 	 * @param q
 	 * @return id de la question créée
@@ -64,7 +73,19 @@ public class QuestionHibernateDAO {
 	/**
 	 * @return la liste des questions
 	 */
-	public ArrayList<Question> listeQuestions() {
-		return null;
+	public ArrayList<Question> listerQuestionsQuestionnaire(long idQuestionnaire) {
+		Session session = HibernateUtil.getSession();
+		try {
+			Query q = session
+					.createQuery("FROM Question AS question WHERE question.estSupprime=:suppr and question.id_questionnaire=:id");
+			q.setBoolean("suppr", false);
+			q.setLong("id", idQuestionnaire);
+			ArrayList<Question> maListeQuestions = (ArrayList<Question>) q.list();
+			return maListeQuestions;
+		} catch (RuntimeException e) {
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 }

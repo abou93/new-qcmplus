@@ -69,6 +69,15 @@
 		</action>
 		<!-- FIN Gestion questionnaires -->
 		
+		<!-- DEBUT Gestion des questions -->
+		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.AfficherQuestionnaireQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<action name="selectQuestionnaireQuestion" class="actions.admin.questionnaire.question.SelectQuestionnaireQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<!-- FIN Gestion des questions -->
+		
 		<!-- DEBUT Gestion stagiaires 
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
 			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
