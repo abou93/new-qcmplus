@@ -17,4 +17,5 @@ public interface QuestionnaireService {
 	public Questionnaire trouverQuestionnaire(long id);
 	public boolean modifier(Questionnaire q);
 	public List<Questionnaire> listerQuestionnaires();
+	public boolean supprimer(Questionnaire q);
 }

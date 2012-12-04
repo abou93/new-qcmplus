@@ -18,7 +18,7 @@ import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SelectModifierQuestionnaire extends ActionSupport implements SessionAware{
+public class SelectSupprimerQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
