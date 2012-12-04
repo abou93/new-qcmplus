@@ -113,6 +113,12 @@
 	<default-action-ref name="accueilStagiaire" />
 		<action name="accueilStagiaire" >
 			<result name="success" >/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
+		</action>
+		<action name="rechercheParcours" class="actions.stagiaire.parcours.RechercheParcours">
+			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
+		</action>
+		<action name="visualisationParcours" class="actions.stagiaire.parcours.VisualisationParcours">
+			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
 		</action>	
 
 	</package>
