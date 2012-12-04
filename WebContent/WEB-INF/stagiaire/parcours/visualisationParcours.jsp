@@ -34,7 +34,7 @@
 		</s:form>
 	</div>
 
-	<s:if test="(listeParcoursQuestionnaire != null) && ()listeParcoursQuestionnaire not empty">
+	<s:if test="(listeParcoursQuestionnaire != null)">
 		<div class="form">
 		<b><s:text name="Label.questionnaire"/> : </b> <s:property value="qr.nom" />
 			<table class="borderAll">
