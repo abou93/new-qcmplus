@@ -3,9 +3,11 @@
  */
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import beans.Parcours;
+import beans.Questionnaire;
+import beans.Stagiaire;
 
 /**
  * @author Stéphane Sikora & Frédéric Aubry
@@ -22,7 +24,7 @@ public interface ParcoursDAO {
 	 * @param id
 	 * @return Le parcours
 	 */
-	public Parcours trouverParcours(long id);
+	public Parcours trouver(long id);
 	
 
 	/**
@@ -30,12 +32,6 @@ public interface ParcoursDAO {
 	 * @return true si modif ok
 	 */
 	public boolean modifier(Parcours p);
-	
-	/**
-	 * @param id
-	 * @return true si modif ok
-	 */
-	public boolean modifier(long id);
 	
 	/**
 	 * @param p
@@ -49,9 +45,12 @@ public interface ParcoursDAO {
 	 */
 	public boolean supprimer(long id);
 	
+
 	/**
-	 * @return la liste des parcours
+	 * @param q
+	 * @param s
+	 * @return
 	 */
-	public ArrayList<Parcours> listeParcours();
+	public List<Parcours> liste(Questionnaire q, Stagiaire s);
 
 }
