@@ -4,10 +4,12 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,9 +48,9 @@ public class Question implements Serializable{
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy = "question")
-	private Set<Reponse> listeReponses;
-	
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	private List<Reponse> listeReponses;
+
 	/**
 	 * 
 	 */
@@ -110,14 +112,14 @@ public class Question implements Serializable{
 	/**
 	 * @return the listeReponses
 	 */
-	public Set<Reponse> getListeReponses() {
+	public List<Reponse> getListeReponses() {
 		return listeReponses;
 	}
 
 	/**
 	 * @param listeReponses the listeReponses to set
 	 */
-	public void setListeReponses(Set<Reponse> listeReponses) {
+	public void setListeReponses(List<Reponse> listeReponses) {
 		this.listeReponses = listeReponses;
 	}
 

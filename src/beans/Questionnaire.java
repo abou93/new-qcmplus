@@ -4,11 +4,13 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,8 +47,8 @@ public class Questionnaire implements Serializable{
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy="questionnaire")
-	private Set<Question> listeQuestions;
+	@OneToMany(mappedBy="questionnaire", fetch = FetchType.LAZY)
+	private List<Question> listeQuestions;
 	
 	/**
 	 * 
@@ -58,7 +60,7 @@ public class Questionnaire implements Serializable{
 	 * 
 	 */
 	public Questionnaire() {
-		super();
+		listeQuestions = new ArrayList<Question>();
 	}
 	
 	/**
@@ -118,7 +120,7 @@ public class Questionnaire implements Serializable{
 	/**
 	 * @return the listeQuestions
 	 */
-	public Set<Question> getListeQuestions() {
+	public List<Question> getListeQuestions() {
 		return listeQuestions;
 	}
 
@@ -126,7 +128,7 @@ public class Questionnaire implements Serializable{
 	 * @param listeQuestions
 	 *            the listeQuestions to set
 	 */
-	public void setListeQuestions(Set<Question> listeQuestions) {
+	public void setListeQuestions(List<Question> listeQuestions) {
 		this.listeQuestions = listeQuestions;
 	}
 
