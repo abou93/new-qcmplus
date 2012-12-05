@@ -16,4 +16,5 @@ public interface QuestionService {
 	public long creer(Question q);
 	public boolean modifier(Question q);
 	public List<Question> listerQuestions(long idQuestionnaire);
+	public Question trouver(long qid);
 }

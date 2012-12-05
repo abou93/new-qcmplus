@@ -27,6 +27,12 @@ public class ReponseImplementService implements ReponseService {
 	public long creer(Reponse r) {
 		return this.maDAO.creer(r);
 	}
+
+	@Override
+	public boolean modifier(Reponse r) {
+		return this.maDAO.modifier(r);
+		
+	}
 	
 
 }

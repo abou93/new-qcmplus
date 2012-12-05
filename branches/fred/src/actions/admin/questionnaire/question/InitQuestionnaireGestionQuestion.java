@@ -12,7 +12,7 @@ import beans.Questionnaire;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class InitQuestionnaireNouvelleQuestion extends ActionSupport implements
+public class InitQuestionnaireGestionQuestion extends ActionSupport implements
 		SessionAware {
 	/**
 	 * 
