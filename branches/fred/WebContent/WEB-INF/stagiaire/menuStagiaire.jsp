@@ -13,7 +13,7 @@
         </li>
         
         <li>
-        	<s:url value="/stagiaire/rechercheParcours" var="url_pracours"/>
+        	<s:url value="/stagiaire/initVisualisationParcours" var="url_pracours"/>
             <a href='<s:property value="url_pracours"/>'><s:text name="Menu.parcours.effectues"/></a>
         </li>
         

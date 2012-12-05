@@ -72,7 +72,7 @@
 			<result name="error">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
 			</result>
 		</action>
-		<!-- FIN CrÃ©ation stagiaires -->
+		<!-- FIN Creation stagiaires -->
 		<!-- DEBUT Modification stagiaires -->
 		<action name="selectionStagiairePourMod" class="actions.admin.stagiaire.SelectionStagiaire">
 			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
@@ -109,17 +109,20 @@
 
 	</package>
 
+	<!-- DEBUT espace stagiaire -->
 	<package name="stagiaire" extends="utilisateur" namespace="/stagiaire">
 	<default-action-ref name="accueilStagiaire" />
 		<action name="accueilStagiaire" >
 			<result name="success" >/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
 		</action>
-		<action name="rechercheParcours" class="actions.stagiaire.parcours.RechercheParcours">
+		<!-- DEBUT parcours effectues -->
+		<action name="initVisualisationParcours" class="actions.stagiaire.parcours.InitVisualisationParcours">
 			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
 		</action>
 		<action name="visualisationParcours" class="actions.stagiaire.parcours.VisualisationParcours">
 			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
-		</action>	
-
+		</action>
+		<!-- FIN parcours effectues -->
 	</package>
+	<!-- FIN espace stagiaire -->
 </struts>
