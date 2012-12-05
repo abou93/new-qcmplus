@@ -9,12 +9,12 @@
         
         <li>
         	<s:url value="/stagiaire/" var="url_lancer_questR"/>
-            <a href='<s:property value="url_lancer_questR"/>'><s:text name="Menu.questionnaires"/></a>
+            <a href='<s:property value="#url_lancer_questR"/>'><s:text name="Menu.questionnaires"/></a>
         </li>
         
         <li>
         	<s:url value="/stagiaire/initVisualisationParcours" var="url_pracours"/>
-            <a href='<s:property value="url_pracours"/>'><s:text name="Menu.parcours.effectues"/></a>
+            <a href='<s:property value="#url_pracours"/>'><s:text name="Menu.parcours.effectues"/></a>
         </li>
         
         <li>
