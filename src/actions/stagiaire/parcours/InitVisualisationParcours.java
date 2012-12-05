@@ -23,7 +23,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class RechercheParcours extends ActionSupport implements SessionAware {
+public class InitVisualisationParcours extends ActionSupport implements SessionAware {
 	// pour jsp
 	//private List<Questionnaire> listeQuestionnaires;
 	Set<Questionnaire> listeQuestionniairesStagiaire;
