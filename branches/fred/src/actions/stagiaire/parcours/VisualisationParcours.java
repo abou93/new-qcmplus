@@ -34,9 +34,9 @@ public class VisualisationParcours extends ActionSupport implements
 	// id du questionnaire selectionne
 	private long qrid;
 	//questionnaire sélectionné
-	Questionnaire qr;
+	private Questionnaire qr;
 	//liste des questionnaires du stagiaire
-	Set<Questionnaire> listeQuestionniairesStagiaire;
+	private Set<Questionnaire> listeQuestionniairesStagiaire;
 
 	// pour accès données
 	ParcoursService pserv = new ParcoursImplementService();
@@ -70,7 +70,7 @@ public class VisualisationParcours extends ActionSupport implements
 		qr = qrserv.trouverQuestionnaire(qrid);
 		return SUCCESS;
 	}
-
+	
 	/**
 	 * @return the listeParcoursQuestionnaire
 	 */

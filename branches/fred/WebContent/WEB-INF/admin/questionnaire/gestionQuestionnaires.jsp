@@ -16,17 +16,16 @@
 
 	<s:actionerror />
 
-	<s:form action="gestionQuestionnaires">
-		
-	<br />
-				
-	<a href="admin/questionnaire/nouveauQuestionnaire">Nouveau Questionnaire</a> <br>
-	<a href="admin/questionnaire/modifierQuestionnaire">Modifier Questionnaire</a><br>
-	<a href="admin/questionnaire/supprimerQuestionnaire">SupprimerQuestionnaire</a><br>
-		
-	<br />
-
-	</s:form>
+	<ul id="Menu">
+		<li><a href="admin/questionnaire/nouveauQuestionnaire">Nouveau Questionnaire</a></li>
+		<li><a href="admin/questionnaire/modifierQuestionnaire">Modifier Questionnaire</a></li>
+			<ul id="Gestion des questions">
+				<li><a href="admin/questionnaire/question/nouvelleQuestion">Nouvelle Question</a></li>
+				<li><a href="admin/questionnaire/question/modifierQuestion">Modifier Question</a></li>
+				<li><a href="admin/questionnaire/question/supprimerQuestion">Supprimer Question</a></li>
+			</ul>
+		<li><a href="admin/questionnaire/afficherSupprimerQuestionnaire">Supprimer Questionnaire</a></li>
+	</ul>
 	
 </body>
 </html>

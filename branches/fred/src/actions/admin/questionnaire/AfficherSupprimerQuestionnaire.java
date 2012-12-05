@@ -18,25 +18,27 @@ import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SelectModifierQuestionnaire extends ActionSupport implements SessionAware{
+public class AfficherSupprimerQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private List<Questionnaire> listeQuestionnaires;
-	private long questionnaireSelected;
 	
 	private Questionnaire monQuestionnaire;
 	
+	private long questionnaireSelected;
+	
 	private Map<String, Object> session;
 	
+
 	QuestionnaireService qserv = new QuestionnaireImplementService();
 	
+
 		@Override
 		public String execute() {
 			listeQuestionnaires = qserv.listerQuestionnaires();
 			setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
-			session.put("ancienQuestionnaireEnSession", monQuestionnaire);
 			return SUCCESS;
 		}
 		

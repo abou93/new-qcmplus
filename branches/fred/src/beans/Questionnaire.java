@@ -4,6 +4,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -46,8 +47,8 @@ public class Questionnaire implements Serializable{
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy="questionnaire", fetch = FetchType.EAGER)
-	private Set<Question> listeQuestions;
+	@OneToMany(mappedBy="questionnaire", fetch = FetchType.LAZY)
+	private List<Question> listeQuestions;
 	
 	/**
 	 * 
@@ -59,7 +60,7 @@ public class Questionnaire implements Serializable{
 	 * 
 	 */
 	public Questionnaire() {
-		super();
+		listeQuestions = new ArrayList<Question>();
 	}
 	
 	/**
@@ -119,7 +120,7 @@ public class Questionnaire implements Serializable{
 	/**
 	 * @return the listeQuestions
 	 */
-	public Set<Question> getListeQuestions() {
+	public List<Question> getListeQuestions() {
 		return listeQuestions;
 	}
 
@@ -127,7 +128,7 @@ public class Questionnaire implements Serializable{
 	 * @param listeQuestions
 	 *            the listeQuestions to set
 	 */
-	public void setListeQuestions(Set<Question> listeQuestions) {
+	public void setListeQuestions(List<Question> listeQuestions) {
 		this.listeQuestions = listeQuestions;
 	}
 
