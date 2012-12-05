@@ -56,7 +56,28 @@
 		<action name="selectModifierQuestionnaire" class="actions.admin.questionnaire.SelectModifierQuestionnaire">
 			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
 		</action>
+		<action name="selectValiderQuestionnaire" class="actions.admin.questionnaire.ValiderSelectModifierQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<action name="afficherSupprimerQuestionnaire" class="actions.admin.questionnaire.AfficherSupprimerQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/supprimerQuestionnaire.jsp</result>
+		</action>
+		<action name="selectSupprimerQuestionnaire" class="actions.admin.questionnaire.SelectSupprimerQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/supprimerQuestionnaire.jsp</result>
+		</action>
+		<action name="validerSupprimerQuestionnaire" class="actions.admin.questionnaire.ValiderSupprimerQuestionnaire">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
 		<!-- FIN Gestion questionnaires -->
+		
+		<!-- DEBUT Gestion des questions -->
+		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.AfficherQuestionnaireQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<action name="selectQuestionnaireQuestion" class="actions.admin.questionnaire.question.SelectQuestionnaireQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<!-- FIN Gestion des questions -->
 
 		<!-- DEBUT Gestion stagiaires -->
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">

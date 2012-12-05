@@ -7,7 +7,7 @@
 	type="text/css" />
 </head>
 <body>
-<div class="titleDiv">Liste des questionnaires</div>	
+<div class="titleDiv">Modifier un questionnaire</div>	
 <br><br/>
 	<s:form action="selectModifierQuestionnaire">
 	

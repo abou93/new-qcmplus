@@ -41,13 +41,15 @@
 				<tr>
 					<td><b>Date de début</b></td>
 					<td><b>Date de fin</b></td>
+					<td><b>Durée</b></td>
 				</tr>
 
 				<s:iterator value="listeParcoursQuestionnaire" status="status">
 					<tr
 						class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-						<td class="nowrap"><s:property value="dateDebut" /></td>
-						<td class="nowrap"><s:property value="dateFin" /></td>
+						<td class="nowrap"><s:date name="dateDebut" format="dd/MM/yyyy"/></td>
+						<td class="nowrap"><s:date name="dateFin" format="dd/MM/yyyy"/></td>
+						<td class="nowrap"><s:set var="duree" value="5-3" /><s:property value="#duree"/></td>
 					</tr>
 				</s:iterator>
 			</table>

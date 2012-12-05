@@ -60,11 +60,14 @@ public class QuestionnaireImplementService implements QuestionnaireService {
 		}else{
 			return this.maDAO.modifier(q);
 		}
-		
 	}
 	
 	public List<Questionnaire> listerQuestionnaires(){
 		return this.maDAO.listerQuestionnaires();
+	}
+	
+	public boolean supprimer(Questionnaire q){
+		return this.maDAO.supprimer(q.getId());
 	}
 	
 }

@@ -52,5 +52,5 @@ public interface QuestionDAO {
 	/**
 	 * @return la liste des questions
 	 */
-	public ArrayList<Question> listeQuestions();
+	public ArrayList<Question> listerQuestionsQuestionnaire(long idQuestionnaire);
 }

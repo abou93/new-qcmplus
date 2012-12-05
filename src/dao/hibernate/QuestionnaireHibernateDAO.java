@@ -53,7 +53,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 */
 	public Questionnaire trouverQuestionnaire(long id) {
 		Session session = HibernateUtil.getSession();
-		System.out.println("QuestionnaireHibernateDAO");
+		//System.out.println("QuestionnaireHibernateDAO");
 		try {
 
 			Query q = session
@@ -132,7 +132,8 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 		Session session = HibernateUtil.getSession();
 		try {
 			Query q = session
-					.createQuery("FROM Questionnaire AS q");
+					.createQuery("FROM Questionnaire AS q WHERE q.estSupprime=:suppr");
+			q.setBoolean("suppr", false);
 			List<Questionnaire> maListeQuestionnaire = (List<Questionnaire>) q.list();
 			System.out.println("Nombre d'éléments de ma liste:" +maListeQuestionnaire.size());
 			return maListeQuestionnaire;
