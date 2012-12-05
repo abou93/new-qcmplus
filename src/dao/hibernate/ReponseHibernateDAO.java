@@ -5,20 +5,48 @@ package dao.hibernate;
 
 import java.util.ArrayList;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import dao.ReponseDAO;
+
+import utils.HibernateUtil;
+
 import beans.Question;
 import beans.Reponse;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
-public class ReponseHibernateDAO {
+public class ReponseHibernateDAO implements ReponseDAO {
+	private static final long ECHEC_CREATION = 0;
+
 	/**
 	 * @param r
-	 * @return id de la reponse créée
+	 * @return id de la reponse creee
 	 */
 	public long creer(Reponse r){
-		return 0;}
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		try {
+			// dï¿½but de transaction
+			tx = session.beginTransaction();
+			// persistance de l'objet
+			session.save(r);
+			// commit de la transaction
+			tx.commit();
+			return r.getId();
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			// message d'erreur pour la console
+			e.printStackTrace();
+			return ECHEC_CREATION;
+		} finally {
+			// fermeture de session systematique
+			session.close();
+		}
+	}
 
 	/**
 	 * @param id
@@ -66,7 +94,7 @@ public class ReponseHibernateDAO {
 	}
 	
 	/**
-	 * @return la liste des reponses à une question
+	 * @return la liste des reponses ï¿½ une question
 	 */
 	public ArrayList<Reponse> listeReponses(Question q) {
 		return null;

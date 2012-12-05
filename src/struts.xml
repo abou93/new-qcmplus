@@ -71,11 +71,14 @@
 		<!-- FIN Gestion questionnaires -->
 		
 		<!-- DEBUT Gestion des questions -->
-		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.AfficherQuestionnaireQuestion">
+		<action name="initQuestionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireNouvelleQuestion">
 			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
 		</action>
-		<action name="selectQuestionnaireQuestion" class="actions.admin.questionnaire.question.SelectQuestionnaireQuestion">
+		<action name="questionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.QuestionnaireNouvelleQuestion">
 			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.NouvelleQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
 		</action>
 		<!-- FIN Gestion des questions -->
 
@@ -83,7 +86,7 @@
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
 			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
 		</action>
-		<!-- DEBUT CrÃ©ation stagiaires -->
+		<!-- DEBUT Creation stagiaires -->
 		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
 			<result name="success">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
 			</result>

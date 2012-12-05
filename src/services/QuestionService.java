@@ -3,18 +3,17 @@
  */
 package services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import beans.Question;
 
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 public interface QuestionService {
 	public long creer(Question q);
-	public ArrayList<Question> listerQuestions(long idQuestionnaire);
+	public boolean modifier(Question q);
+	public List<Question> listerQuestions(long idQuestionnaire);
 }
