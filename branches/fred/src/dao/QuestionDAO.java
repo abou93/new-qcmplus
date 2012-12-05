@@ -3,18 +3,18 @@
  */
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import beans.Question;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 public interface QuestionDAO {
 	/**
 	 * @param q
-	 * @return id de la question créée
+	 * @return id de la question crï¿½ï¿½e
 	 */
 	public long creer(Question q);
 
@@ -52,5 +52,5 @@ public interface QuestionDAO {
 	/**
 	 * @return la liste des questions
 	 */
-	public ArrayList<Question> listerQuestionsQuestionnaire(long idQuestionnaire);
+	public List<Question> listerQuestionsQuestionnaire(long idQuestionnaire);
 }

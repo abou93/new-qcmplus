@@ -3,30 +3,48 @@
  */
 package dao.hibernate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import dao.QuestionDAO;
+import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
-
 import beans.Question;
-import beans.Questionnaire;
+import dao.QuestionDAO;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
- *
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
+ * 
  */
 public class QuestionHibernateDAO implements QuestionDAO {
+
+	private final static long ECHEC_CREATION = 0;
+
 	/**
 	 * @param q
-	 * @return id de la question créée
+	 * @return id de la question creee
 	 */
 	public long creer(Question q) {
-		return 0;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		try {
+			// dï¿½but de transaction
+			tx = session.beginTransaction();
+			// persistance de l'objet
+			session.save(q);
+			// commit de la transaction
+			tx.commit();
+			return q.getId();
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			// message d'erreur pour la console
+			e.printStackTrace();
+			return ECHEC_CREATION;
+		} finally {
+			// fermeture de session systï¿½matique
+			session.close();
+		}
 	}
 
 	/**
@@ -36,16 +54,33 @@ public class QuestionHibernateDAO implements QuestionDAO {
 	public Question trouverQuestion(long id) {
 		return null;
 	}
-	
 
 	/**
 	 * @param q
 	 * @return
 	 */
 	public boolean modifier(Question q) {
-		return false;
+		Session session;
+		session = HibernateUtil.getSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			session.update(q);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// rollback si erreur
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
 	}
-	
+
 	/**
 	 * @param id
 	 * @return
@@ -53,7 +88,7 @@ public class QuestionHibernateDAO implements QuestionDAO {
 	public boolean modifier(long id) {
 		return false;
 	}
-	
+
 	/**
 	 * @param q
 	 * @return
@@ -61,7 +96,7 @@ public class QuestionHibernateDAO implements QuestionDAO {
 	public boolean supprimer(Question q) {
 		return false;
 	}
-	
+
 	/**
 	 * @param id
 	 * @return
@@ -69,18 +104,18 @@ public class QuestionHibernateDAO implements QuestionDAO {
 	public boolean supprimer(long id) {
 		return false;
 	}
-	
+
 	/**
 	 * @return la liste des questions
 	 */
-	public ArrayList<Question> listerQuestionsQuestionnaire(long idQuestionnaire) {
+	public List<Question> listerQuestionsQuestionnaire(long idQuestionnaire) {
 		Session session = HibernateUtil.getSession();
 		try {
 			Query q = session
-					.createQuery("FROM Question AS question WHERE question.estSupprime=:suppr and question.id_questionnaire=:id");
+					.createQuery("FROM Question AS question WHERE question.estSupprime=:suppr and question.questionnaire.id=:id");
 			q.setBoolean("suppr", false);
 			q.setLong("id", idQuestionnaire);
-			ArrayList<Question> maListeQuestions = (ArrayList<Question>) q.list();
+			List<Question> maListeQuestions = (List<Question>) q.list();
 			return maListeQuestions;
 		} catch (RuntimeException e) {
 			return null;

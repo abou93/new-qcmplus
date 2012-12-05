@@ -34,8 +34,8 @@ public class ValiderSupprimerQuestionnaire extends ActionSupport implements Sess
 	
 		@Override
 		public String execute() {
-			//listeQuestionnaires = qserv.listerQuestionnaires();
-			//setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
+			//listeQuestionnaires = qrserv.listerQuestionnaires();
+			//setMonQuestionnaire(qrserv.trouverQuestionnaire(questionnaireSelected));
 			monQuestionnaireSession = (Questionnaire) session.get("ancienQuestionnaireEnSession");
 			monQuestionnaire.setId(monQuestionnaireSession.getId()) ;
 			qserv.supprimer(monQuestionnaire);
