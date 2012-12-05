@@ -37,4 +37,9 @@ public class QuestionImplementService implements QuestionService{
 	public boolean modifier(Question q) {
 		return this.maDAO.modifier(q);
 	}
+
+	@Override
+	public Question trouver(long qid) {
+		return this.maDAO.trouver(qid);
+	}
 }

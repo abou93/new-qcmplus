@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
 import beans.Question;
+import beans.Questionnaire;
 import dao.QuestionDAO;
 
 /**
@@ -47,12 +48,23 @@ public class QuestionHibernateDAO implements QuestionDAO {
 		}
 	}
 
-	/**
-	 * @param id
-	 * @return La question
-	 */
-	public Question trouverQuestion(long id) {
-		return null;
+	@Override
+	public Question trouver(long qid) {
+		Session session = HibernateUtil.getSession();
+		// System.out.println("QuestionnaireHibernateDAO");
+		try {
+
+			Query q = session
+					.createQuery("from Question as question where question.id =:id");
+			q.setLong("id", qid);
+
+			return (Question) q.uniqueResult();
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 
 	/**

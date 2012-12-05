@@ -19,13 +19,6 @@ public interface QuestionDAO {
 	public long creer(Question q);
 
 	/**
-	 * @param id
-	 * @return La question
-	 */
-	public Question trouverQuestion(long id);
-	
-
-	/**
 	 * @param q
 	 * @return
 	 */
@@ -53,4 +46,6 @@ public interface QuestionDAO {
 	 * @return la liste des questions
 	 */
 	public List<Question> listerQuestionsQuestionnaire(long idQuestionnaire);
+
+	public Question trouver(long qid);
 }

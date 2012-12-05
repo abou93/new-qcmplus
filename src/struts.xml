@@ -71,7 +71,9 @@
 		<!-- FIN Gestion questionnaires -->
 		
 		<!-- DEBUT Gestion des questions -->
-		<action name="initQuestionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireNouvelleQuestion">
+		
+		<!-- DEBUT Creation questions -->
+		<action name="initQuestionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
 			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
 		</action>
 		<action name="questionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.QuestionnaireNouvelleQuestion">
@@ -80,6 +82,35 @@
 		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.NouvelleQuestion">
 			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
 		</action>
+		<!-- FIN Creation questions -->
+		
+		<!-- DEBUT Modification questions -->
+		<action name="initQuestionnaireModificationQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="questionnaireModificationQuestion" class="actions.admin.questionnaire.question.QuestionnaireModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="formModificationQuestion" class="actions.admin.questionnaire.question.FormModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="modifierQuestion" class="actions.admin.questionnaire.question.ModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Modification questions -->
+		
+		<!-- DEBUT Suppression questions -->
+		<action name="initQuestionnaireSuppressionQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/suppressionQuestion.jsp</result>
+		</action>
+		<action name="questionnaireSuppressionQuestion" class="actions.admin.questionnaire.question.QuestionnaireSuppressionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/suppressionQuestion.jsp</result>
+		</action>
+		<action name="supprimerQuestion" class="actions.admin.questionnaire.question.SuppressionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Suppression questions -->
+		
 		<!-- FIN Gestion des questions -->
 
 		<!-- DEBUT Gestion stagiaires -->

@@ -17,7 +17,7 @@ import beans.Reponse;
 
 /**
  * @author St�phane Sikora & Fr�d�ric Aubry
- *
+ * 
  */
 public class ReponseHibernateDAO implements ReponseDAO {
 	private static final long ECHEC_CREATION = 0;
@@ -26,7 +26,7 @@ public class ReponseHibernateDAO implements ReponseDAO {
 	 * @param r
 	 * @return id de la reponse creee
 	 */
-	public long creer(Reponse r){
+	public long creer(Reponse r) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try {
@@ -52,24 +52,44 @@ public class ReponseHibernateDAO implements ReponseDAO {
 	 * @param id
 	 * @return La reponse
 	 */
-	public Reponse trouverReponse(long id){
-		return null;}
-	
+	public Reponse trouverReponse(long id) {
+		return null;
+	}
 
 	/**
 	 * @param r
 	 * @return
 	 */
-	public boolean modifier(Reponse r){
-		return false;}
-	
+	public boolean modifier(Reponse r) {
+		Session session;
+		session = HibernateUtil.getSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			session.update(r);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// rollback si erreur
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
+	}
+
 	/**
 	 * @param id
 	 * @return
 	 */
-	public boolean modifier(long id){
-		return false;}
-	
+	public boolean modifier(long id) {
+		return false;
+	}
+
 	/**
 	 * @param r
 	 * @return
@@ -77,7 +97,7 @@ public class ReponseHibernateDAO implements ReponseDAO {
 	public boolean supprimer(Reponse r) {
 		return false;
 	}
-	
+
 	/**
 	 * @param id
 	 * @return
@@ -85,14 +105,14 @@ public class ReponseHibernateDAO implements ReponseDAO {
 	public boolean supprimer(long id) {
 		return false;
 	}
-	
+
 	/**
 	 * @return la liste des reponses
 	 */
 	public ArrayList<Reponse> listeReponses() {
 		return null;
 	}
-	
+
 	/**
 	 * @return la liste des reponses � une question
 	 */

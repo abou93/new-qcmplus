@@ -11,4 +11,6 @@ import beans.Reponse;
  */
 public interface ReponseService {
 	public long creer(Reponse r);
+
+	public boolean modifier(Reponse next);
 }
