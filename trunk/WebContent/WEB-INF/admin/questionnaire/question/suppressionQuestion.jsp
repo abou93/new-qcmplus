@@ -11,7 +11,7 @@
 	<br>
 	<br />
 	<!-- DEBUT selection questionnaire -->
-	<s:form action="questionnaireNouvelleQuestion">
+	<s:form action="questionnaireSuppressionQuestion">
 
 		<s:select name="qrid" list="listeQuestionnaires" listValue="nom"
 			size="10" listKey="id" />
@@ -29,31 +29,32 @@
 
 	<!-- DEBUT affichage liste questions questionnaire -->
 	<!--<s:if test="listeQuestionsQuestionnaire != null">-->
-		<s:select name="QuestionsQuestionnaire" list="listeQuestionsQuestionnaire" listValue="intitule" size="10" listKey="id" />		
+		<s:form action="formModificationQuestion">
+			<s:select name="qid" list="listeQuestionsQuestionnaire" listValue="intitule" size="10" listKey="id" />		
+		
+			<s:submit key="Bouton.valider" cssClass="butStnd" name="selectionnerQuestion"/>
+		
+		</s:form>
+	<br>
 	<!--</s:if>-->
 	<!-- FIN affichage liste questions questionnaire -->
 
 	<!-- DEBUT formulaire nouvelle question  -->
 
-	<form action="nouvelleQuestion">
+	<form action="supprimerQuestion">
 	
 		<s:textarea name="q.intitule" key="Label.intitule"/>
 		<br>
 
 		<!-- DEBUT affichage reponses -->
 		
+		<s:iterator value="q.listeReponses" status="status" var="reponse">
+			<s:textfield name="#reponse.libelle"/><s:checkbox name="#reponse.estCorrecte"/>			
+		</s:iterator>
 		
-			<s:textfield name="reponse1.libelle"/><s:checkbox name="reponse1.estCorrecte"/>
-			<s:textfield name="reponse2.libelle"/><s:checkbox name="reponse2.estCorrecte"/>
-			<s:textfield name="reponse3.libelle"/><s:checkbox name="reponse3.estCorrecte"/>
-			<s:textfield name="reponse4.libelle"/><s:checkbox name="reponse4.estCorrecte"/>
-			<s:textfield name="reponse5.libelle"/><s:checkbox name="reponse5.estCorrecte"/>
-			
-		
-
 		<!-- FIN affichage reponses -->
 		
-		<s:submit key="Bouton.valider" cssClass="butStnd" name="validerQuestion"/>
+		<s:submit key="Bouton.valider" cssClass="butStnd" name="validerSupprimerQuestion"/>
 		
 	</form>
 

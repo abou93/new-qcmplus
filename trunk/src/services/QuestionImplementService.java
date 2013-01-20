@@ -3,17 +3,15 @@
  */
 package services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import beans.Question;
 import dao.QuestionDAO;
 import dao.hibernate.QuestionHibernateDAO;
 
-import beans.Question;
-
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 public class QuestionImplementService implements QuestionService{
@@ -28,10 +26,20 @@ public class QuestionImplementService implements QuestionService{
 	}
 
 	public long creer(Question q){
-		return 0;
+		return this.maDAO.creer(q);
 	}
 	
-	public ArrayList<Question> listerQuestions(long idQuestionnaire){
+	public List<Question> listerQuestions(long idQuestionnaire){
 		return this.maDAO.listerQuestionsQuestionnaire(idQuestionnaire);
+	}
+
+	@Override
+	public boolean modifier(Question q) {
+		return this.maDAO.modifier(q);
+	}
+
+	@Override
+	public Question trouver(long qid) {
+		return this.maDAO.trouver(qid);
 	}
 }
