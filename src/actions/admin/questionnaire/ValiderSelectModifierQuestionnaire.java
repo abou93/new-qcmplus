@@ -34,8 +34,8 @@ public class ValiderSelectModifierQuestionnaire extends ActionSupport implements
 	
 		@Override
 		public String execute() {
-			//listeQuestionnaires = qserv.listerQuestionnaires();
-			//setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
+			//listeQuestionnaires = qrserv.listerQuestionnaires();
+			//setMonQuestionnaire(qrserv.trouverQuestionnaire(questionnaireSelected));
 			monQuestionnaireSession = (Questionnaire) session.get("ancienQuestionnaireEnSession");
 			monQuestionnaire.setId(monQuestionnaireSession.getId()) ;
 			qserv.modifier(monQuestionnaire);
