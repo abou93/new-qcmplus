@@ -12,7 +12,7 @@
 <body>
 
 	<div id="menu">
-		<s:include value="../menuAdmin.jsp" />
+		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
 	</div>
 
 	<p>

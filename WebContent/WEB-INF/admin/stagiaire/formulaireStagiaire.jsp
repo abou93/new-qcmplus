@@ -13,7 +13,3 @@
 
 
 		<s:submit key="Bouton.valider" cssClass="butStnd" name="valider" />
-
-
-</body>
-</html>

@@ -12,15 +12,14 @@
 </head>
 
 <body>
-
-	<div id="menu">
-		<s:include value="../menuAdmin.jsp" />
-	</div>
 	<br />
 	<div class="titleDiv">
 		<s:text name="Titre.stagiaire.nouveau" />
 	</div>
-
+	<div id="menu">
+		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
+	</div>
+	<br/>
 	<s:actionerror />
 
 	<div class="form">
