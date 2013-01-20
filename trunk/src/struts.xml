@@ -24,7 +24,7 @@
 			<result name="success">/WEB-INF/index.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="utilisateur" extends="struts-default" namespace="/">
 		<action name="login" class="actions.Login">
 			<result name="admin">/WEB-INF/admin/accueilAdmin.jsp</result>
@@ -33,12 +33,13 @@
 		</action>
 
 	</package>
-	<package name="administrateur" extends="struts-default"
+	<package name="administrateur" extends="utilisateur"
 		namespace="/admin">
-		<action name="trouverQuestionnaire" class="actions.admin.TrouverQuestionnaire">
-			<result name="success">/WEB-INF/trouverQuestionnaire.jsp</result>
-		</action>
-		
+		<default-action-ref name="accueilAdmin" />
+		<action name="accueilAdmin" >
+			<result name="success" >/WEB-INF/admin/accueilAdmin.jsp</result>
+		</action>		
+
 		<!-- DEBUT Gestion questionnaires -->
 		<action name="gestionQuestionnaires" class="actions.admin.questionnaire.GestionQuestionnaires">
 			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
@@ -70,39 +71,113 @@
 		<!-- FIN Gestion questionnaires -->
 		
 		<!-- DEBUT Gestion des questions -->
-		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.AfficherQuestionnaireQuestion">
-			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
-		</action>
-		<action name="selectQuestionnaireQuestion" class="actions.admin.questionnaire.question.SelectQuestionnaireQuestion">
-			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
-		</action>
-		<!-- FIN Gestion des questions -->
 		
-		<!-- DEBUT Gestion stagiaires 
+		<!-- DEBUT Creation questions -->
+		<action name="initQuestionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<action name="questionnaireNouvelleQuestion" class="actions.admin.questionnaire.question.QuestionnaireNouvelleQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/nouvelleQuestion.jsp</result>
+		</action>
+		<action name="nouvelleQuestion" class="actions.admin.questionnaire.question.NouvelleQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Creation questions -->
+		
+		<!-- DEBUT Modification questions -->
+		<action name="initQuestionnaireModificationQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="questionnaireModificationQuestion" class="actions.admin.questionnaire.question.QuestionnaireModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="formModificationQuestion" class="actions.admin.questionnaire.question.FormModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/modificationQuestion.jsp</result>
+		</action>
+		<action name="modifierQuestion" class="actions.admin.questionnaire.question.ModificationQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Modification questions -->
+		
+		<!-- DEBUT Suppression questions -->
+		<action name="initQuestionnaireSuppressionQuestion" class="actions.admin.questionnaire.question.InitQuestionnaireGestionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/suppressionQuestion.jsp</result>
+		</action>
+		<action name="questionnaireSuppressionQuestion" class="actions.admin.questionnaire.question.QuestionnaireSuppressionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/question/suppressionQuestion.jsp</result>
+		</action>
+		<action name="supprimerQuestion" class="actions.admin.questionnaire.question.SuppressionQuestion">
+			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
+		</action>
+		<!-- FIN Suppression questions -->
+		
+		<!-- FIN Gestion des questions -->
+
+		<!-- DEBUT Gestion stagiaires -->
 		<action name="gestionStagiaires" class="actions.admin.GestionStagiaires">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
-		</action>		
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
+		</action>
+		<!-- DEBUT Creation stagiaires -->
 		<action name="nouveauStagiaire" class="actions.admin.stagiaire.NouveauStagiaire">
-			<result name="success">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
+			</result>
 		</action>
 		<action name="creerStagiaire" class="actions.admin.stagiaire.CreerStagiaire">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
-			<result name="error">/WEB-INF/admin/stagiaire/formulaireStagiaire.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/nouveauStagiaire.jsp
+			</result>
 		</action>
-		<action name="selectionStagiaireModification" class="actions.admin.stagiaire.SelectionStagiaireModification">
-			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+		<!-- FIN Creation stagiaires -->
+		<!-- DEBUT Modification stagiaires -->
+		<action name="selectionStagiairePourMod" class="actions.admin.stagiaire.SelectionStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
+			</result>
+		</action>
+		<action name="selectionStagiaireModification"
+			class="actions.admin.stagiaire.SelectionStagiaireModification">
+			<result name="success">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
+			</result>
 		</action>
 		<action name="modifierStagiaire" class="actions.admin.stagiaire.ModifierStagiaire">
-			<result name="success">/WEB-INF/admin/gestionStagiaires.jsp</result>
-			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp</result>
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/modifierStagiaire.jsp
+			</result>
 		</action>
-		-->
+		<!-- FIN Modification stagiaires -->
+		<!-- DEBUT Suppression stagiaires -->
+		<action name="selectionStagiairePourSuppr" class="actions.admin.stagiaire.SelectionStagiairePourSuppr">
+			<result name="success">/WEB-INF/admin/stagiaire/supprimerStagiaire.jsp
+			</result>
+		</action>
+		<action name="selectionStagiaireSuppression"
+			class="actions.admin.stagiaire.SelectionStagiaireSuppression">
+			<result name="success">/WEB-INF/admin/stagiaire/supprimerStagiaire.jsp
+			</result>
+		</action>
+		<action name="supprimerStagiaire" class="actions.admin.stagiaire.SupprimerStagiaire">
+			<result name="success">/WEB-INF/admin/stagiaire/gestionStagiaires.jsp</result>
+			<result name="error">/WEB-INF/admin/stagiaire/supprimerStagiaire.jsp
+			</result>
+		</action>
+		<!-- FIN Suprression stagiaires -->
 		<!-- FIN Gestion stagiaires -->
-		
-	</package>
-	
-	<package name="stagiaire" extends="struts-default"
-	 namespace="/stagiaire">
 
 	</package>
+
+	<!-- DEBUT espace stagiaire -->
+	<package name="stagiaire" extends="utilisateur" namespace="/stagiaire">
+	<default-action-ref name="accueilStagiaire" />
+		<action name="accueilStagiaire" >
+			<result name="success" >/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
+		</action>
+		<!-- DEBUT parcours effectues -->
+		<action name="initVisualisationParcours" class="actions.stagiaire.parcours.InitVisualisationParcours">
+			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
+		</action>
+		<action name="visualisationParcours" class="actions.stagiaire.parcours.VisualisationParcours">
+			<result name="success" >/WEB-INF/stagiaire/parcours/visualisationParcours.jsp</result>
+		</action>
+		<!-- FIN parcours effectues -->
+	</package>
+	<!-- FIN espace stagiaire -->
 </struts>

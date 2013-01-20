@@ -164,7 +164,7 @@ public class UtilisateurHibernateDAO implements UtilisateurDAO {
 			//"FROM User AS u INNER JOIN FETCH u.listProduct"
 
 			Query q = session
-					.createQuery("SELECT FROM Utilisateur AS u");
+					.createQuery("FROM Utilisateur AS u");
 			List<Utilisateur> listUser = (List<Utilisateur>) q.list();
 			System.out.println("userlist"+listUser);
 			return listUser;

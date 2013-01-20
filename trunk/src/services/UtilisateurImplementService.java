@@ -14,7 +14,7 @@ import dao.hibernate.UtilisateurHibernateDAO;
  * 
  */
 public class UtilisateurImplementService implements UtilisateurService {
-	protected UtilisateurDAO maDAO;
+	private UtilisateurDAO maDAO;
 	protected static final long MODIFICATION_OK = 1;
 	protected final static long ERREUR_UTILISATEUR_EXISTANT = 0;
 	protected static final long ERREUR_UTILISATEUR_VIDE = -1;
@@ -32,15 +32,16 @@ public class UtilisateurImplementService implements UtilisateurService {
 
 	@Override
 	public Utilisateur trouverParNomEtMdp(String nom, String mdp) {
-		// avec insensibilité à la casse et suppression des espaces avant et après
-		Utilisateur u = this.maDAO.trouver(nom.toLowerCase().trim(), mdp.toLowerCase()
-				.trim());
-		//sauf supprimés logiquement
-		if (u != null && !u.isEstSupprime()) {
-		return this.maDAO.trouver(nom.toLowerCase().trim(), mdp.toLowerCase()
-				.trim());} 
-		//sinon rien
-		return null;
+		// avec insensibilité à la casse et suppression des espaces avant et
+		// après
+		Utilisateur u = this.maDAO.trouver(nom.toLowerCase().trim(), mdp
+				.toLowerCase().trim());
+		// sauf supprimés logiquement
+		if (u == null || u.isEstSupprime()) {
+			u = null;
+		}
+		// sinon rien
+		return u;
 	}
 
 	@Override
@@ -67,10 +68,12 @@ public class UtilisateurImplementService implements UtilisateurService {
 
 	@Override
 	public long modifier(Utilisateur u) {
-		//l'utilisateur ne peut être null
-		if (u == null ) return ERREUR_UTILISATEUR_NULL;	
+		// l'utilisateur ne peut être null
+		if (u == null)
+			return ERREUR_UTILISATEUR_NULL;
 		// les attributs ne peuvent pas être vides
-		if ( u.getId() <= 0 || "".equals(u.getNom()) || "".equals(u.getMotDePasse()))
+		if (u.getId() <= 0 || "".equals(u.getNom())
+				|| "".equals(u.getMotDePasse()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// le couple nom/mdp ne peut déjà exister en base
 		if (this.maDAO.trouver(u.getId()) == null) {
@@ -85,7 +88,7 @@ public class UtilisateurImplementService implements UtilisateurService {
 
 	@Override
 	public long supprimer(Utilisateur u) {
-		//l'utilisateur a bien un id
+		// l'utilisateur a bien un id
 		if (u.getId() >= 0) {
 			return supprimer(u.getId());
 		}

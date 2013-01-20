@@ -7,7 +7,7 @@
 <link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript" src="/js/menu.js"></script>
-<title><s:text name="Titre.stagiaire.modifier" /></title>
+<title><s:text name="Titre.stagiaire.supprimer" /></title>
 </head>
 <body>
 
@@ -16,10 +16,11 @@
 	</div>
 	<br />
 	<div class="titleDiv">
-		<s:text name="Titre.stagiaire.modifier" />
+		<s:text name="Titre.stagiaire.supprimer" />
 	</div>
+
 	<div class="formList">
-		<s:form action="selectionStagiaireModification">
+		<s:form action="selectionStagiaireSuppression">
 			<s:include value="selectionStagiaire.jsp" />
 		</s:form>
 	</div>
@@ -27,10 +28,11 @@
 		<s:actionerror />
 
 		<div class="form">
-			<s:form action="modifierStagiaire">
+			<s:form action="supprimerStagiaire" onsubmit="confirm('sur?');">
 				<s:include value="formulaireStagiaire.jsp" />
 			</s:form>
 		</div>
 	</s:if>
+
 </body>
 </html>

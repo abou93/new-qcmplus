@@ -3,9 +3,15 @@
  */
 package actions.admin.stagiaire;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import services.StagiaireImplementService;
-import services.UtilisateurService;
+import services.StagiaireService;
 import beans.Stagiaire;
+import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -13,13 +19,16 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class ModifierStagiaire extends ActionSupport {
+public class ModifierStagiaire extends ActionSupport implements SessionAware {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
+	private List<Utilisateur> listeStagiaires;
+	private long sid;
 
 	// service pour gérer les utilisateurs
-	UtilisateurService userv = new StagiaireImplementService();
+	StagiaireService userv = new StagiaireImplementService();
+	private Map<String, Object> session;
 
 	// action de login
 	@Override
@@ -27,13 +36,26 @@ public class ModifierStagiaire extends ActionSupport {
 		System.out.println("actions.admin.stagiaire.modifier");
 		// titre de la fenêtre
 		titre = getText("Titre.stagiaire.modifier");
+		setListeStagiaires(userv.liste());
+
+		// récupération de l'id en session
+		s.setId((Long) session.get("sid"));
+		//tous les champs en minuscule
+		s.setNom(s.getNom().trim().toLowerCase());
+		s.setPrenom(s.getPrenom().trim().toLowerCase());
+		s.setSociete(s.getSociete().trim().toLowerCase());
+		s.setMotDePasse(s.getMotDePasse().trim().toLowerCase());
 		// tentative de modification du stagiaire
-		if (userv.modifier(s) <= 0) {
-			addActionError(getText("Erreur.modificaion.stagiaire"));
+		long code = userv.modifier(s);
+		System.out.println("code : " + code);
+
+		if (code <= 0) {
+			addActionError(getText("Erreur.modification.stagiaire"));
+
 			return ERROR;
 		}
 		// message de confirmation et retour à l'interface de gestion
-		addActionMessage(getText("Confirmation.modificaion.stagiaire"));
+		addActionMessage(getText("Confirmation.modification.stagiaire"));
 		return SUCCESS;
 	}
 
@@ -65,5 +87,27 @@ public class ModifierStagiaire extends ActionSupport {
 	 */
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+
+	public List<Utilisateur> getListeStagiaires() {
+		return listeStagiaires;
+	}
+
+	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
+		this.listeStagiaires = listeStagiaires;
+	}
+
+	public long getSid() {
+		return sid;
+	}
+
+	public void setSid(long sid) {
+		this.sid = sid;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+
 	}
 }

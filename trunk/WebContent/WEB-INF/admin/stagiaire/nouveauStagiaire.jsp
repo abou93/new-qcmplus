@@ -7,8 +7,10 @@
 <link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript" src="/js/menu.js"></script>
-<title><s:text name="Titre.stagiaire.modifier" /></title>
+
+<title><s:text name="Titre.stagiaire.nouveau" /></title>
 </head>
+
 <body>
 
 	<div id="menu">
@@ -16,21 +18,17 @@
 	</div>
 	<br />
 	<div class="titleDiv">
-		<s:text name="Titre.stagiaire.modifier" />
+		<s:text name="Titre.stagiaire.nouveau" />
 	</div>
-	<div class="formList">
-		<s:form action="selectionStagiaireModification">
-			<s:include value="selectionStagiaire.jsp" />
+
+	<s:actionerror />
+
+	<div class="form">
+		<s:form action="creerStagiaire">
+			<s:include value="formulaireStagiaire.jsp" />
 		</s:form>
 	</div>
-	<s:if test="s != null">
-		<s:actionerror />
 
-		<div class="form">
-			<s:form action="modifierStagiaire">
-				<s:include value="formulaireStagiaire.jsp" />
-			</s:form>
-		</div>
-	</s:if>
+
 </body>
 </html>
