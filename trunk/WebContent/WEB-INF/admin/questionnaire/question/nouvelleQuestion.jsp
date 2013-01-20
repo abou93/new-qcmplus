@@ -5,9 +5,14 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+	<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
 	<div class="titleDiv">Nouvelle question</div>
+	<div id="menu">
+		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
+	</div>
 	<br>
 	<br />
 	<!-- DEBUT selection questionnaire -->

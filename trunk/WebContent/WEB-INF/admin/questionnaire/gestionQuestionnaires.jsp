@@ -16,7 +16,7 @@
 	</p>
 
 	<div id="menu">
-		<s:include value="../menuAdmin.jsp" />
+		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
 	</div>
 
 	<div class="titleDiv">Gestion des questionnaires</div>

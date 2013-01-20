@@ -10,14 +10,13 @@
 <title><s:text name="Titre.stagiaire.supprimer" /></title>
 </head>
 <body>
-
-	<div id="menu">
-		<s:include value="../menuAdmin.jsp" />
-	</div>
-	<br />
 	<div class="titleDiv">
 		<s:text name="Titre.stagiaire.supprimer" />
 	</div>
+	<div id="menu">
+		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
+	</div>
+	<br/>
 
 	<div class="formList">
 		<s:form action="selectionStagiaireSuppression">

@@ -196,9 +196,8 @@ public class QuestionnaireModificationQuestion extends ActionSupport implements 
 			return listeQuestionsQuestionnaire;
 		}
 
-		//pour eviter d'avoir null dans listeQuestionsQuestionnaire
-		public void setListeQuestionsQuestionnaire(
-				List<Question> listeQuestionsQuestionnaire) {
+		//pour eviter d'avoir null dans listeQuestionsQuestionnaire - liste vide plutot
+		public void setListeQuestionsQuestionnaire(List<Question> listeQuestionsQuestionnaire) {
 			List<Question> listeQ = listeQuestionsQuestionnaire;
 			if (listeQ == null) listeQ = new ArrayList<Question>();
 			this.listeQuestionsQuestionnaire = listeQ;
