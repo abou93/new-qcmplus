@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 @Entity
@@ -118,6 +118,27 @@ public class Reponse implements Serializable{
 	 */
 	public void setEstSupprime(boolean estSupprime) {
 		this.estSupprime = estSupprime;
+	}
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Reponse [id=");
+		builder.append(id);
+		builder.append(", libelle=");
+		builder.append(libelle);
+		builder.append(", estCorrecte=");
+		builder.append(estCorrecte);
+		builder.append(", question=");
+		builder.append(question);
+		builder.append(", estSupprime=");
+		builder.append(estSupprime);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

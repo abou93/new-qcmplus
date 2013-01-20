@@ -10,22 +10,17 @@
 <script type="text/javascript" src="/js/menu.js"></script>
 </head>
 <body>
-	<p>
-		Administrateur
-		<s:property value="%{#session.utilisateur.nom}" />
-	</p>
 
 	<div id="menu">
 		<s:include value="../menuAdmin.jsp" />
 	</div>
 
-	<div class="titleDiv">Gestion des questionnaires</div>
-
-	<s:actionerror />
-
-
-
-
-
+	<p>
+		<s:property value="%{#session.utilisateur.nom}" />
+		!
+	</p>
+	<p>
+		<s:actionmessage />
+	<p>
 </body>
 </html>

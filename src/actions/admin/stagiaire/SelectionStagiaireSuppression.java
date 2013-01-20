@@ -19,16 +19,16 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Stéphane Sikora & Frédéric Aubry
  * 
  */
-public class SelectionStagiaireModification extends ActionSupport implements SessionAware{
+public class SelectionStagiaireSuppression extends ActionSupport implements
+		SessionAware {
 	// Variables pour jsp
 	private String titre;
 	private Stagiaire s;
 	private List<Utilisateur> listeStagiaires;
-	//select
+	// select
 	private long sid;
 	// session pour stocker les attributs
-		private Map<String, Object> session;
-	
+	private Map<String, Object> session;
 
 	// service pour gérer les utilisateurs
 	StagiaireService userv = new StagiaireImplementService();
@@ -36,13 +36,13 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.admin.stagiaire.modification.selection");
-		//liste des stagiaires
+		System.out.println("actions.admin.stagiaire.suppression.selection");
+		// liste des stagiaires
 		setListeStagiaires(userv.liste());
-		//titre de la page
-		setTitre(getText("Titre.stagiaire.modification"));
+		// System.out.println(listeStagiaires);
+		setTitre(getText("Titre.stagiaire.suppression" + " : étape 2"));
 		s = (Stagiaire) userv.trouverParId(sid);
-		//mise en session de l'id
+		//System.out.println("selection : " + s + " id:" + s.getId());
 		session.put("sid", sid);
 		return SUCCESS;
 	}
@@ -82,7 +82,7 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-		
+
 	}
 
 }

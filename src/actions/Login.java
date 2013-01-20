@@ -61,7 +61,7 @@ public class Login extends ActionSupport implements SessionAware {
 			if (u.getMotDePasse().equals(this.getMdp())
 					&& u.getNom().equals(this.getNom())) {
 				// mise de l'utilisateur en session pour utilisation future
-				session.put("utilisateur", u);
+				session.put("utilisateurSession", u);
 				// redirection en fonction du rôle stagiaire ou admin ?
 				if (u instanceof Stagiaire) {
 					return "stagiaire";

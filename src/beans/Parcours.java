@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,29 +40,29 @@ public class Parcours implements Serializable{
 	 */
 	@Column(name = "DATE_DEBUT", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date datedebut;
+	private Date dateDebut;
 	/**
 	 * 
 	 */
 	@Column(name = "DATE_FIN", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date datefin;
+	private Date dateFin;
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name ="ID_QUESTIONNAIRE")
 	private Questionnaire questionnaire;
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name ="ID_STAGIAIRE")
 	private Stagiaire stagiaire;
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy = "parcours")
+	@OneToMany(mappedBy = "parcours", fetch = FetchType.EAGER)
 	private Set<Resultat> listeResultats;
 	
 	/**
@@ -95,31 +96,31 @@ public class Parcours implements Serializable{
 	/**
 	 * @return the datedebut
 	 */
-	public Date getDatedebut() {
-		return datedebut;
+	public Date getDateDebut() {
+		return dateDebut;
 	}
 
 	/**
 	 * @param datedebut
 	 *            the datedebut to set
 	 */
-	public void setDatedebut(Date datedebut) {
-		this.datedebut = datedebut;
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
 	}
 
 	/**
 	 * @return the datefin
 	 */
-	public Date getDatefin() {
-		return datefin;
+	public Date getDateFin() {
+		return dateFin;
 	}
 
 	/**
 	 * @param datefin
 	 *            the datefin to set
 	 */
-	public void setDatefin(Date datefin) {
-		this.datefin = datefin;
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 	/**
