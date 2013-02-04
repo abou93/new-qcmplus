@@ -16,29 +16,29 @@ import beans.Utilisateur;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class ModifierStagiaire extends ActionSupport implements SessionAware {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
-	private List<Utilisateur> listeStagiaires;
+	private List<Stagiaire> listeStagiaires;
 	private long sid;
 
-	// service pour gérer les utilisateurs
-	StagiaireService userv = new StagiaireImplementService();
+	// service pour gï¿½rer les utilisateurs
+	StagiaireService sserv = new StagiaireImplementService();
 	private Map<String, Object> session;
 
 	// action de login
 	@Override
 	public String execute() {
 		System.out.println("actions.admin.stagiaire.modifier");
-		// titre de la fenêtre
+		// titre de la fenï¿½tre
 		titre = getText("Titre.stagiaire.modifier");
-		setListeStagiaires(userv.liste());
+		setListeStagiaires(sserv.liste());
 
-		// récupération de l'id en session
+		// rï¿½cupï¿½ration de l'id en session
 		s.setId((Long) session.get("sid"));
 		//tous les champs en minuscule
 		s.setNom(s.getNom().trim().toLowerCase());
@@ -46,7 +46,7 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 		s.setSociete(s.getSociete().trim().toLowerCase());
 		s.setMotDePasse(s.getMotDePasse().trim().toLowerCase());
 		// tentative de modification du stagiaire
-		long code = userv.modifier(s);
+		long code = sserv.modifier(s);
 		System.out.println("code : " + code);
 
 		if (code <= 0) {
@@ -54,7 +54,7 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 
 			return ERROR;
 		}
-		// message de confirmation et retour à l'interface de gestion
+		// message de confirmation et retour ï¿½ l'interface de gestion
 		addActionMessage(getText("Confirmation.modification.stagiaire"));
 		return SUCCESS;
 	}
@@ -89,12 +89,12 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 		this.titre = titre;
 	}
 
-	public List<Utilisateur> getListeStagiaires() {
+	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
 
-	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
-		this.listeStagiaires = listeStagiaires;
+	public void setListeStagiaires(List<Stagiaire> list) {
+		this.listeStagiaires = list;
 	}
 
 	public long getSid() {

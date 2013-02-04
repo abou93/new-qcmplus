@@ -3,16 +3,14 @@
  */
 package actions.admin.stagiaire;
 
-import java.util.Map;
-
 import services.StagiaireImplementService;
-import services.UtilisateurService;
+import services.StagiaireService;
 import beans.Stagiaire;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class CreerStagiaire extends ActionSupport {
@@ -20,21 +18,21 @@ public class CreerStagiaire extends ActionSupport {
 		private Stagiaire s;
 		private String titre;
 
-		// service pour gérer les utilisateurs
-		UtilisateurService userv = new StagiaireImplementService();
+		// service pour gï¿½rer les utilisateurs
+		StagiaireService sserv = new StagiaireImplementService();
 
 		// action de login
 		@Override
 		public String execute() {
 			System.out.println("actions.admin.stagiaire.creer");
-			// titre de la fenêtre
+			// titre de la fenï¿½tre
 			titre = getText("Titre.stagiaire.nouveau");
-			// tentative de création du stagiaire
-			if (userv.creer(s) <= 0) {
+			// tentative de crï¿½ation du stagiaire
+			if (sserv.creer(s) <= 0) {
 				addActionError(getText("Erreur.creation.stagiaire"));
 				return ERROR;
 			}
-			// message de confirmation et retour à l'interface de gestion
+			// message de confirmation et retour ï¿½ l'interface de gestion
 			addActionMessage(getText("Confirmation.creation.stagiaire"));
 			return SUCCESS;
 		}

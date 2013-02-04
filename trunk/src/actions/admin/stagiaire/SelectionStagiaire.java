@@ -8,31 +8,30 @@ import java.util.List;
 import services.StagiaireImplementService;
 import services.StagiaireService;
 import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class SelectionStagiaire extends ActionSupport {
 	// Variables pour jsp
 	private String titre;
 	//private Stagiaire s;
-	private List<Utilisateur> listeStagiaires;
+	private List<Stagiaire> listeStagiaires;
 
-	// service pour gérer les utilisateurs
-	StagiaireService userv = new StagiaireImplementService();
+	// service pour gï¿½rer les utilisateurs
+	StagiaireService sserv = new StagiaireImplementService();
 
 	// action de login
 	@Override
 	public String execute() {
 		System.out.println("actions.admin.stagiaire.selection");
 		//liste des stagiaires
-		setListeStagiaires(userv.liste());
+		setListeStagiaires(sserv.liste());
 		//s = (Stagiaire) userv.trouverParId(sid);
-		setTitre(getText("Titre.stagiaire.modification" + " : étape 1"));
+		setTitre(getText("Titre.stagiaire.modification" + " : ï¿½tape 1"));
 		//System.out.println(s);
 		return SUCCESS;
 	}
@@ -45,11 +44,11 @@ public class SelectionStagiaire extends ActionSupport {
 		this.titre = titre;
 	}
 
-	public List<Utilisateur> getListeStagiaires() {
+	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
 
-	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
-		this.listeStagiaires = listeStagiaires;
+	public void setListeStagiaires(List<Stagiaire> list) {
+		this.listeStagiaires = list;
 	}
 }

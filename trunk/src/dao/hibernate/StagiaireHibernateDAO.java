@@ -7,24 +7,159 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import dao.StagiaireDAO;
+import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
-import beans.Utilisateur;
+import beans.Stagiaire;
 import dao.StagiaireDAO;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
-public class StagiaireHibernateDAO extends UtilisateurHibernateDAO implements StagiaireDAO {
+public class StagiaireHibernateDAO implements StagiaireDAO {
+	private final static long ECHEC_CREATION = 0;
 
+
+	/**
+	 * @param u
+	 * @return id de l'utilisateur crï¿½ï¿½
+	 */
+	public long creer(Stagiaire u) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		try {
+			// dï¿½but de transaction
+			tx = session.beginTransaction();
+			// persistance de l'objet
+			session.save(u);
+			// commit de la transaction
+			tx.commit();
+			return u.getId();
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			// message d'erruer pour la console
+			e.printStackTrace();
+			return ECHEC_CREATION;
+		} finally {
+			// fermeture de session systï¿½matique
+			session.close();
+		}
+	}
+
+	/**
+	 * @param id
+	 * @return L'utilisateur
+	 */
+	public Stagiaire trouver(long id) {
+		// rï¿½cupï¿½ration de la session hibernate
+		Session session = HibernateUtil.getSession();
+		// System.out.println("utilisateurHibernateDAO");
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+
+			Query q = session
+					.createQuery("from Stagiaire as u where u.id =:id");
+			q.setLong("id", id);
+
+			return (Stagiaire) q.uniqueResult();
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+	/**
+	 * @param nom
+	 * @param mdp
+	 * @return L'utilisateur
+	 */
+	public Stagiaire trouver(String nom, String mdp) {
+		// rï¿½cupï¿½ration de la session hibernate
+		Session session = HibernateUtil.getSession();
+		// System.out.println("utilisateurHibernateDAO");
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+
+			Query q = session
+					.createQuery("from Stagiaire as u where u.nom =:lenom and u.motDePasse =:lemdp");
+			q.setString("lenom", nom);
+			q.setString("lemdp", mdp);
+
+			return (Stagiaire) q.uniqueResult();
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+	/**
+	 * @param u
+	 * @return true si modification ok
+	 */
+	public boolean modifier(Stagiaire u) {
+		Session session;
+		session = HibernateUtil.getSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			session.update(u);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// rollback si erreur
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
+	}
+
+	/**
+	 * @param u
+	 * @return
+	 */
+	public boolean supprimer(Stagiaire u) {
+		return supprimer(u.getId());
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public boolean supprimer(long id) {
+		/*
+		 * suppression logique - recherche de l'utilisateur en base - mise ï¿½
+		 * true de son attribut estSupprime - MAJ de l'utilisateur en base
+		 */
+		// verification id valide (>0)
+		if (id > 0) {
+			Stagiaire u = trouver(id);
+			u.setEstSupprime(true);
+			return modifier(u);
+		}
+		return false;
+	}
+	
 	/**
 	 * @return la liste des stagiaires
 	 */
 	@Override
-	public List<Utilisateur> liste() {
+	public List<Stagiaire> liste() {
 		Session session = HibernateUtil.getSession();
 		try {
 			// session.beginTransaction();
@@ -38,12 +173,12 @@ public class StagiaireHibernateDAO extends UtilisateurHibernateDAO implements St
 			// l'utilisateur avec le produit
 			Query q = session
 					.createQuery("FROM Stagiaire AS s WHERE s.estSupprime=:suppr");
-			// sans les stagiaires supprimés
+			// sans les stagiaires supprimï¿½s
 			q.setBoolean("suppr", false);
 			// mise dans un Set du resultat
-			List<Utilisateur> listeStagiaires = (List<Utilisateur>) q.list();
+			List<Stagiaire> listeStagiaires = (List<Stagiaire>) q.list();
 
-			// //récupération de l'utilisateur référencé - évite de passer à
+			// //rï¿½cupï¿½ration de l'utilisateur rï¿½fï¿½rencï¿½ - ï¿½vite de passer ï¿½
 			// lazy=false
 			// for (Product p:lprod){
 			// Hibernate.initialize(p.getCreateur());
@@ -56,4 +191,6 @@ public class StagiaireHibernateDAO extends UtilisateurHibernateDAO implements St
 			session.close();
 		}
 	}
+
+
 }
