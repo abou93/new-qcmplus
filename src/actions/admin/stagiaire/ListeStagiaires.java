@@ -14,17 +14,17 @@ import beans.Utilisateur;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class ListeStagiaires extends ActionSupport {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
-	private List<Utilisateur> listeStagiaires;
+	private List<Stagiaire> listeStagiaires;
 
-	// service pour gérer les utilisateurs
-	StagiaireService userv = new StagiaireImplementService();
+	// service pour gï¿½rer les utilisateurs
+	StagiaireService sserv = new StagiaireImplementService();
 
 	// action de login
 	@Override
@@ -32,9 +32,9 @@ public class ListeStagiaires extends ActionSupport {
 		System.out.println("actions.admin.stagiaire.liste");
 		// stagiaire vide pour champs jsp
 		s = new Stagiaire();
-		// liste récupérée en base
-		setListeStagiaires(userv.liste());
-		// titre de la fenêtre
+		// liste rï¿½cupï¿½rï¿½e en base
+		setListeStagiaires(sserv.liste());
+		// titre de la fenï¿½tre
 		titre = getText("Titre.stagiaire.modifier");
 
 		return SUCCESS;
@@ -73,14 +73,14 @@ public class ListeStagiaires extends ActionSupport {
 	/**
 	 * @return the listeStagiaires
 	 */
-	public List<Utilisateur> getListeStagiaires() {
+	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
 
 	/**
 	 * @param listeStagiaires the listeStagiaires to set
 	 */
-	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
+	public void setListeStagiaires(List<Stagiaire> listeStagiaires) {
 		this.listeStagiaires = listeStagiaires;
 	}
 

@@ -11,13 +11,19 @@ import dao.StagiaireDAO;
 import dao.hibernate.StagiaireHibernateDAO;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
-public class StagiaireImplementService extends UtilisateurImplementService
-		implements StagiaireService {
-	
-	private StagiaireDAO maDAO; 
+public class StagiaireImplementService implements StagiaireService {
+
+	private StagiaireDAO maDAO;
+	protected static final long MODIFICATION_OK = 1;
+	protected final static long ERREUR_UTILISATEUR_EXISTANT = 0;
+	protected static final long ERREUR_UTILISATEUR_VIDE = -1;
+	protected static final long ERREUR_UTILISATEUR_INCOMPLET = -2;
+	protected static final long MODIFICATION_BDD_PB = -3;
+	protected static final long UTILISATEUR_SANS_ID = -4;
+	protected static final long ERREUR_UTILISATEUR_NULL = -5;
 
 	/**
 	 * @param maDAO
@@ -27,32 +33,86 @@ public class StagiaireImplementService extends UtilisateurImplementService
 	}
 
 	@Override
-	public long creer(Utilisateur s) {
-		// l'utilisateur ne peut pas être null
-		if (s == null)
-			return ERREUR_UTILISATEUR_VIDE;
-		// les attributs ne peuvent pas être vides
-		if ("".equals(((Stagiaire)s).getSociete()) || "".equals(((Stagiaire)s).getPrenom()))
-			return ERREUR_UTILISATEUR_INCOMPLET;
-		// si tout ok on renvoie vers le parent pour finaliser
-		return super.creer(s);
+	public Stagiaire trouverParNomEtMdp(String nom, String mdp) {
+		// avec insensibilitï¿½ ï¿½ la casse et suppression des espaces avant et
+		// aprï¿½s
+		Stagiaire u = this.maDAO.trouver(nom.toLowerCase().trim(), mdp
+				.toLowerCase().trim());
+		// sauf supprimï¿½s logiquement
+		if (u == null || u.isEstSupprime()) {
+			u = null;
+		}
+		// sinon rien
+		return u;
 	}
 
 	@Override
-	public long modifier(Utilisateur s) {
-		// l'utilisateur ne peut pas être null
+	public Stagiaire trouverParId(long id) {
+		return this.maDAO.trouver(id);
+	}
+
+
+
+	@Override
+	public long creer(Stagiaire s) {
+		// l'utilisateur ne peut pas ï¿½tre null
 		if (s == null)
 			return ERREUR_UTILISATEUR_VIDE;
-		// les attributs ne peuvent pas être vides
-		if ("".equals(((Stagiaire) s).getSociete()) || "".equals(((Stagiaire) s).getPrenom()))
-
+		// les attributs ne peuvent pas ï¿½tre vides
+		if ("".equals(s.getNom()) || "".equals(s.getMotDePasse())
+				|| "".equals(((Stagiaire) s).getSociete())
+				|| "".equals(((Stagiaire) s).getPrenom()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
-		// si tout ok on renvoie vers le parent pour finaliser
-		return super.modifier(s);
+		// on ne crï¿½e un utilisateur que s'il n'existe pas dï¿½jï¿½
+		if (this.maDAO.trouver(s.getNom().toLowerCase().trim(), s
+				.getMotDePasse().toLowerCase().trim()) == null) {
+			return this.maDAO.creer(s);
+		}
+		return ERREUR_UTILISATEUR_EXISTANT; // il faudrait mettre en place des
+											// constantes
 	}
 
 	@Override
-	public List<Utilisateur> liste() {
+	public long modifier(Stagiaire s) {
+		// l'utilisateur ne peut pas ï¿½tre null
+		if (s == null)
+			return ERREUR_UTILISATEUR_VIDE;
+		// les attributs ne peuvent pas ï¿½tre vides
+		if ("".equals(((Stagiaire) s).getSociete())
+				|| "".equals(((Stagiaire) s).getPrenom()) || s.getId() <= 0
+				|| "".equals(s.getNom()) || "".equals(s.getMotDePasse()))
+			return ERREUR_UTILISATEUR_INCOMPLET;
+		// le couple nom/mdp ne peut dï¿½jï¿½ exister en base
+		if (this.maDAO.trouver(s.getId()) == null) {
+			return ERREUR_UTILISATEUR_EXISTANT;
+		}
+		// tout est ok, on peut faire la modification
+		if (maDAO.modifier(s))
+			return MODIFICATION_OK;
+		// Il y a eu un problï¿½me lmors de l'opï¿½ration en bdd
+		return MODIFICATION_BDD_PB;
+	}
+
+	@Override
+	public long supprimer(Stagiaire s) {
+		// l'utilisateur a bien un id
+		if (s.getId() >= 0) {
+			return supprimer(s.getId());
+		}
+		// Il y a eu un problï¿½me lmors de l'opï¿½ration en bdd
+		return UTILISATEUR_SANS_ID;
+	}
+
+	@Override
+	public long supprimer(long id) {
+		if (maDAO.supprimer(id))
+			return MODIFICATION_OK;
+		// Il y a eu un problï¿½me lmors de l'opï¿½ration en bdd
+		return MODIFICATION_BDD_PB;
+	}
+
+	@Override
+	public List<Stagiaire> liste() {
 		return this.maDAO.liste();
 	}
 

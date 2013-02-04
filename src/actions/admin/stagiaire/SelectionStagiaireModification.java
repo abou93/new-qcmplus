@@ -11,37 +11,36 @@ import org.apache.struts2.interceptor.SessionAware;
 import services.StagiaireImplementService;
 import services.StagiaireService;
 import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class SelectionStagiaireModification extends ActionSupport implements SessionAware{
 	// Variables pour jsp
 	private String titre;
 	private Stagiaire s;
-	private List<Utilisateur> listeStagiaires;
+	private List<Stagiaire> listeStagiaires;
 	//select
 	private long sid;
 	// session pour stocker les attributs
 		private Map<String, Object> session;
 	
 
-	// service pour gérer les utilisateurs
-	StagiaireService userv = new StagiaireImplementService();
+	// service pour gï¿½rer les utilisateurs
+	StagiaireService sserv = new StagiaireImplementService();
 
 	// action de login
 	@Override
 	public String execute() {
 		System.out.println("actions.admin.stagiaire.modification.selection");
 		//liste des stagiaires
-		setListeStagiaires(userv.liste());
+		setListeStagiaires(sserv.liste());
 		//titre de la page
 		setTitre(getText("Titre.stagiaire.modification"));
-		s = (Stagiaire) userv.trouverParId(sid);
+		s = (Stagiaire) sserv.trouverParId(sid);
 		//mise en session de l'id
 		session.put("sid", sid);
 		return SUCCESS;
@@ -63,12 +62,12 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 		this.s = s;
 	}
 
-	public List<Utilisateur> getListeStagiaires() {
+	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
 
-	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
-		this.listeStagiaires = listeStagiaires;
+	public void setListeStagiaires(List<Stagiaire> list) {
+		this.listeStagiaires = list;
 	}
 
 	public long getSid() {

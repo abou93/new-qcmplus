@@ -11,22 +11,21 @@ import org.apache.struts2.interceptor.SessionAware;
 import services.StagiaireImplementService;
 import services.StagiaireService;
 import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class SupprimerStagiaire extends ActionSupport implements SessionAware{
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
-	private List<Utilisateur> listeStagiaires;
+	private List<Stagiaire> listeStagiaires;
 	private long sid;
 
-	// service pour gérer les utilisateurs
+	// service pour gï¿½rer les utilisateurs
 	StagiaireService userv = new StagiaireImplementService();
 	private Map<String, Object> session;
 
@@ -34,11 +33,11 @@ public class SupprimerStagiaire extends ActionSupport implements SessionAware{
 	@Override
 	public String execute() {
 		System.out.println("actions.admin.stagiaire.supprimer");
-		// titre de la fenêtre
-		titre = getText("Titre.stagiaire.supprimer" + " : étape 3");
+		// titre de la fenï¿½tre
+		titre = getText("Titre.stagiaire.supprimer" + " : ï¿½tape 3");
 		setListeStagiaires(userv.liste());
 
-		// récupération de l'id en session
+		// rï¿½cupï¿½ration de l'id en session
 		s.setId((Long)session.get("sid"));
 
 		// tentative de modification du stagiaire
@@ -49,7 +48,7 @@ public class SupprimerStagiaire extends ActionSupport implements SessionAware{
 			addActionError(getText("Erreur.suppression.stagiaire"));
 			return ERROR;
 		}
-		// message de confirmation et retour à l'interface de gestion
+		// message de confirmation et retour ï¿½ l'interface de gestion
 		addActionMessage(getText("Confirmation.suppression.stagiaire"));
 		return SUCCESS;
 	}
@@ -84,12 +83,12 @@ public class SupprimerStagiaire extends ActionSupport implements SessionAware{
 		this.titre = titre;
 	}
 
-	public List<Utilisateur> getListeStagiaires() {
+	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
 
-	public void setListeStagiaires(List<Utilisateur> listeStagiaires) {
-		this.listeStagiaires = listeStagiaires;
+	public void setListeStagiaires(List<Stagiaire> list) {
+		this.listeStagiaires = list;
 	}
 
 	public long getSid() {
