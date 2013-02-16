@@ -21,15 +21,15 @@ html,body {
 }
 
 .form {
-	height: 150px;
-	width: 300px;
+	height: auto;
+	width: auto;
 	margin: 10px;
 	padding: 0;
 }
 
 .formList {
-	height: 150px;
-	width: 150px;
+	height: 200px;
+	width: auto;
 	margin: 10px;
 	padding: 0;
 }

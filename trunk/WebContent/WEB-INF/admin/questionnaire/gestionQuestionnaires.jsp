@@ -9,17 +9,17 @@
 	type="text/css" />
 <script type="text/javascript" src="/js/menu.js"></script>
 </head>
-<body>
-	<p>
-		Administrateur
-		<s:property value="%{#session.utilisateur.nom}" />
-	</p>
+<body>	
+	<div class="titleDiv">Gestion des questionnaires</div>
 
 	<div id="menu">
 		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
 	</div>
-
-	<div class="titleDiv">Gestion des questionnaires</div>
+	
+	<p>
+		Administrateur
+		<s:property value="%{#session.utilisateur.nom}" />
+	</p>
 
 	<s:actionerror />
 

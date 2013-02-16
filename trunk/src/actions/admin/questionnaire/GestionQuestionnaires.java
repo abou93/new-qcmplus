@@ -21,7 +21,6 @@ public class GestionQuestionnaires extends ActionSupport implements SessionAware
 
 		@Override
 		public void setSession(Map<String, Object> session) {
-			// TODO Auto-generated method stub
 			this.session = session;
 		}
 }

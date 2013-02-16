@@ -25,7 +25,7 @@ public class ModifierQuestionnaire extends ActionSupport implements SessionAware
 	private static final long serialVersionUID = 1L;
 	private List<Questionnaire> listeQuestionnaires;
 	
-	private Questionnaire monQuestionnaire;
+	private Questionnaire qr;
 	
 	private long questionnaireSelected;
 	
@@ -38,13 +38,12 @@ public class ModifierQuestionnaire extends ActionSupport implements SessionAware
 		@Override
 		public String execute() {
 			listeQuestionnaires = qserv.listerQuestionnaires();
-			setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
+			setQr(qserv.trouverQuestionnaire(questionnaireSelected));
 			return SUCCESS;
 		}
 		
 		@Override
 		public void setSession(Map<String, Object> session) {
-			// TODO Auto-generated method stub
 			this.session = session;
 		}
 
@@ -64,12 +63,12 @@ public class ModifierQuestionnaire extends ActionSupport implements SessionAware
 			this.questionnaireSelected = questionnaireSelected;
 		}
 
-		public Questionnaire getMonQuestionnaire() {
-			return monQuestionnaire;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setMonQuestionnaire(Questionnaire monQuestionnaire) {
-			this.monQuestionnaire = monQuestionnaire;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 
 	

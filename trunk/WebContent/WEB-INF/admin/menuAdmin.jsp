@@ -2,8 +2,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <ul id="menu">
 	<li>
-    <s:url value="/accueil" var="url_accueil"/>
-    <a href='<s:property value="url_accueil"/>'><s:text name="Menu.accueil"/></a>
+    <s:url value="/admin/accueilAdmin" var="url_accueil_admin"/>
+    <a href='<s:property value="#url_accueil_admin"/>'><s:text name="Menu.accueil"/></a>
     </li>
         
     <li>

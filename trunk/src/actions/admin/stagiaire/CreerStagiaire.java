@@ -10,7 +10,7 @@ import beans.Stagiaire;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class CreerStagiaire extends ActionSupport {
@@ -18,7 +18,7 @@ public class CreerStagiaire extends ActionSupport {
 		private Stagiaire s;
 		private String titre;
 
-		// service pour g�rer les utilisateurs
+		// service pour g�rer les stagiaires
 		StagiaireService sserv = new StagiaireImplementService();
 
 		// action de login

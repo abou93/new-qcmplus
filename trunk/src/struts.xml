@@ -56,10 +56,10 @@
 		<action name="selectModifierQuestionnaire" class="actions.admin.questionnaire.SelectModifierQuestionnaire">
 			<result name="success">/WEB-INF/admin/questionnaire/modifierQuestionnaire.jsp</result>
 		</action>
-		<action name="selectValiderQuestionnaire" class="actions.admin.questionnaire.ValiderSelectModifierQuestionnaire">
+		<action name="selectValiderQuestionnaire" class="actions.admin.questionnaire.ValiderModifierQuestionnaire">
 			<result name="success">/WEB-INF/admin/questionnaire/gestionQuestionnaires.jsp</result>
 		</action>
-		<action name="afficherSupprimerQuestionnaire" class="actions.admin.questionnaire.AfficherSupprimerQuestionnaire">
+		<action name="supprimerQuestionnaire" class="actions.admin.questionnaire.SupprimerQuestionnaire">
 			<result name="success">/WEB-INF/admin/questionnaire/supprimerQuestionnaire.jsp</result>
 		</action>
 		<action name="selectSupprimerQuestionnaire" class="actions.admin.questionnaire.SelectSupprimerQuestionnaire">

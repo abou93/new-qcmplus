@@ -10,14 +10,13 @@
 <title><s:text name="Titre.stagiaire.parcours" /></title>
 </head>
 <body>
-
-	<div id="menu">
-		<s:include value="../menuStagiaire.jsp" />
-	</div>
-	<br />
+	
 	<div class="titleDiv">
 		<s:text name="Titre.stagiaire.parcours" />
+	</div><div id="menu">
+		<s:include value="/WEB-INF/stagiaire/menuStagiaire.jsp" />
 	</div>
+	<br />
 
 	<s:actionerror />
 	<br>

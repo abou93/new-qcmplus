@@ -5,28 +5,34 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
 	type="text/css" />
+<title><s:text name="Titre.questionnaire.modifier" /></title>
 </head>
 <body>
-	<div class="titleDiv">Modifier un questionnaire</div>
+	<div class="titleDiv"><s:text name="Titre.questionnaire.modifier" /></div>
 
 	<div id="menu">
 		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
 	</div>
-	<br/>
-	<s:form action="selectModifierQuestionnaire">
+	<br />
+	<div class="formList">
+		<s:form action="selectModifierQuestionnaire">
+			<s:include value="selectionQuestionnaire.jsp" />
+			
+		</s:form>
+	</div>
+
+	<s:if test="qr != null">
 	
-	  	<s:select name="questionnaireSelected" list="listeQuestionnaires" listValue="nom+' ' +description" size="10" listKey="id"/>
-	 	<s:submit value="Modifier" name="modifier" />    
-	
-	</s:form>
-	
-	<s:form action="selectValiderQuestionnaire">
-	
-	  	<s:textfield name="monQuestionnaire.nom"  label="Nom" size="40"/>
-		<s:textarea name="monQuestionnaire.description" label="Description" cols="30" rows="3"/>
-		<s:submit value="Valider" name="valider" />
-	</s:form>
+		<s:actionerror />
+		
+		<div class="form">
+			<s:form action="selectValiderQuestionnaire">
+				<s:include value="formulaireQuestionnaire.jsp" />
+				<s:submit key="Bouton.modifier" cssClass="butStnd" />
+			</s:form>
+		</div>
+	</s:if>
 </body>
 </html>

@@ -4,17 +4,15 @@
 package actions.admin.stagiaire;
 
 import java.util.List;
-import java.util.Set;
 
 import services.StagiaireImplementService;
 import services.StagiaireService;
 import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class ListeStagiaires extends ActionSupport {
@@ -78,7 +76,8 @@ public class ListeStagiaires extends ActionSupport {
 	}
 
 	/**
-	 * @param listeStagiaires the listeStagiaires to set
+	 * @param listeStagiaires
+	 *            the listeStagiaires to set
 	 */
 	public void setListeStagiaires(List<Stagiaire> listeStagiaires) {
 		this.listeStagiaires = listeStagiaires;

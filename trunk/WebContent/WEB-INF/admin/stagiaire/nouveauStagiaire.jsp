@@ -25,6 +25,7 @@
 	<div class="form">
 		<s:form action="creerStagiaire">
 			<s:include value="formulaireStagiaire.jsp" />
+			<s:submit key="Bouton.creer" cssClass="butStnd" />
 		</s:form>
 	</div>
 

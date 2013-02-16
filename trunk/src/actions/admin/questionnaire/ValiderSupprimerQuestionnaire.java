@@ -26,7 +26,7 @@ public class ValiderSupprimerQuestionnaire extends ActionSupport implements Sess
 //	private List<Questionnaire> listeQuestionnaires;
 //	private long questionnaireSelected;
 	
-	private Questionnaire monQuestionnaire, monQuestionnaireSession;
+	private Questionnaire qr, monQuestionnaireSession;
 	
 	private Map<String, Object> session;
 	
@@ -37,8 +37,8 @@ public class ValiderSupprimerQuestionnaire extends ActionSupport implements Sess
 			//listeQuestionnaires = qrserv.listerQuestionnaires();
 			//setMonQuestionnaire(qrserv.trouverQuestionnaire(questionnaireSelected));
 			monQuestionnaireSession = (Questionnaire) session.get("ancienQuestionnaireEnSession");
-			monQuestionnaire.setId(monQuestionnaireSession.getId()) ;
-			qserv.supprimer(monQuestionnaire);
+			qr.setId(monQuestionnaireSession.getId()) ;
+			qserv.supprimer(qr);
 			return SUCCESS;
 		}
 		
@@ -64,12 +64,12 @@ public class ValiderSupprimerQuestionnaire extends ActionSupport implements Sess
 //			this.questionnaireSelected = questionnaireSelected;
 //		}
 
-		public Questionnaire getMonQuestionnaire() {
-			return monQuestionnaire;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setMonQuestionnaire(Questionnaire monQuestionnaire) {
-			this.monQuestionnaire = monQuestionnaire;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 
 	

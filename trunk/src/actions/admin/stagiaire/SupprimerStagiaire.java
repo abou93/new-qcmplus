@@ -15,10 +15,10 @@ import beans.Stagiaire;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
-public class SupprimerStagiaire extends ActionSupport implements SessionAware{
+public class SupprimerStagiaire extends ActionSupport implements SessionAware {
 	// Variables pour jsp
 	private Stagiaire s;
 	private String titre;
@@ -86,6 +86,7 @@ public class SupprimerStagiaire extends ActionSupport implements SessionAware{
 	public List<Stagiaire> getListeStagiaires() {
 		return listeStagiaires;
 	}
+
 
 	public void setListeStagiaires(List<Stagiaire> list) {
 		this.listeStagiaires = list;

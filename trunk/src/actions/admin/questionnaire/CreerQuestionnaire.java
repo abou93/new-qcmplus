@@ -20,7 +20,7 @@ public class CreerQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
-	private Questionnaire q;
+	private Questionnaire qr;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -30,25 +30,24 @@ public class CreerQuestionnaire extends ActionSupport implements SessionAware{
 	
 		@Override
 		public String execute() {
-			qserv.creer(q);
+			qserv.creer(qr);
 			return SUCCESS;
 		}
 		
 		
 		@Override
 		public void setSession(Map<String, Object> session) {
-			// TODO Auto-generated method stub
 			this.session = session;
 		}
 
 
-		public Questionnaire getQ() {
-			return q;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
 
-		public void setQ(Questionnaire q) {
-			this.q = q;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 		
 }

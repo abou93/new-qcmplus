@@ -5,8 +5,8 @@ package dao;
 
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  *
  */
-public interface AdministrateurDAO extends UtilisateurDAO{
+public interface AdministrateurDAO {
 }
