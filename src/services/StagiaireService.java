@@ -7,25 +7,23 @@ import java.util.List;
 
 import beans.Stagiaire;
 
-
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
- *
+ * @author Stephane Sikora & Frederic Aubry
+ * 
  */
 public interface StagiaireService {
-
-	long creer(Stagiaire s);
-
-	long modifier(Stagiaire s);
-
-	long supprimer(Stagiaire s);
-
-	long supprimer(long id);
-
-	List<Stagiaire> liste();
-
-	Stagiaire trouverParId(long sid);
-
-	Stagiaire trouverParNomEtMdp(String nom, String mdp);
 	
+	public long creer(Stagiaire s);
+	
+	public Stagiaire trouverParNomEtMdp(String nom, String mdp);
+	
+	public Stagiaire trouverParId(Long id);
+
+	public long modifier(Stagiaire s);
+
+	public long supprimer(Stagiaire s);
+
+	public long supprimer(long id);
+
+	public List<Stagiaire> liste();
 }

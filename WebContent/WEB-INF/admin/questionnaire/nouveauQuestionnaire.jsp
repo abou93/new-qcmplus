@@ -7,10 +7,11 @@
 	type="text/css" />
 	<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
 	type="text/css" />
+	<title><s:text name="Titre.questionnaire.nouveau" /></title>
 </head>
 <body>
 	<div class="titleDiv">
-		Nouveau Questionnaire
+		<s:text name="Titre.questionnaire.nouveau" />
 	</div>
 	<div id="menu">
 		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
@@ -21,11 +22,8 @@
 
 	<s:form action="creerQuestionnaire">
 		
-			<s:textfield name="q.nom" size="30" cssClass="tdLabel" key="Label.nom" />
-			<s:textfield name="q.description" size="100" cssClass="tdLabel" key="Description" />
-		
-		<br />			
-			<s:submit key="Bouton.valider" cssClass="butStnd" />
+			<s:include value="formulaireQuestionnaire.jsp" />			
+			<s:submit key="Bouton.creer" cssClass="butStnd" />
 
 	</s:form>
 </body>

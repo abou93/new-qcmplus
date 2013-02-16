@@ -28,7 +28,6 @@ public class SelectionStagiaireModification extends ActionSupport implements Ses
 	// session pour stocker les attributs
 		private Map<String, Object> session;
 	
-
 	// service pour g�rer les utilisateurs
 	StagiaireService sserv = new StagiaireImplementService();
 

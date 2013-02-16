@@ -7,38 +7,39 @@ import java.util.List;
 
 import beans.Stagiaire;
 
-
 /**
  * @author Stéphane Sikora & Frédéric Aubry
  *
  */
 public interface StagiaireDAO {
+	
 	/**
-	 * @param s
-	 * @return id du stagiaire crée
+	 * @param u
+	 * @return id du stagiaire cree
 	 */
 	public long creer(Stagiaire s);
-
+	
 	/**
 	 * @param id
-	 * @return L'utilisateur
+	 * @return Le stagiaire
 	 */
 	public Stagiaire trouver(long id);
+	
 	/**
 	 * @param nom
 	 * @param mdp
-	 * @return L'utilisateur
+	 * @return Le stagiaire
 	 */
 	public Stagiaire trouver(String nom, String mdp);
-
+	
 	/**
-	 * @param s
+	 * @param u
 	 * @return
 	 */
 	public boolean modifier(Stagiaire s);
 	
 	/**
-	 * @param s
+	 * @param u
 	 * @return
 	 */
 	public boolean supprimer(Stagiaire s);
@@ -53,4 +54,5 @@ public interface StagiaireDAO {
 	 * @return la liste des stagiaires
 	 */
 	public List<Stagiaire> liste();
+
 }

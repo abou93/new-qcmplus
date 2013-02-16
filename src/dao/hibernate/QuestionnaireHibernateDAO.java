@@ -15,7 +15,7 @@ import beans.Questionnaire;
 import dao.QuestionnaireDAO;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
@@ -23,13 +23,13 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	private final static long ECHEC_CREATION = 0;
 	/**
 	 * @param u
-	 * @return id du questionnaire créé
+	 * @return id du questionnaire crï¿½ï¿½
 	 */
 	public long creer(Questionnaire q) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx=null;
 		try {
-			//début de transaction
+			//dï¿½but de transaction
 			tx = session.beginTransaction();
 			//persistance de l'objet
 			session.save(q);
@@ -42,7 +42,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 			e.printStackTrace();
 			return ECHEC_CREATION;
 		} finally {
-			//fermeture de session systématique
+			//fermeture de session systï¿½matique
 			session.close();
 		}
 
@@ -109,7 +109,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 	 * @return
 	 */
 	public boolean supprimer(Questionnaire q) {
-		return false;
+		return supprimer(q.getId());
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class QuestionnaireHibernateDAO implements QuestionnaireDAO{
 					.createQuery("FROM Questionnaire AS q WHERE q.estSupprime=:suppr");
 			q.setBoolean("suppr", false);
 			List<Questionnaire> maListeQuestionnaire = (List<Questionnaire>) q.list();
-			System.out.println("Nombre d'éléments de ma liste:" +maListeQuestionnaire.size());
+			System.out.println("Nombre d'ï¿½lï¿½ments de ma liste:" +maListeQuestionnaire.size());
 			return maListeQuestionnaire;
 		} catch (RuntimeException e) {
 			return null;

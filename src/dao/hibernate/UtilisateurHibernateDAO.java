@@ -11,11 +11,11 @@ import beans.Utilisateur;
 import dao.UtilisateurDAO;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class UtilisateurHibernateDAO implements UtilisateurDAO {
-
+	
 	/**
 	 * @param id
 	 * @return L'utilisateur

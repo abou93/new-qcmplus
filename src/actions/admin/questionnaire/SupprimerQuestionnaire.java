@@ -2,30 +2,23 @@ package actions.admin.questionnaire;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import services.QuestionnaireImplementService;
 import services.QuestionnaireService;
-import services.UtilisateurImplementService;
-import services.UtilisateurService;
-
-import beans.Administrateur;
 import beans.Questionnaire;
-import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AfficherSupprimerQuestionnaire extends ActionSupport implements SessionAware{
+public class SupprimerQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private List<Questionnaire> listeQuestionnaires;
 	
-	private Questionnaire monQuestionnaire;
+	private Questionnaire qr;
 	
 	private long questionnaireSelected;
 	
@@ -44,7 +37,6 @@ public class AfficherSupprimerQuestionnaire extends ActionSupport implements Ses
 		
 		@Override
 		public void setSession(Map<String, Object> session) {
-			// TODO Auto-generated method stub
 			this.session = session;
 		}
 
@@ -64,12 +56,12 @@ public class AfficherSupprimerQuestionnaire extends ActionSupport implements Ses
 			this.questionnaireSelected = questionnaireSelected;
 		}
 
-		public Questionnaire getMonQuestionnaire() {
-			return monQuestionnaire;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setMonQuestionnaire(Questionnaire monQuestionnaire) {
-			this.monQuestionnaire = monQuestionnaire;
+		public void setMonQuestionnaire(Questionnaire qr) {
+			this.qr = qr;
 		}
 
 	

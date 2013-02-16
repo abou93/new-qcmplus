@@ -3,8 +3,8 @@
 <ul id="menu">
 
         <li>
-        	<s:url value="/accueil" var="url_accueil"/>
-            <a href='<s:property value="#url_accueil"/>'><s:text name="Menu.accueil"/></a>
+        	<s:url value="/stagiaire/accueilStagiaire" var="url_accueil_stagiaire"/>
+            <a href='<s:property value="#url_accueil_stagiaire"/>'><s:text name="Menu.accueil"/></a>
         </li>
         
         <li>

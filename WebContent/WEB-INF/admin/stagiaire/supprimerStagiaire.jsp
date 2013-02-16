@@ -29,6 +29,7 @@
 		<div class="form">
 			<s:form action="supprimerStagiaire" onsubmit="confirm('sur?');">
 				<s:include value="formulaireStagiaire.jsp" />
+				<s:submit key="Bouton.supprimer" cssClass="butStnd" />
 			</s:form>
 		</div>
 	</s:if>

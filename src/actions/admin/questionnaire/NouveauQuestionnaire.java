@@ -21,7 +21,7 @@ public class NouveauQuestionnaire extends ActionSupport implements SessionAware{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Questionnaire q = new Questionnaire();
+	private Questionnaire qr = new Questionnaire();
 	
 	private Map<String, Object> session;
 	
@@ -31,12 +31,12 @@ public class NouveauQuestionnaire extends ActionSupport implements SessionAware{
 			this.session = session;
 		}
 
-		public Questionnaire getQ() {
-			return q;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setQ(Questionnaire q) {
-			this.q = q;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 		
 		

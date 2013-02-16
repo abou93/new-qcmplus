@@ -5,27 +5,36 @@
 <head>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
+<link href="<s:url value="/css/menu.css"/>" rel="stylesheet"
 	type="text/css" />
+<title><s:text name="Titre.questionnaire.supprimer" /></title>
 </head>
 <body>
-	<div class="titleDiv">Supprimer un questionnaire</div>
+	<div class="titleDiv">
+		<s:text name="Titre.questionnaire.supprimer" />
+	</div>
 
 	<div id="menu">
 		<s:include value="/WEB-INF/admin/menuAdmin.jsp" />
 	</div>
-	<br/>
-	<s:form action="selectSupprimerQuestionnaire">
-	  	<s:select name="questionnaireSelected" list="listeQuestionnaires" listValue="nom+' ' +description" size="10" listKey="id"/>
-	 	<s:submit value="Supprimer" name="supprimer" />    
-	</s:form>
-	
-	<s:form action="validerSupprimerQuestionnaire">
+	<br />
+	<div class="formList">
+		<s:form action="selectSupprimerQuestionnaire">
+			<s:include value="selectionQuestionnaire.jsp" />
+			
+		</s:form>
+	</div>
 
-	  	<s:textfield name="monQuestionnaire.nom"  label="Nom" size="40"/>
-		<s:textarea name="monQuestionnaire.description" label="Description" cols="30" rows="3"/>
+	<s:if test="qr != null">
 
-		<s:submit value="Valider" name="valider" />
-	</s:form>
+		<s:actionerror />
+
+		<div class="form">
+			<s:form action="validerSupprimerQuestionnaire">
+				<s:include value="formulaireQuestionnaire.jsp" />
+				<s:submit key="Bouton.supprimer" cssClass="butStnd" />
+			</s:form>
+		</div>
+	</s:if>
 </body>
 </html>

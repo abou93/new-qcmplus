@@ -18,7 +18,7 @@ import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ValiderSelectModifierQuestionnaire extends ActionSupport implements SessionAware{
+public class ValiderModifierQuestionnaire extends ActionSupport implements SessionAware{
 		/**
 	 * 
 	 */
@@ -26,7 +26,7 @@ public class ValiderSelectModifierQuestionnaire extends ActionSupport implements
 //	private List<Questionnaire> listeQuestionnaires;
 //	private long questionnaireSelected;
 	
-	private Questionnaire monQuestionnaire, monQuestionnaireSession;
+	private Questionnaire qr, monQuestionnaireSession;
 	
 	private Map<String, Object> session;
 	
@@ -37,8 +37,8 @@ public class ValiderSelectModifierQuestionnaire extends ActionSupport implements
 			//listeQuestionnaires = qrserv.listerQuestionnaires();
 			//setMonQuestionnaire(qrserv.trouverQuestionnaire(questionnaireSelected));
 			monQuestionnaireSession = (Questionnaire) session.get("ancienQuestionnaireEnSession");
-			monQuestionnaire.setId(monQuestionnaireSession.getId()) ;
-			qserv.modifier(monQuestionnaire);
+			qr.setId(monQuestionnaireSession.getId()) ;
+			qserv.modifier(qr);
 			return SUCCESS;
 		}
 		
@@ -64,12 +64,12 @@ public class ValiderSelectModifierQuestionnaire extends ActionSupport implements
 //			this.questionnaireSelected = questionnaireSelected;
 //		}
 
-		public Questionnaire getMonQuestionnaire() {
-			return monQuestionnaire;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setMonQuestionnaire(Questionnaire monQuestionnaire) {
-			this.monQuestionnaire = monQuestionnaire;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 
 	

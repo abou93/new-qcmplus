@@ -14,28 +14,25 @@ import beans.Stagiaire;
 import dao.StagiaireDAO;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class StagiaireHibernateDAO implements StagiaireDAO {
+
 	private final static long ECHEC_CREATION = 0;
 
-
-	/**
-	 * @param u
-	 * @return id de l'utilisateur cr��
-	 */
-	public long creer(Stagiaire u) {
+	@Override
+	public long creer(Stagiaire s) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try {
 			// d�but de transaction
 			tx = session.beginTransaction();
 			// persistance de l'objet
-			session.save(u);
+			session.save(s);
 			// commit de la transaction
 			tx.commit();
-			return u.getId();
+			return s.getId();
 		} catch (RuntimeException e) {
 			// if(tx != null) tx.rollback();
 			// message d'erruer pour la console
@@ -47,10 +44,7 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 		}
 	}
 
-	/**
-	 * @param id
-	 * @return L'utilisateur
-	 */
+	@Override
 	public Stagiaire trouver(long id) {
 		// r�cup�ration de la session hibernate
 		Session session = HibernateUtil.getSession();
@@ -74,11 +68,7 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 		}
 	}
 
-	/**
-	 * @param nom
-	 * @param mdp
-	 * @return L'utilisateur
-	 */
+	@Override
 	public Stagiaire trouver(String nom, String mdp) {
 		// r�cup�ration de la session hibernate
 		Session session = HibernateUtil.getSession();
@@ -89,7 +79,7 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
 
 			Query q = session
-					.createQuery("from Stagiaire as u where u.nom =:lenom and u.motDePasse =:lemdp");
+					.createQuery("from Utilisateur as u where u.nom =:lenom and u.motDePasse =:lemdp");
 			q.setString("lenom", nom);
 			q.setString("lemdp", mdp);
 
@@ -103,18 +93,15 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 		}
 	}
 
-	/**
-	 * @param u
-	 * @return true si modification ok
-	 */
-	public boolean modifier(Stagiaire u) {
+	@Override
+	public boolean modifier(Stagiaire s) {
 		Session session;
 		session = HibernateUtil.getSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			session.update(u);
+			session.update(s);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// rollback si erreur
@@ -129,10 +116,7 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 		return true;
 	}
 
-	/**
-	 * @param u
-	 * @return
-	 */
+	@Override
 	public boolean supprimer(Stagiaire u) {
 		return supprimer(u.getId());
 	}
@@ -148,16 +132,13 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 		 */
 		// verification id valide (>0)
 		if (id > 0) {
-			Stagiaire u = trouver(id);
-			u.setEstSupprime(true);
-			return modifier(u);
+			Stagiaire s = trouver(id);
+			s.setEstSupprime(true);
+			return modifier(s);
 		}
 		return false;
 	}
-	
-	/**
-	 * @return la liste des stagiaires
-	 */
+
 	@Override
 	public List<Stagiaire> liste() {
 		Session session = HibernateUtil.getSession();
@@ -191,6 +172,4 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 			session.close();
 		}
 	}
-
-
 }

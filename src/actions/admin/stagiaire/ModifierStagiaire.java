@@ -11,12 +11,11 @@ import org.apache.struts2.interceptor.SessionAware;
 import services.StagiaireImplementService;
 import services.StagiaireService;
 import beans.Stagiaire;
-import beans.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class ModifierStagiaire extends ActionSupport implements SessionAware {
@@ -40,7 +39,7 @@ public class ModifierStagiaire extends ActionSupport implements SessionAware {
 
 		// r�cup�ration de l'id en session
 		s.setId((Long) session.get("sid"));
-		//tous les champs en minuscule
+		// tous les champs en minuscule
 		s.setNom(s.getNom().trim().toLowerCase());
 		s.setPrenom(s.getPrenom().trim().toLowerCase());
 		s.setSociete(s.getSociete().trim().toLowerCase());

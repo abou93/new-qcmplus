@@ -26,7 +26,7 @@ public class SelectModifierQuestionnaire extends ActionSupport implements Sessio
 	private List<Questionnaire> listeQuestionnaires;
 	private long questionnaireSelected;
 	
-	private Questionnaire monQuestionnaire;
+	private Questionnaire qr;
 	
 	private Map<String, Object> session;
 	
@@ -35,8 +35,8 @@ public class SelectModifierQuestionnaire extends ActionSupport implements Sessio
 		@Override
 		public String execute() {
 			listeQuestionnaires = qserv.listerQuestionnaires();
-			setMonQuestionnaire(qserv.trouverQuestionnaire(questionnaireSelected));
-			session.put("ancienQuestionnaireEnSession", monQuestionnaire);
+			setQr(qserv.trouverQuestionnaire(questionnaireSelected));
+			session.put("ancienQuestionnaireEnSession", qr);
 			return SUCCESS;
 		}
 		
@@ -62,12 +62,12 @@ public class SelectModifierQuestionnaire extends ActionSupport implements Sessio
 			this.questionnaireSelected = questionnaireSelected;
 		}
 
-		public Questionnaire getMonQuestionnaire() {
-			return monQuestionnaire;
+		public Questionnaire getQr() {
+			return qr;
 		}
 
-		public void setMonQuestionnaire(Questionnaire monQuestionnaire) {
-			this.monQuestionnaire = monQuestionnaire;
+		public void setQr(Questionnaire qr) {
+			this.qr = qr;
 		}
 
 	
