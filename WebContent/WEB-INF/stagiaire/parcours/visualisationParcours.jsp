@@ -19,7 +19,7 @@
 	<br />
 
 	<s:actionerror />
-	<br>
+	
 	<div class="formList">
 		<s:form action="visualisationParcours">
 			<%-- accès au questionnaires via le parcours - ! doublons ! 			
@@ -27,7 +27,7 @@
 			<%-- 				listKey="questionnaire.id" listValue="questionnaire.nom" size="5" /> --%>
 			<s:select name="qrid" theme="css_xhtml"
 				list="listeQuestionniairesStagiaire" listKey="id" listValue="nom"
-				size="5" />
+				size="10" />
 			<s:submit key="Bouton.parcours.effectues" cssClass="butStnd" name="selection" />
 
 		</s:form>
