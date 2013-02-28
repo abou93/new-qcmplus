@@ -18,7 +18,7 @@
         </li>
         
         <li>
-        	<s:url value="/accueil" var="url_accueil"/>
-            <a href='<s:property value="#url_accueil"/>'><s:text name="Menu.quitter"/></a>
-        </li>      
+        	<s:url value="/logout" var="url_logout"/>
+            <a href='<s:property value="#url_logout"/>'><s:text name="Menu.quitter"/></a>
+        </li>     
 </ul>
