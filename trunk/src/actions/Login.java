@@ -16,7 +16,7 @@ import beans.Utilisateur;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  * 
  */
 public class Login extends ActionSupport implements SessionAware {
@@ -28,7 +28,7 @@ public class Login extends ActionSupport implements SessionAware {
 	// session pour stocker les attributs
 	private Map<String, Object> session;
 
-	// service pour gérer les utilisateurs
+	// service pour gerer les utilisateurs (on ne sait pas encore si admin ou stagiaire)
 	UtilisateurService userv = new UtilisateurImplementService();
 
 	// action de login
@@ -43,26 +43,26 @@ public class Login extends ActionSupport implements SessionAware {
 //		System.out.println(userv.creer(new Administrateur("admin2", "pop")));
 		
 		/*
-		 * récupération de l'utilisateur avec suppression des espaces et mise en
-		 * minuslules préalables *
+		 * recuperaztion de l'authentification de l'utilisateur avec suppression des espaces et mise en
+		 * minuslules prealables 
 		 */
 		this.setNom(this.getNom().toLowerCase().trim());
 		this.setMdp(this.getMdp().toLowerCase().trim());
 		u = userv.trouverParNomEtMdp(this.getNom(), this.getMdp());
 
-		// utilisateur trouvé
+		// utilisateur trouvï¿½
 		if (u != null) {
 			System.out.println(u + " de type " + u.getClass());
 			/*
 			 * L'utilisateur existe bien en bdd : - verification de la paire
 			 * nom/mdp - avec mise en minuscules et suppression des espaces des
-			 * infos entrées par l'utilisateur = insensibilité à la casse
+			 * infos entrï¿½es par l'utilisateur = insensibilitï¿½ ï¿½ la casse
 			 */
 			if (u.getMotDePasse().equals(this.getMdp())
 					&& u.getNom().equals(this.getNom())) {
 				// mise de l'utilisateur en session pour utilisation future
 				session.put("utilisateurSession", u);
-				// redirection en fonction du rôle stagiaire ou admin ?
+				// redirection en fonction du rï¿½le stagiaire ou admin ?
 				if (u instanceof Stagiaire) {
 					return "stagiaire";
 				}

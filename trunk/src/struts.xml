@@ -31,6 +31,9 @@
 			<result name="stagiaire">/WEB-INF/stagiaire/accueilStagiaire.jsp</result>
 			<result name="error">/WEB-INF/index.jsp</result>
 		</action>
+		<action name="logout" class="actions.Logout">
+			<result name="success">/WEB-INF/index.jsp</result>
+		</action>
 
 	</package>
 	<package name="administrateur" extends="utilisateur"
