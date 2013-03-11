@@ -30,6 +30,8 @@ public class InitQuestionnaireGestionQuestion extends ActionSupport implements
 
 	@Override
 	public String execute() {
+		//A remplacer éventuellement par une trace de log
+				System.out.println(this.toString());
 		setListeQuestionnaires(qserv.listerQuestionnaires());
 		// mise en session de la liste des questionnaires
 		session.put("listeQuestionnairesSession", listeQuestionnaires);

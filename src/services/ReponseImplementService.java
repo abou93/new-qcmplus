@@ -3,6 +3,9 @@
  */
 package services;
 
+import java.util.List;
+
+import beans.Question;
 import beans.Reponse;
 import dao.ReponseDAO;
 import dao.hibernate.ReponseHibernateDAO;
@@ -19,7 +22,6 @@ public class ReponseImplementService implements ReponseService {
 	 * @param maDAO
 	 */
 	public ReponseImplementService() {
-		super();
 		this.maDAO = new ReponseHibernateDAO();
 	}
 
@@ -32,6 +34,11 @@ public class ReponseImplementService implements ReponseService {
 	public boolean modifier(Reponse r) {
 		return this.maDAO.modifier(r);
 		
+	}
+
+	@Override
+	public List<Reponse> listeReponses(Question q) {
+		return this.maDAO.listeReponses(q);
 	}
 	
 

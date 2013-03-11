@@ -62,6 +62,8 @@ public class NouvelleQuestion extends ActionSupport implements SessionAware {
 
 	@Override
 	public String execute() {
+		//A remplacer éventuellement par une trace de log
+				System.out.println(this.toString());
 		// recuperation de la liste des questionnaires chargee dans l'action
 		// initQuestionnaireNouvelleQuestion
 		setListeQuestionnaires((List<Questionnaire>) session

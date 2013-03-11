@@ -36,6 +36,8 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 	private List<Questionnaire> listeQuestionnaires;
 
 	private List<Question> listeQuestionsQuestionnaire;
+	
+	private List<Reponse> listeReponsesQuestion;
 
 	// les reponses possibles
 	// private Reponse reponse1;
@@ -63,6 +65,9 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 
 	@Override
 	public String execute() {
+		//A remplacer éventuellement par une trace de log
+		System.out.println(this.toString());
+		System.out.println("liste reponses Question : "+listeReponsesQuestion);
 		// recuperation de la liste des questionnaires chargee dans l'action
 		// initQuestionnaireNouvelleQuestion
 		setListeQuestionnaires((List<Questionnaire>) session
@@ -73,61 +78,46 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 		// mise en correspondance avec le questionnaire
 		setQ((Question) session.get("questionSession"));
 
-		// ajout des reponses a la question
-		// creation de la liste des reponses
-		// List<Reponse> listeReponses = new ArrayList<Reponse>();
-		// if (reponse1 != null && !"".equals(reponse1.getLibelle())) {
-		// reponse1.setQuestion(q);
-		// rserv.creer(reponse1);
-		// listeReponses.add(reponse1);
-		//
-		// }
-		// if (reponse2 != null && !"".equals(reponse2.getLibelle())) {
-		// reponse2.setQuestion(q);
-		// rserv.creer(reponse2);
-		// listeReponses.add(reponse2);
-		// }
-		// if (reponse3 != null && !"".equals(reponse3.getLibelle())) {
-		// reponse3.setQuestion(q);
-		// rserv.creer(reponse3);
-		// listeReponses.add(reponse3);
-		// }
-		// if (reponse4 != null && !"".equals(reponse4.getLibelle())) {
-		// reponse4.setQuestion(q);
-		// rserv.creer(reponse4);
-		// listeReponses.add(reponse4);
-		// }
-		// if (reponse5 != null && !"".equals(reponse5.getLibelle())) {
-		// reponse5.setQuestion(q);
-		// rserv.creer(reponse5);
-		// listeReponses.add(reponse5);
-		// }
+		// controle des reponses a la question : il doit y en avoir au moins 2 valides dont une correcte
+		int countValid = 0;
+		for (Iterator<Reponse> iterator = listeReponsesQuestion.iterator(); iterator.hasNext();) {
+			Reponse rep = (Reponse) iterator.next();
+			//si la reponse est valide, on la comptabilise
+			if (rep.getLibelle() != null && !"".equals(rep.getLibelle())) {
+				
+			}	
+			else {
+				// sinon ajout message d'erreur et renvoi vers le formulaire
+				//final String MESSAGE = "Reponse.erreur";
+				//this.addActionError(getText(MESSAGE));
+				//return ERROR;
+			}
+		}
+		//on associe les nouvelles reponses a la question
+		q.setListeReponses(listeReponsesQuestion);
+		
 
 		// affiche reponses pout ctrl
-		// for (Reponse reponse : listeReponses) {
-		// System.out.println(reponse);
-		// }
-
-		// q.setListeReponses(listeReponses);
+		int i=0;
+		for (Reponse reponse : listeReponsesQuestion) {
+			i++;
+		 System.out.println("reponse "+i+ " : "+reponse);
+		}
 
 		// tentative sauvegarde question -recuperation de l'id de la question
 		// sauvegarde
 		boolean modOk = qserv.modifier(q);
 		System.out.println("modification question : " + modOk);
-		//modif reponses
-		Iterator<Reponse> itRep = q.getListeReponses().iterator();
 		
-		while(itRep.hasNext()) {
-			rserv.modifier(itRep.next());
-		}
+		
 
-		// récupération de la liste des questions actuelles du questionnaire -
-		// ArrayList vide si null
-		setListeQuestionsQuestionnaire((List<Question>) session
-				.get("listeQuestionsSession"));
-		// ajout de la question a la liste (inutile puisque retour a la page de
-		// gestion)
-		// listeQuestionsQuestionnaire.add(q);
+//		// récupération de la liste des questions actuelles du questionnaire -
+//		// ArrayList vide si null
+//		setListeQuestionsQuestionnaire((List<Question>) session
+//				.get("listeQuestionsSession"));
+//		// ajout de la question a la liste (inutile puisque retour a la page de
+//		// gestion)
+//		// listeQuestionsQuestionnaire.add(q);
 		return SUCCESS;
 	}
 
@@ -195,6 +185,14 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 
 	public void setQ(Question q) {
 		this.q = q;
+	}
+
+	public List<Reponse> getListeReponsesQuestion() {
+		return listeReponsesQuestion;
+	}
+
+	public void setListeReponsesQuestion(List<Reponse> listeReponsesQuestion) {
+		this.listeReponsesQuestion = listeReponsesQuestion;
 	}
 
 	/**

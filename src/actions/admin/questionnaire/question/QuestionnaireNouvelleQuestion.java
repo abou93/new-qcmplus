@@ -49,6 +49,8 @@ public class QuestionnaireNouvelleQuestion extends ActionSupport implements Sess
 	
 		@Override
 		public String execute() {
+			//A remplacer éventuellement par une trace de log
+			System.out.println(this.toString());
 			//recuperation de la liste des questionnaires chargee dans l'action initQuestionnaireNouvelleQuestion
 			setListeQuestionnaires((List<Questionnaire>) session.get("listeQuestionnairesSession"));
 			//on recupere le questionnaire selectionne
