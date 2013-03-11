@@ -4,7 +4,9 @@
 package dao.hibernate;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,8 +14,10 @@ import dao.ReponseDAO;
 
 import utils.HibernateUtil;
 
+import beans.Parcours;
 import beans.Question;
 import beans.Reponse;
+import beans.Stagiaire;
 
 /**
  * @author St�phane Sikora & Fr�d�ric Aubry
@@ -67,7 +71,7 @@ public class ReponseHibernateDAO implements ReponseDAO {
 
 		try {
 			tx = session.beginTransaction();
-			session.update(r);
+			session.merge(r);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// rollback si erreur
@@ -116,7 +120,26 @@ public class ReponseHibernateDAO implements ReponseDAO {
 	/**
 	 * @return la liste des reponses � une question
 	 */
-	public ArrayList<Reponse> listeReponses(Question q) {
-		return null;
+	public List<Reponse> listeReponses(Question q) {
+		Session session = HibernateUtil.getSession();
+		try {
+			// session.beginTransaction();
+			// Query q =
+			// session.createSQLQuery("Select EVENT_ID, EVENT_DATE, title from events e where e.EVENT_ID =:eventId");
+			//"FROM User AS u INNER JOIN FETCH u.listProduct"
+
+			Query query = session
+					.createQuery("FROM Reponse AS r WHERE r.question=:question AND r.estSupprime=:suppr");
+			query.setEntity("question", q);
+			query.setBoolean("suppr", false);
+			List<Reponse> listeReponses = (List<Reponse>) query.list();
+			System.out.println("Liste reponses (base)"+listeReponses);
+			return listeReponses;
+		} catch (RuntimeException e) {
+			// if(tx != null) tx.rollback();
+			return null;
+		} finally {
+			session.close();
+		}
 	}
 }

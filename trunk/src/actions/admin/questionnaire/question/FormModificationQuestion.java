@@ -26,12 +26,8 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 	private List<Questionnaire> listeQuestionnaires;
 	
 	private List<Question> listeQuestionsQuestionnaire;
-	//les reponses possibles 
-	private Reponse reponse1;
-	private Reponse reponse2;
-	private Reponse reponse3;
-	private Reponse reponse4;
-	private Reponse reponse5;
+	//la liste des reponses possibles 
+	private List<Reponse> listeReponsesQuestion;
 	
 	/**
 	 * questionnaire selectionne
@@ -53,6 +49,8 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 	
 		@Override
 		public String execute() {
+			//A remplacer éventuellement par une trace de log
+			System.out.println(this.toString());
 			//recuperation de la liste des questionnaires chargee dans l'action initQuestionnaireNouvelleQuestion
 			setListeQuestionnaires((List<Questionnaire>) session.get("listeQuestionnairesSession"));
 			//on recupere le questionnaire selectionne en session
@@ -63,7 +61,17 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 			//récupération de la question
 			setQ(qserv.trouver(qid));
 			session.put("questionSession", q);
-				
+			
+			//On doit verifier le nombre de reponses dans la question et completer à 5 par des reponses vides 
+			//si necessaire
+			listeReponsesQuestion = q.getListeReponses();
+			int nbReponses = listeReponsesQuestion.size();
+			while (nbReponses <5) {
+				Reponse rep = new Reponse();
+				listeReponsesQuestion.add(rep);
+				nbReponses++;
+			}
+			System.out.println("listeReponses : "+listeReponsesQuestion);			
 			return SUCCESS;
 		}
 		
@@ -120,76 +128,6 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 		}
 
 		/**
-		 * @return the reponse1
-		 */
-		public Reponse getReponse1() {
-			return reponse1;
-		}
-
-		/**
-		 * @param reponse1 the reponse1 to set
-		 */
-		public void setReponse1(Reponse reponse1) {
-			this.reponse1 = reponse1;
-		}
-
-		/**
-		 * @return the reponse2
-		 */
-		public Reponse getReponse2() {
-			return reponse2;
-		}
-
-		/**
-		 * @param reponse2 the reponse2 to set
-		 */
-		public void setReponse2(Reponse reponse2) {
-			this.reponse2 = reponse2;
-		}
-
-		/**
-		 * @return the reponse3
-		 */
-		public Reponse getReponse3() {
-			return reponse3;
-		}
-
-		/**
-		 * @param reponse3 the reponse3 to set
-		 */
-		public void setReponse3(Reponse reponse3) {
-			this.reponse3 = reponse3;
-		}
-
-		/**
-		 * @return the reponse4
-		 */
-		public Reponse getReponse4() {
-			return reponse4;
-		}
-
-		/**
-		 * @param reponse4 the reponse4 to set
-		 */
-		public void setReponse4(Reponse reponse4) {
-			this.reponse4 = reponse4;
-		}
-
-		/**
-		 * @return the reponse5
-		 */
-		public Reponse getReponse5() {
-			return reponse5;
-		}
-
-		/**
-		 * @param reponse5 the reponse5 to set
-		 */
-		public void setReponse5(Reponse reponse5) {
-			this.reponse5 = reponse5;
-		}
-
-		/**
 		 * @param session the session to set
 		 */
 		public void setSession(Map<String, Object> session) {
@@ -222,6 +160,14 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 
 		public void setQid(long qid) {
 			this.qid = qid;
+		}
+
+		public List<Reponse> getListeReponsesQuestion() {
+			return listeReponsesQuestion;
+		}
+
+		public void setListeReponsesQuestion(List<Reponse> listeReponsesQuestion) {
+			this.listeReponsesQuestion = listeReponsesQuestion;
 		}
 		
 	

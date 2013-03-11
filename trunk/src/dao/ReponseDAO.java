@@ -3,19 +3,19 @@
  */
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import beans.Question;
 import beans.Reponse;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stï¿½phane Sikora & Frï¿½dï¿½ric Aubry
  *
  */
 public interface ReponseDAO {
 	/**
 	 * @param r
-	 * @return id de la reponse créée
+	 * @return id de la reponse crï¿½ï¿½e
 	 */
 	public long creer(Reponse r);
 
@@ -53,10 +53,10 @@ public interface ReponseDAO {
 	/**
 	 * @return la liste des reponses
 	 */
-	public ArrayList<Reponse> listeReponses();
+	public List<Reponse> listeReponses();
 	
 	/**
-	 * @return la liste des reponses à une question
+	 * @return la liste des reponses ï¿½ une question
 	 */
-	public ArrayList<Reponse> listeReponses(Question q);
+	public List<Reponse> listeReponses(Question q);
 }

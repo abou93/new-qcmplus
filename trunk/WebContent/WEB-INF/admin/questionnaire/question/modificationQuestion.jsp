@@ -44,7 +44,7 @@
 	<!--</s:if>-->
 	<!-- FIN affichage liste questions questionnaire -->
 
-	<!-- DEBUT formulaire nouvelle question  -->
+	<!-- DEBUT formulaire modification question  -->
 
 	<form action="modifierQuestion">
 	
@@ -53,8 +53,10 @@
 
 		<!-- DEBUT affichage reponses -->
 		
-		<s:iterator value="q.listeReponses" status="status" var="reponse">
-			<s:textfield name="#reponse.libelle"/><s:checkbox name="#reponse.estCorrecte"/>			
+		<s:iterator value="listeReponsesQuestion" status="status" var="reponse" >
+			<s:hidden value="%{#reponse.id}" name="listeReponsesQuestion[%{#status.count-1}].id"/>
+			<s:textfield value="%{#reponse.libelle}" name="listeReponsesQuestion[%{#status.count-1}].libelle"/>
+			<s:checkbox value="%{#reponse.estCorrecte}" name="listeReponsesQuestion[%{#status.count-1}].estCorrecte"/>			
 		</s:iterator>
 		
 
@@ -64,7 +66,7 @@
 		
 	</form>
 
-	<!-- FIN formulaire nouvelle question -->
+	<!-- FIN formulaire modification question -->
 	</s:if>
 </body>
 </html>
