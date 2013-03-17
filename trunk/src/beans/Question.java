@@ -4,6 +4,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -66,6 +67,8 @@ public class Question implements Serializable{
 		 */
 	public Question() {
 		super();
+		//initialisation de la liste des réponses
+		setListeReponses(new ArrayList<Reponse>());
 	}
 
 	/**

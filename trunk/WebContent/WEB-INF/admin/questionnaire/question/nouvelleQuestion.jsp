@@ -29,34 +29,21 @@
 	<s:if test="qr != null">
 		<s:textfield name="qr.nom" size="30" cssClass="tdLabel" key="Label.nom" disabled="true"/>
 		<s:textfield name="qr.description" size="100" cssClass="tdLabel" key="Label.description" disabled="true"/>
-	
 	<!-- FIN affichage questionnaire -->
 
 	<!-- DEBUT affichage liste questions questionnaire -->
-	<!--<s:if test="listeQuestionsQuestionnaire != null">-->
+	<s:if test="listeQuestionsQuestionnaire != null">
+	<br/>
 		<s:select name="QuestionsQuestionnaire" list="listeQuestionsQuestionnaire" listValue="intitule" size="10" listKey="id" />		
-	<!--</s:if>-->
+	</s:if>
 	<!-- FIN affichage liste questions questionnaire -->
-
+	<br/>
 	<!-- DEBUT formulaire nouvelle question  -->
 
+	<s:actionerror />
 	<form action="nouvelleQuestion">
 	
-		<s:textarea name="q.intitule" key="Label.intitule"/>
-		<br>
-
-		<!-- DEBUT affichage reponses -->
-		
-		
-			<s:textfield name="reponse1.libelle"/><s:checkbox name="reponse1.estCorrecte"/>
-			<s:textfield name="reponse2.libelle"/><s:checkbox name="reponse2.estCorrecte"/>
-			<s:textfield name="reponse3.libelle"/><s:checkbox name="reponse3.estCorrecte"/>
-			<s:textfield name="reponse4.libelle"/><s:checkbox name="reponse4.estCorrecte"/>
-			<s:textfield name="reponse5.libelle"/><s:checkbox name="reponse5.estCorrecte"/>
-			
-		
-
-		<!-- FIN affichage reponses -->
+		<s:include value="formulaireQuestion.jsp"/>
 		
 		<s:submit key="Bouton.valider" cssClass="butStnd" name="validerQuestion"/>
 		

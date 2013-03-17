@@ -36,15 +36,13 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 	private List<Questionnaire> listeQuestionnaires;
 
 	private List<Question> listeQuestionsQuestionnaire;
-	
-	private List<Reponse> listeReponsesQuestion;
 
 	// les reponses possibles
-	// private Reponse reponse1;
-	// private Reponse reponse2;
-	// private Reponse reponse3;
-	// private Reponse reponse4;
-	// private Reponse reponse5;
+	private Reponse reponse1;
+	private Reponse reponse2;
+	private Reponse reponse3;
+	private Reponse reponse4;
+	private Reponse reponse5;
 
 	/**
 	 * questionnaire selectionne
@@ -59,66 +57,69 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 	private Question q;
 
 	// pour acces bdd
-	QuestionnaireService qrserv = new QuestionnaireImplementService();
-	ReponseService rserv = new ReponseImplementService();
+	// QuestionnaireService qrserv = new QuestionnaireImplementService();
+	// ReponseService rserv = new ReponseImplementService();
 	QuestionService qserv = new QuestionImplementService();
 
 	@Override
 	public String execute() {
-		//A remplacer éventuellement par une trace de log
+		// A remplacer éventuellement par une trace de log
 		System.out.println(this.toString());
-		System.out.println("liste reponses Question : "+listeReponsesQuestion);
+		System.out.println("liste reponses Question : " + q.getListeReponses());
 		// recuperation de la liste des questionnaires chargee dans l'action
 		// initQuestionnaireNouvelleQuestion
-		setListeQuestionnaires((List<Questionnaire>) session
-				.get("listeQuestionnairesSession"));
+		setListeQuestionnaires((List<Questionnaire>) session.get("listeQuestionnairesSession"));
 		// on recupere le questionnaire selectionne en session
 		setQr((Questionnaire) session.get("questionnaireSession"));
 
 		// mise en correspondance avec le questionnaire
 		setQ((Question) session.get("questionSession"));
 
-		// controle des reponses a la question : il doit y en avoir au moins 2 valides dont une correcte
-		int countValid = 0;
-		for (Iterator<Reponse> iterator = listeReponsesQuestion.iterator(); iterator.hasNext();) {
-			Reponse rep = (Reponse) iterator.next();
-			//si la reponse est valide, on la comptabilise
-			if (rep.getLibelle() != null && !"".equals(rep.getLibelle())) {
-				
-			}	
-			else {
-				// sinon ajout message d'erreur et renvoi vers le formulaire
-				//final String MESSAGE = "Reponse.erreur";
-				//this.addActionError(getText(MESSAGE));
-				//return ERROR;
-			}
+		// on associe les nouvelles reponses a la question
+		// recuperation de la liste des reponses 
+		List<Reponse> listeReponses = q.getListeReponses();
+		//on reconstitue la liste avec les nouvelles reponses
+		// association des reponses a la question et ajout a la liste
+		reponse1.setQuestion(q);
+		//recuperation de l'id de la reponse 1 de la question
+		reponse1.setId(listeReponses.get(0).getId());
+		listeReponses.add(reponse1);
+
+		reponse2.setQuestion(q);
+		//recuperation de l'id de la reponse21 de la question
+		reponse2.setId(listeReponses.get(1).getId());
+		listeReponses.add(reponse2);
+
+		reponse3.setQuestion(q);
+		//recuperation de l'id de la reponse 3 de la question
+		reponse3.setId(listeReponses.get(2).getId());
+		listeReponses.add(reponse3);
+
+		reponse4.setQuestion(q);
+		//recuperation de l'id de la reponse 4 de la question
+		reponse4.setId(listeReponses.get(3).getId());
+		listeReponses.add(reponse4);
+
+		reponse5.setQuestion(q);
+		//recuperation de l'id de la reponse 5 de la question
+		reponse5.setId(listeReponses.get(4).getId());
+		listeReponses.add(reponse5);
+		
+		//retrait des anciennes reponses de la liste
+		for (int i=0;i<5;i++){
+			listeReponses.remove(i);
 		}
-		//on associe les nouvelles reponses a la question
-		q.setListeReponses(listeReponsesQuestion);
-		
 
-		// affiche reponses pout ctrl
-		int i=0;
-		for (Reponse reponse : listeReponsesQuestion) {
-			i++;
-		 System.out.println("reponse "+i+ " : "+reponse);
+		if (qserv.modifier(q)){
+			//modification valide
+			return SUCCESS;
+		} else {
+			//la question ou ses reponses sont invalides
+			final String MESSAGE = "Question.invalide";
+			this.addActionError(getText(MESSAGE));
+			return ERROR;
 		}
-
-		// tentative sauvegarde question -recuperation de l'id de la question
-		// sauvegarde
-		boolean modOk = qserv.modifier(q);
-		System.out.println("modification question : " + modOk);
 		
-		
-
-//		// récupération de la liste des questions actuelles du questionnaire -
-//		// ArrayList vide si null
-//		setListeQuestionsQuestionnaire((List<Question>) session
-//				.get("listeQuestionsSession"));
-//		// ajout de la question a la liste (inutile puisque retour a la page de
-//		// gestion)
-//		// listeQuestionsQuestionnaire.add(q);
-		return SUCCESS;
 	}
 
 	/**
@@ -187,12 +188,44 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 		this.q = q;
 	}
 
-	public List<Reponse> getListeReponsesQuestion() {
-		return listeReponsesQuestion;
+	public Reponse getReponse1() {
+		return reponse1;
 	}
 
-	public void setListeReponsesQuestion(List<Reponse> listeReponsesQuestion) {
-		this.listeReponsesQuestion = listeReponsesQuestion;
+	public void setReponse1(Reponse reponse1) {
+		this.reponse1 = reponse1;
+	}
+
+	public Reponse getReponse2() {
+		return reponse2;
+	}
+
+	public void setReponse2(Reponse reponse2) {
+		this.reponse2 = reponse2;
+	}
+
+	public Reponse getReponse3() {
+		return reponse3;
+	}
+
+	public void setReponse3(Reponse reponse3) {
+		this.reponse3 = reponse3;
+	}
+
+	public Reponse getReponse4() {
+		return reponse4;
+	}
+
+	public void setReponse4(Reponse reponse4) {
+		this.reponse4 = reponse4;
+	}
+
+	public Reponse getReponse5() {
+		return reponse5;
+	}
+
+	public void setReponse5(Reponse reponse5) {
+		this.reponse5 = reponse5;
 	}
 
 	/**

@@ -3,6 +3,7 @@
  */
 package dao.hibernate;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,11 +12,11 @@ import org.hibernate.Transaction;
 
 import utils.HibernateUtil;
 import beans.Question;
-import beans.Questionnaire;
+import beans.Reponse;
 import dao.QuestionDAO;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class QuestionHibernateDAO implements QuestionDAO {
@@ -30,20 +31,29 @@ public class QuestionHibernateDAO implements QuestionDAO {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try {
-			// d�but de transaction
+			// debut de transaction
 			tx = session.beginTransaction();
+			
+			//on sauvegarde d'abord les reponses (toutes validees par le service)
+			List<Reponse> listeReponses = q.getListeReponses();
+			Iterator<Reponse> it = listeReponses.iterator();
+			while (it.hasNext()){
+				Reponse rep= it.next();
+				session.save(rep);
+			}
 			// persistance de l'objet
 			session.save(q);
 			// commit de la transaction
 			tx.commit();
 			return q.getId();
 		} catch (RuntimeException e) {
-			// if(tx != null) tx.rollback();
+			//quelque chose s'est mal passe, on annule tout
+			 if(tx != null) tx.rollback();
 			// message d'erreur pour la console
 			e.printStackTrace();
 			return ECHEC_CREATION;
 		} finally {
-			// fermeture de session syst�matique
+			// fermeture de session systematique
 			session.close();
 		}
 	}
@@ -78,8 +88,16 @@ public class QuestionHibernateDAO implements QuestionDAO {
 
 		try {
 			tx = session.beginTransaction();
-			session.update(q);
-			session.getTransaction().commit();
+			//MAJ des reponses
+			List<Reponse> listeReponses = q.getListeReponses();
+			Iterator<Reponse> it = listeReponses.iterator();
+			while (it.hasNext()){
+				Reponse rep= it.next();
+				session.merge(rep);
+			}
+			//maj de la question
+			session.merge(q);
+			tx.commit();
 		} catch (Exception e) {
 			// rollback si erreur
 			if (tx != null) {
