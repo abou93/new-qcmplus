@@ -1,6 +1,7 @@
 package actions.admin.questionnaire.question;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,12 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 	private List<Question> listeQuestionsQuestionnaire;
 	//la liste des reponses possibles 
 	private List<Reponse> listeReponsesQuestion;
+	// les reponses possibles
+		private Reponse reponse1;
+		private Reponse reponse2;
+		private Reponse reponse3;
+		private Reponse reponse4;
+		private Reponse reponse5;
 	
 	/**
 	 * questionnaire selectionne
@@ -62,16 +69,14 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 			setQ(qserv.trouver(qid));
 			session.put("questionSession", q);
 			
-			//On doit verifier le nombre de reponses dans la question et completer à 5 par des reponses vides 
-			//si necessaire
+			//reponses
 			listeReponsesQuestion = q.getListeReponses();
-			int nbReponses = listeReponsesQuestion.size();
-			while (nbReponses <5) {
-				Reponse rep = new Reponse();
-				listeReponsesQuestion.add(rep);
-				nbReponses++;
-			}
-			System.out.println("listeReponses : "+listeReponsesQuestion);			
+			setReponse1(listeReponsesQuestion.get(0));
+			setReponse2(listeReponsesQuestion.get(1));
+			setReponse3(listeReponsesQuestion.get(2));
+			setReponse4(listeReponsesQuestion.get(3));
+			setReponse5(listeReponsesQuestion.get(4));
+			//System.out.println("listeReponses : "+listeReponsesQuestion);			
 			return SUCCESS;
 		}
 		
@@ -162,12 +167,44 @@ public class FormModificationQuestion extends ActionSupport implements SessionAw
 			this.qid = qid;
 		}
 
-		public List<Reponse> getListeReponsesQuestion() {
-			return listeReponsesQuestion;
+		public Reponse getReponse1() {
+			return reponse1;
 		}
 
-		public void setListeReponsesQuestion(List<Reponse> listeReponsesQuestion) {
-			this.listeReponsesQuestion = listeReponsesQuestion;
+		public void setReponse1(Reponse reponse1) {
+			this.reponse1 = reponse1;
+		}
+
+		public Reponse getReponse2() {
+			return reponse2;
+		}
+
+		public void setReponse2(Reponse reponse2) {
+			this.reponse2 = reponse2;
+		}
+
+		public Reponse getReponse3() {
+			return reponse3;
+		}
+
+		public void setReponse3(Reponse reponse3) {
+			this.reponse3 = reponse3;
+		}
+
+		public Reponse getReponse4() {
+			return reponse4;
+		}
+
+		public void setReponse4(Reponse reponse4) {
+			this.reponse4 = reponse4;
+		}
+
+		public Reponse getReponse5() {
+			return reponse5;
+		}
+
+		public void setReponse5(Reponse reponse5) {
+			this.reponse5 = reponse5;
 		}
 		
 	

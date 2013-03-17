@@ -26,12 +26,6 @@ public class QuestionnaireNouvelleQuestion extends ActionSupport implements Sess
 	private List<Questionnaire> listeQuestionnaires;
 	
 	private List<Question> listeQuestionsQuestionnaire;
-	//les reponses possibles 
-	private Reponse reponse1;
-	private Reponse reponse2;
-	private Reponse reponse3;
-	private Reponse reponse4;
-	private Reponse reponse5;
 	
 	/**
 	 * questionnaire selectionne
@@ -59,7 +53,7 @@ public class QuestionnaireNouvelleQuestion extends ActionSupport implements Sess
 			session.put("questionnaireSession", qr);			
 			//récupération de la liste des questions actuelles du questionnaire - ArrayList vide si null
 			setListeQuestionsQuestionnaire(qserv.listerQuestions(qrid));
-			System.out.println("listeQuestionsQuestionnaire : "+listeQuestionsQuestionnaire);
+			//System.out.println("listeQuestionsQuestionnaire : "+listeQuestionsQuestionnaire);
 			//mise en session de la liste des questions
 			session.put("listeQuestionsSession", listeQuestionsQuestionnaire);	
 			return SUCCESS;
@@ -115,76 +109,6 @@ public class QuestionnaireNouvelleQuestion extends ActionSupport implements Sess
 		 */
 		public void setQrid(long qrid) {
 			this.qrid = qrid;
-		}
-
-		/**
-		 * @return the reponse1
-		 */
-		public Reponse getReponse1() {
-			return reponse1;
-		}
-
-		/**
-		 * @param reponse1 the reponse1 to set
-		 */
-		public void setReponse1(Reponse reponse1) {
-			this.reponse1 = reponse1;
-		}
-
-		/**
-		 * @return the reponse2
-		 */
-		public Reponse getReponse2() {
-			return reponse2;
-		}
-
-		/**
-		 * @param reponse2 the reponse2 to set
-		 */
-		public void setReponse2(Reponse reponse2) {
-			this.reponse2 = reponse2;
-		}
-
-		/**
-		 * @return the reponse3
-		 */
-		public Reponse getReponse3() {
-			return reponse3;
-		}
-
-		/**
-		 * @param reponse3 the reponse3 to set
-		 */
-		public void setReponse3(Reponse reponse3) {
-			this.reponse3 = reponse3;
-		}
-
-		/**
-		 * @return the reponse4
-		 */
-		public Reponse getReponse4() {
-			return reponse4;
-		}
-
-		/**
-		 * @param reponse4 the reponse4 to set
-		 */
-		public void setReponse4(Reponse reponse4) {
-			this.reponse4 = reponse4;
-		}
-
-		/**
-		 * @return the reponse5
-		 */
-		public Reponse getReponse5() {
-			return reponse5;
-		}
-
-		/**
-		 * @param reponse5 the reponse5 to set
-		 */
-		public void setReponse5(Reponse reponse5) {
-			this.reponse5 = reponse5;
 		}
 
 		/**

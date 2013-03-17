@@ -62,72 +62,46 @@ public class NouvelleQuestion extends ActionSupport implements SessionAware {
 
 	@Override
 	public String execute() {
-		//A remplacer éventuellement par une trace de log
-				System.out.println(this.toString());
+		// A remplacer éventuellement par une trace de log
+		System.out.println(this.toString());
 		// recuperation de la liste des questionnaires chargee dans l'action
 		// initQuestionnaireNouvelleQuestion
-		setListeQuestionnaires((List<Questionnaire>) session
-				.get("listeQuestionnairesSession"));
+		setListeQuestionnaires((List<Questionnaire>) session.get("listeQuestionnairesSession"));
 		// on recupere le questionnaire selectionne en session
 		setQr((Questionnaire) session.get("questionnaireSession"));
 
 		// mise en correspondance avec le questionnaire
 		q.setQuestionnaire(qr);
 
-		// tentative sauvegarde question -recuperation de l'id de la question
-		// sauvegarde
-		long qid = qserv.creer(q);
-		System.out.println("reponse creation question : " + qid);
-		System.out.println("id de Q : " + q.getId());
-
 		// ajout des reponses a la question
-		// creation de la liste des reponses
-		List<Reponse> listeReponses = new ArrayList<Reponse>();
-		if (reponse1 != null && !"".equals(reponse1.getLibelle())) {
-			reponse1.setQuestion(q);
-			rserv.creer(reponse1);
-			listeReponses.add(reponse1);
+		// recuperation de la liste des reponses initialisee dans la question
+		List<Reponse> listeReponses = q.getListeReponses();
+		// association des reponses a la question et ajout a la liste
+		reponse1.setQuestion(q);
+		listeReponses.add(reponse1);
 
-		}
-		if (reponse2 != null && !"".equals(reponse2.getLibelle())) {
-			reponse2.setQuestion(q);
-			rserv.creer(reponse2);
-			listeReponses.add(reponse2);
-		}
-		if (reponse3 != null && !"".equals(reponse3.getLibelle())) {
-			reponse3.setQuestion(q);
-			rserv.creer(reponse3);
-			listeReponses.add(reponse3);
-		}
-		if (reponse4 != null && !"".equals(reponse4.getLibelle())) {
-			reponse4.setQuestion(q);
-			rserv.creer(reponse4);
-			listeReponses.add(reponse4);
-		}
-		if (reponse5 != null && !"".equals(reponse5.getLibelle())) {
-			reponse5.setQuestion(q);
-			rserv.creer(reponse5);
-			listeReponses.add(reponse5);
-		}
+		reponse2.setQuestion(q);
+		listeReponses.add(reponse2);
 
-		// affiche reponses pout ctrl
-		// for (Reponse reponse : listeReponses) {
-		// System.out.println(reponse);
-		// }
+		reponse3.setQuestion(q);
+		listeReponses.add(reponse3);
 
-		// q.setListeReponses(listeReponses);
+		reponse4.setQuestion(q);
+		listeReponses.add(reponse4);
 
-		// update de question pour ajout reponses
-		// qserv.modifier(q);
+		reponse5.setQuestion(q);
+		listeReponses.add(reponse5);
 
-		// récupération de la liste des questions actuelles du questionnaire -
-		// ArrayList vide si null
-		setListeQuestionsQuestionnaire((List<Question>) session
-				.get("listeQuestionsSession"));
-		// ajout de la question a la liste (inutile puisque retour a la page de
-		// gestion)
-		listeQuestionsQuestionnaire.add(q);
-		return SUCCESS;
+		//on transmet au service pour verifications metiers
+		if (qserv.creer(q)>0) {
+			//la question est valide
+			return SUCCESS;
+		} else {
+			//la question ou ses reponses sont invalides
+			final String MESSAGE = "Question.invalide";
+			this.addActionError(getText(MESSAGE));
+			return ERROR;
+		}
 	}
 
 	/**

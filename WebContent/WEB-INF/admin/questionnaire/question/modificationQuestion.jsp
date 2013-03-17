@@ -45,22 +45,10 @@
 	<!-- FIN affichage liste questions questionnaire -->
 
 	<!-- DEBUT formulaire modification question  -->
-
+	<s:actionerror />
 	<form action="modifierQuestion">
-	
-		<s:textarea name="q.intitule" key="Label.intitule"/>
-		<br>
-
-		<!-- DEBUT affichage reponses -->
 		
-		<s:iterator value="listeReponsesQuestion" status="status" var="reponse" >
-			<s:hidden value="%{#reponse.id}" name="listeReponsesQuestion[%{#status.count-1}].id"/>
-			<s:textfield value="%{#reponse.libelle}" name="listeReponsesQuestion[%{#status.count-1}].libelle"/>
-			<s:checkbox value="%{#reponse.estCorrecte}" name="listeReponsesQuestion[%{#status.count-1}].estCorrecte"/>			
-		</s:iterator>
-		
-
-		<!-- FIN affichage reponses -->
+		<s:include value="formulaireQuestion.jsp"/>
 		
 		<s:submit key="Bouton.valider" cssClass="butStnd" name="validerModifierQuestion"/>
 		
