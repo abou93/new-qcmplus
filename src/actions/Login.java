@@ -50,25 +50,20 @@ public class Login extends ActionSupport implements SessionAware {
 		this.setMdp(this.getMdp().toLowerCase().trim());
 		u = userv.trouverParNomEtMdp(this.getNom(), this.getMdp());
 
-		// utilisateur trouv�
+		// utilisateur trouve
 		if (u != null) {
 			System.out.println(u + " de type " + u.getClass());
 			/*
-			 * L'utilisateur existe bien en bdd : - verification de la paire
-			 * nom/mdp - avec mise en minuscules et suppression des espaces des
-			 * infos entr�es par l'utilisateur = insensibilit� � la casse
-			 */
-			if (u.getMotDePasse().equals(this.getMdp())
-					&& u.getNom().equals(this.getNom())) {
-				// mise de l'utilisateur en session pour utilisation future
-				session.put("utilisateurSession", u);
-				// redirection en fonction du r�le stagiaire ou admin ?
-				if (u instanceof Stagiaire) {
-					return "stagiaire";
-				}
-				if (u instanceof Administrateur) {
-					return "admin";
-				}
+			 * L'utilisateur existe bien en bdd : on détermine s'il est de type Stagiaire 
+			 * ou Administrateur puis on le place en session pour utilisation future
+			 */				
+			session.put("utilisateurSession", u);
+			// redirection en fonction du r�le stagiaire ou admin ?
+			if (u instanceof Stagiaire) {
+				return "stagiaire";
+			}
+			if (u instanceof Administrateur) {
+				return "admin";
 			}
 		}
 		// sinon ajout message d'erreur et renvoi vers le formulaire
