@@ -11,26 +11,13 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
- * @author Stéphane Sikora & Frédéric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class HibernateUtil {
-//	private static SessionFactory sessionFactory;
-//	static {
-//		try {
-//			// Create the SessionFactory from hibernate.cfg.xml
-//			sessionFactory = new Configuration().configure()
-//					.buildSessionFactory();
-//		} catch (Throwable ex) {
-//			// Make sure you log the exception, as it might be swallowed
-//			System.err.println("Initial SessionFactory creation failed." + ex);
-//			throw new ExceptionInInitializerError(ex);
-//		}
-//	}
-//
+
 	private static ServiceRegistry serviceRegistry;
 	private static SessionFactory sessionFactory;
-	
 	
 	public static Session getSession() {
 		return configureSessionFactory().openSession();

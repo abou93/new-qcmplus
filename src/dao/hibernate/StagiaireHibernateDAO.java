@@ -70,6 +70,7 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 
 	@Override
 	public Stagiaire trouver(String nom, String mdp) {
+		Stagiaire s ;
 		// r�cup�ration de la session hibernate
 		Session session = HibernateUtil.getSession();
 		// System.out.println("utilisateurHibernateDAO");
@@ -83,14 +84,15 @@ public class StagiaireHibernateDAO implements StagiaireDAO {
 			q.setString("lenom", nom);
 			q.setString("lemdp", mdp);
 
-			return (Stagiaire) q.uniqueResult();
+			s =  (Stagiaire) q.uniqueResult();
 		} catch (RuntimeException e) {
 			System.out.println(e);
 			// if(tx != null) tx.rollback();
-			return null;
+			s = null;
 		} finally {
 			session.close();
 		}
+		return s;
 	}
 
 	@Override

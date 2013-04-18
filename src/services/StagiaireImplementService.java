@@ -36,10 +36,14 @@ public class StagiaireImplementService implements StagiaireService {
 		// l'utilisateur ne peut pas �tre null
 		if (s == null)
 			return ERREUR_UTILISATEUR_NULL;
+		
+		//au prealablle on met tous les attributs en minuscule et retire les espaces avant et apres
+		toLowerCaseAndTrim(s);
+		
 		// les attributs ne peuvent pas �tre vides
 		if ("".equals(s.getNom()) || "".equals(s.getMotDePasse())
-				|| "".equals(((Stagiaire) s).getSociete())
-				|| "".equals(((Stagiaire) s).getPrenom()))
+				|| "".equals(s.getSociete())
+				|| "".equals(s.getPrenom()))
 			return ERREUR_UTILISATEUR_INCOMPLET;
 		// on verifie qu'un tel stagaire n'existe pas encore
 		if (this.maDAO.trouver(s.getNom().toLowerCase().trim(), s
@@ -74,7 +78,11 @@ public class StagiaireImplementService implements StagiaireService {
 		// l'utilisateur ne peut pas �tre null
 		if (s == null)
 			return ERREUR_UTILISATEUR_NULL;
-		// les attributs ne peuvent pas �tre vides
+		
+		//au prealablle on met tous les attributs en minuscule et retire les espaces avant et apres
+		toLowerCaseAndTrim(s);
+				
+		// les attributs ne peuvent pas etre vides
 		if (s.getId() <= 0 || "".equals(s.getNom())
 				|| "".equals(s.getMotDePasse()) || "".equals(((Stagiaire) s).getSociete())
 				|| "".equals(((Stagiaire) s).getPrenom()))
@@ -107,5 +115,11 @@ public class StagiaireImplementService implements StagiaireService {
 		return this.maDAO.liste();
 	}
 
+	private void toLowerCaseAndTrim (Stagiaire s) {
+		s.setNom(s.getNom().toLowerCase().trim());
+		s.setPrenom(s.getPrenom().toLowerCase().trim());
+		s.setSociete(s.getSociete().toLowerCase().trim());
+		s.setMotDePasse(s.getMotDePasse().toLowerCase().trim());
+	}
 
 }
