@@ -1,9 +1,8 @@
-/**
- * 
- */
 package actions;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -16,38 +15,64 @@ import beans.Utilisateur;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author St�phane Sikora & Fr�d�ric Aubry
+ * @author Stephane Sikora & Frederic Aubry
  * 
  */
 public class Login extends ActionSupport implements SessionAware {
 	// Variables pour jsp
+	/**
+	 * L'utilisateur du portail
+	 */
 	private Utilisateur u;
+	/**
+	 * Le nom d'utilisateur
+	 */
 	private String nom;
+	/**
+	 * Le mot de passe de l'utilisateur
+	 */
 	private String mdp;
 
 	// session pour stocker les attributs
+	/**
+	 * La session utilisateur
+	 */
 	private Map<String, Object> session;
+	
+	//chaine retournee par l'action
+	/**
+	 * Le resultat de l'action
+	 */
+	private String result;
 
 	// service pour gerer les utilisateurs (on ne sait pas encore si admin ou stagiaire)
-	UtilisateurService userv = new UtilisateurImplementService();
+	/**
+	 * Implementation d'un service pour les actions faites sur un utilisateur
+	 */
+	private UtilisateurService userv;
+	
+	
+	/**
+	 * Constructeur par defaut qui instancie le service
+	 */
+	public Login() {
+		super();
+		this.userv = new UtilisateurImplementService();
+	}
 
 	// action de login
 	@Override
 	public String execute() {
-		System.out.println("actions.login via execute");
-
-		// jeu de test
-//		System.out.println(userv.creer(new Stagiaire("alpha2", "beta2")));
-//		System.out.println(userv.creer(new Administrateur("admin2", "pop")));
-//		System.out.println(userv.creer(new Stagiaire("alpha2", "beta2")));
-//		System.out.println(userv.creer(new Administrateur("admin2", "pop")));
+		//Creation d'un logger ou recuperation de l'existant
+		Logger logger = Logger.getLogger("logger");
+		//ecrit dans les logs
+		logger.log(Level.INFO, this.toString());
 		
 		/*
-		 * recuperaztion de l'authentification de l'utilisateur avec suppression des espaces et mise en
-		 * minuslules prealables 
+		 * recuperation de l'utilisateur 
+		 * la suppression des espaces et mise en
+		 * minuslules prealables se fait au niveau du service lui-meme
 		 */
-		this.setNom(this.getNom().toLowerCase().trim());
-		this.setMdp(this.getMdp().toLowerCase().trim());
 		u = userv.trouverParNomEtMdp(this.getNom(), this.getMdp());
 
 		// utilisateur trouve
@@ -57,67 +82,67 @@ public class Login extends ActionSupport implements SessionAware {
 			 * L'utilisateur existe bien en bdd : on détermine s'il est de type Stagiaire 
 			 * ou Administrateur puis on le place en session pour utilisation future
 			 */				
-			session.put("utilisateurSession", u);
 			// redirection en fonction du r�le stagiaire ou admin ?
 			if (u instanceof Stagiaire) {
-				return "stagiaire";
+				result = "stagiaire";
 			}
 			if (u instanceof Administrateur) {
-				return "admin";
+				result = "admin";
 			}
-		}
+			session.put("utilisateurSession", u);
+		} else {
 		// sinon ajout message d'erreur et renvoi vers le formulaire
 		final String MESSAGE = "Login.erreur";
 		this.addActionError(getText(MESSAGE));
-		return ERROR;
-
+		result = ERROR;
+		}
+		return result;
 	}
 
 	/**
-	 * @return
+	 * @return Retourne l'utilisateur.
 	 */
 	public Utilisateur getU() {
 		return u;
 	}
 
 	/**
-	 * @param u
+	 * @param u L'utilisateur
 	 */
 	public void setU(Utilisateur u) {
 		this.u = u;
 	}
 
 	/**
-	 * @return
+	 * @return Retourne le nom
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 * @param nom
+	 * @param nom Le nom
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * @return
+	 * @return Le mot de passe
 	 */
 	public String getMdp() {
 		return mdp;
 	}
 
 	/**
-	 * @param mdp
+	 * @param mdp Le mot de passe
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
 
 	/**
-	 * @param session
-	 *            the session to set
+	 * @param session La session
 	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
