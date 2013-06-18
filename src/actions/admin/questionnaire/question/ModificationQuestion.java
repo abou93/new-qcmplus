@@ -55,6 +55,7 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 	private long qrid;
 
 	private Question q;
+	private Question qOld;
 
 	// pour acces bdd
 	// QuestionnaireService qrserv = new QuestionnaireImplementService();
@@ -65,51 +66,63 @@ public class ModificationQuestion extends ActionSupport implements SessionAware 
 	public String execute() {
 		// A remplacer éventuellement par une trace de log
 		System.out.println(this.toString());
-		System.out.println("liste reponses Question : " + q.getListeReponses());
+		
 		// recuperation de la liste des questionnaires chargee dans l'action
 		// initQuestionnaireNouvelleQuestion
 		setListeQuestionnaires((List<Questionnaire>) session.get("listeQuestionnairesSession"));
 		// on recupere le questionnaire selectionne en session
 		setQr((Questionnaire) session.get("questionnaireSession"));
 
-		// mise en correspondance avec le questionnaire
-		setQ((Question) session.get("questionSession"));
+		//récupération de l'ancienne question depuis la session
+		qOld = ((Question) session.get("questionSession"));
 
 		// on associe les nouvelles reponses a la question
-		// recuperation de la liste des reponses 
-		List<Reponse> listeReponses = q.getListeReponses();
+		// recuperation de la liste des anciennes reponses 
+		List<Reponse> listeReponses = qOld.getListeReponses();
 		//on reconstitue la liste avec les nouvelles reponses
 		// association des reponses a la question et ajout a la liste
-		reponse1.setQuestion(q);
+		reponse1.setQuestion(qOld);
 		//recuperation de l'id de la reponse 1 de la question
 		reponse1.setId(listeReponses.get(0).getId());
-		listeReponses.add(reponse1);
+		//on retire l'ancienne première réponse et on met la nouvelle
+		listeReponses.remove(0);
+		listeReponses.add(0,reponse1);
 
-		reponse2.setQuestion(q);
+		reponse2.setQuestion(qOld);
 		//recuperation de l'id de la reponse21 de la question
 		reponse2.setId(listeReponses.get(1).getId());
-		listeReponses.add(reponse2);
+		//on retire l'ancienne première réponse et on met la nouvelle
+		listeReponses.remove(1);
+		listeReponses.add(1,reponse2);
 
-		reponse3.setQuestion(q);
+		reponse3.setQuestion(qOld);
 		//recuperation de l'id de la reponse 3 de la question
 		reponse3.setId(listeReponses.get(2).getId());
-		listeReponses.add(reponse3);
+		//on retire l'ancienne première réponse et on met la nouvelle
+		listeReponses.remove(2);
+		listeReponses.add(2,reponse3);
 
-		reponse4.setQuestion(q);
+		reponse4.setQuestion(qOld);
 		//recuperation de l'id de la reponse 4 de la question
 		reponse4.setId(listeReponses.get(3).getId());
-		listeReponses.add(reponse4);
+		//on retire l'ancienne première réponse et on met la nouvelle
+		listeReponses.remove(3);
+		listeReponses.add(3,reponse4);
 
-		reponse5.setQuestion(q);
+		reponse5.setQuestion(qOld);
 		//recuperation de l'id de la reponse 5 de la question
 		reponse5.setId(listeReponses.get(4).getId());
-		listeReponses.add(reponse5);
+		//on retire l'ancienne première réponse et on met la nouvelle
+		listeReponses.remove(4);
+		listeReponses.add(4,reponse5);
 		
-		//retrait des anciennes reponses de la liste
-		for (int i=0;i<5;i++){
-			listeReponses.remove(i);
-		}
-
+		q.setListeReponses(listeReponses);
+		q.setId(qOld.getId());
+		
+		System.out.println("liste reponses Question : " + q.getListeReponses());
+		System.out.println("libelleQuestion : " + q.getIntitule());
+		System.out.println("id question : "+q.getId());
+		
 		if (qserv.modifier(q)){
 			//modification valide
 			return SUCCESS;

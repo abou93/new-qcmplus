@@ -96,7 +96,9 @@ public class QuestionHibernateDAO implements QuestionDAO {
 				session.merge(rep);
 			}
 			//maj de la question
+			System.out.println("DAO : intitule question avt:: "+q.getIntitule());
 			session.merge(q);
+			System.out.println("DAO : intitule question apr:: "+q.getIntitule());
 			tx.commit();
 		} catch (Exception e) {
 			// rollback si erreur
