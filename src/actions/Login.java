@@ -98,6 +98,21 @@ public class Login extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
+	
+	
+
+	@Override
+	public void validate() {
+		if (getNom().length()==0){
+			addFieldError("nom", getText("Login.erreur.nom"));
+		}
+		
+		if (getMdp().length()==0){
+			addFieldError("mdp", getText("Login.erreur.mdp"));
+		}
+	}
+
+
 
 	/**
 	 * @return Retourne l'utilisateur.
